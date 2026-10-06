@@ -1,20 +1,24 @@
 from board import Board
 
+
 def main():
     board = Board(5, 5)
+
     board.create_board()
+
+    print("Initial board:")
     board.display_board()
-    print("\n")
-    match_count = board.check_for_matches()
-    while match_count > 0:
-        board.check_for_matches()
+
+    while True:
         match_count = board.check_for_matches()
+
+        if match_count == 0:
+            break
+
         board.update_board()
-        print("\n")
+
+        print("\nUpdated board:")
         board.display_board()
-
-    pass
-
 
 
 main()

@@ -25,23 +25,36 @@ class Board:
     # Displays the boad of the game row by row 
     def display_board(self):
         for row in self.board:
-            print(row)
+            for candy in row:
+                print(candy.type, end=" ")
+            print()
 
     # (In progress) Update the board when candy is matched and new candy replacec it by falling from a higher up column 
     def update_board(self):
-        for row in reversed(self.board):
-            row_index = self.board.index(row)
-            for candy in row:
-                if candy is None:
-                    col = row.index(candy)
-                    if row_index > 0:
-                        for i in range(row_index -1, -1, -1):
-                            if self.board[i][col] is not None:
-                                self.board[row_index][col].type = self.board[i][col].type
-                                self.board[i][col].type = None
-                    else:
-                        self.board[row_index][col] = Candy(random.randint(1, 4)).create_candy()
-                        self.update_board()
+        for col in range(self.cols):
+
+            remaining_candies = []
+
+            # Collect all non-destroyed candies in this column
+            for row in range(self.rows):
+                if self.board[row][col].type is not None:
+                    remaining_candies.append(self.board[row][col])
+
+            # Number of new candies needed
+            missing = self.rows - len(remaining_candies)
+
+            # Create new candies for the top
+            new_candies = []
+
+            for i in range(missing):
+                new_candies.append(Candy(random.randint(1, 4)))
+
+            # New column = new candies on top + existing candies below
+            new_column = new_candies + remaining_candies
+
+            # Put the column back into the board
+            for row in range(self.rows):
+                self.board[row][col] = new_column[row]
 
     # (In progress) Checks a candy's index for specific powerup combinations
     def check_for_powerup_creation(self, row, col):
@@ -113,7 +126,11 @@ class Board:
 
     # Checks for if the candy at the candy_index contains any horizontal matches
     def check_for_horizontal_matches(self, row, col):
+        if self.board[row][col].type is None:
+            return None, None
+        
         match_count = 1
+
         # Checks the left side of the candy_index
         if col > 0:
             left_index = col
@@ -214,5 +231,13 @@ class Board:
     def destroy_vertical_match(self, col, top_index, bottom_index):
         for candy_index in range(top_index, bottom_index + 1):
             self.board[candy_index][col].type = None
-        
+
+    def resolve_board(self):
+        while True:
+            matches = self.check_for_matches()
+
+            if matches == 0:
+                break
+
+            self.update_board()
             
