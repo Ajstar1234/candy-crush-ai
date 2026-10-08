@@ -29,6 +29,86 @@ class Board:
                 print(candy.type, end=" ")
             print()
 
+    def swap_candies(self, row1, col1, row2, col2):
+        row_difference = abs(row1 - row2)
+        col_difference = abs(col1 - col2)
+
+        # Only allow directly adjacent candies
+        if row_difference + col_difference != 1:
+            return False
+
+        self.board[row1][col1], self.board[row2][col2] = (
+            self.board[row2][col2],
+            self.board[row1][col1]
+        )
+
+        return True
+
+    def is_valid_swap(self, row1, col1, row2, col2):
+        # First make sure the candies are adjacent
+        if not self.swap_candies(row1, col1, row2, col2):
+            return False
+
+        # Check whether either swapped candy is now part of a match
+        first_horizontal = self.check_for_horizontal_matches(row1, col1)
+        first_vertical = self.check_for_vertical_matches(row1, col1)
+
+        second_horizontal = self.check_for_horizontal_matches(row2, col2)
+        second_vertical = self.check_for_vertical_matches(row2, col2)
+
+        valid = (
+            first_horizontal != (None, None)
+            or first_vertical != (None, None)
+            or second_horizontal != (None, None)
+            or second_vertical != (None, None)
+        )
+
+        # If invalid, undo the swap
+        if not valid:
+            self.swap_candies(row1, col1, row2, col2)
+
+        return valid
+
+    def get_valid_moves(self):
+        valid_moves = []
+
+        for row in range(self.rows):
+            for col in range(self.cols):
+
+                # Check swap with candy to the right
+                if col < self.cols - 1:
+                    if self.is_valid_swap(row, col, row, col + 1):
+                        valid_moves.append(((row, col), (row, col + 1)))
+
+                        # Undo valid swap so board stays unchanged
+                        self.swap_candies(row, col, row, col + 1)
+
+                # Check swap with candy below
+                if row < self.rows - 1:
+                    if self.is_valid_swap(row, col, row + 1, col):
+                        valid_moves.append(((row, col), (row + 1, col)))
+
+                        # Undo valid swap so board stays unchanged
+                        self.swap_candies(row, col, row + 1, col)
+
+        return valid_moves
+
+    def make_move(self, move):
+        if move is None:
+            return False
+
+        (row1, col1), (row2, col2) = move
+
+        # Make sure the move is actually valid
+        if not self.is_valid_swap(row1, col1, row2, col2):
+            return False
+
+        # The valid swap has already been made by is_valid_swap(),
+        # so now resolve the resulting matches and cascades
+        self.resolve_board()
+
+        return True
+
     # (In progress) Update the board when candy is matched and new candy replacec it by falling from a higher up column 
     def update_board(self):
         for col in range(self.cols):
@@ -240,4 +320,5 @@ class Board:
                 break
 
             self.update_board()
-            
+
+    
