@@ -1,11 +1,12 @@
 from board import Board
 from agent import Agent
 from game import Game
+from candy import Candy 
 
 def main():
     board = Board(5, 5)
     agent = Agent()
-    game = Game()
+    game = Game(max_turns=5, target_score=1000)
 
     board.create_board()
 
@@ -17,7 +18,7 @@ def main():
     print("\nStarting board:")
     board.display_board()
 
-    for turn in range(10):
+    for turn in range(game.max_turns):
         print(f"\nTurn {turn + 1}")
 
         valid_moves = board.get_valid_moves()
@@ -38,8 +39,6 @@ def main():
             game.update_score(points_earned)
             game.update_turn()
 
-
-
             print(f"Candies cleared: {total_cleared}")
             print(f"Points earned: {points_earned}")
             print(f"Total score: {game.score}")         
@@ -57,10 +56,9 @@ def main():
             print(f"Number of turns used: {game.turn}")
             break
 
-    if not game.is_won():
+    if game.is_lost():
         print("You Lose")
         print(f"Final score: {game.score}")
         print(f"Number of turns used: {game.turn}")
-
 
 main()

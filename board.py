@@ -138,43 +138,80 @@ class Board:
 
     # (In progress) Checks a candy's index for specific powerup combinations
     def check_for_powerup_creation(self, row, col):
+
         left_index, right_index = self.check_for_horizontal_matches(row, col)
         top_index, bottom_index = self.check_for_vertical_matches(row, col)
-        if right_index is None or left_index is None or bottom_index is None or top_index is None:
+
+        horizontal_match = left_index is not None
+        vertical_match = top_index is not None
+
+        if not horizontal_match and not vertical_match:
             return False
-        if right_index - left_index >= 4 or bottom_index - top_index >= 4:
+
+        horizontal_length = right_index - left_index + 1 if horizontal_match else 0
+        vertical_length = bottom_index - top_index + 1 if vertical_match else 0
+        
+        if horizontal_length == 4 or vertical_length == 4:
+
+            if horizontal_length == 4:
+                self.board[row][col].create_horizontal_striped_powerup()
+            
+            else:
+                self.board[row][col].create_vertical_striped_powerup()
+
+            return True
+
+
             self.board[row][col].create_colorbomb_powerup()
+
             if right_index - left_index >= 4:
+
                 self.destroy_horizontal_match(row, left_index, col - 1)
                 self.destroy_horizontal_match(row, col + 1, right_index)
+
             if bottom_index - top_index >= 4:
+
                 self.destroy_vertical_match(col, top_index, row - 1)
                 self.destroy_vertical_match(col, row + 1, bottom_index )
+
             return True
+        
         elif right_index - left_index >= 3 and bottom_index - top_index >= 3:
             self.board[row][col].create_wrapped_powerup()
+
             self.destroy_horizontal_match(row, left_index, col - 1)
             self.destroy_horizontal_match(row, col + 1, right_index)
             self.destroy_vertical_match(col, top_index, row - 1)
             self.destroy_vertical_match(col, row + 1, bottom_index)
+
             return True
+        
         elif right_index - left_index >= 3 or bottom_index - top_index >= 3:
+
             if right_index - left_index >= 3:
                 self.board[row][col].create_horizontal_striped_powerup()
+
                 self.destroy_horizontal_match(row, left_index, col - 1)
                 self.destroy_horizontal_match(row, col + 1, right_index)
+
             if bottom_index - top_index >= 3:
                 self.board[row][col].create_vertical_striped_powerup()
+
                 self.destroy_vertical_match(col, top_index, row - 1)
                 self.destroy_vertical_match(col, row + 1, bottom_index )
+
             return True
+        
         elif right_index - left_index == 1 and bottom_index - top_index == 1:
             self.board[row][col].create_fish_powerup()
+
             self.destroy_horizontal_match(row, left_index, col - 1)
             self.destroy_horizontal_match(row, col + 1, right_index)
             self.destroy_vertical_match(col, top_index, row - 1)
             self.destroy_vertical_match(col, row + 1, bottom_index )
+
             return True
+        
         else:
             return False
         
@@ -279,16 +316,25 @@ class Board:
     # Matches will be destroyed and the index replaced 
     def check_for_matches(self):
         matched_positions = set()
+        protected_positions = set()
+        powerups_to_create = set()
 
         for row in range(len(self.board)):
+
             for col in range(len(self.board[row])):
-                #powerup_creation_check = self.check_for_powerup_creation(row, col)
-
-                #if powerup_creation_check == True:
-                    #continue
-
                 left_index, right_index = self.check_for_horizontal_matches(row, col)
                 top_index, bottom_index = self.check_for_vertical_matches(row, col)
+
+                horizontal_length = right_index - left_index + 1 if left_index is not None else 0
+                vertical_length = bottom_index - top_index + 1 if top_index is not None else 0
+
+                if horizontal_length == 4:
+                    protected_positions.add((row, left_index))
+                    powerups_to_create.add((row, left_index, "Horizontal Striped"))
+
+                if vertical_length == 4:
+                    protected_positions.add((top_index, col))
+                    powerups_to_create.add((top_index, col, "Vertical Striped"))
 
                 if left_index is not None:
                     for c in range(left_index, right_index + 1):
@@ -298,10 +344,18 @@ class Board:
                     for r in range(top_index, bottom_index + 1):
                         matched_positions.add((r, col))
 
-        for row, col in matched_positions:
-            self.board[row][col].type = None
+        for row, col, powerup_type in powerups_to_create:
+            if powerup_type == "Horizontal Striped":
+                self.board[row][col].create_horizontal_striped_powerup()
 
-        return len(matched_positions)
+            elif powerup_type == "Vertical Striped":
+                self.board[row][col].create_vertical_striped_powerup()
+
+        for row, col in matched_positions:
+            if (row, col) not in protected_positions:
+                self.board[row][col].type = None
+
+        return len(matched_positions - protected_positions)
 
     def check_for_powerup_match(self, row, col,):
         candy = self.board[row][col] 
