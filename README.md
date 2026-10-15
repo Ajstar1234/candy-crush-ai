@@ -24,10 +24,12 @@ Rather than simply recreating Candy Crush, the goal is to explore different AI a
 - Configurable target score with win detection
 - Basic 10-move level limit and win/loss reporting
 - Initial power-up implementations (currently being refined)
+- Configurable move limits and target scores
+- Score-based win/lose conditions
 
 ## Planned Features
 
-- Configurable move limits and additional level settings
+-  Additional level objectives, including clearing specific candy types
 - Fully functional special candies and power-ups
   - Striped candies
   - Wrapped candies
