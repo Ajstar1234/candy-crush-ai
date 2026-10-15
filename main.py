@@ -1,9 +1,11 @@
 from board import Board
 from agent import Agent
+from game import Game
 
 def main():
     board = Board(5, 5)
     agent = Agent()
+    game = Game()
 
     board.create_board()
 
@@ -29,10 +31,36 @@ def main():
         print("Agent chose:")
         print(move)
 
-        board.make_move(move)
+        total_cleared = board.make_move(move)
+
+        if total_cleared is not False:
+            points_earned = total_cleared * 10
+            game.update_score(points_earned)
+            game.update_turn()
+
+
+
+            print(f"Candies cleared: {total_cleared}")
+            print(f"Points earned: {points_earned}")
+            print(f"Total score: {game.score}")         
+
+        else:
+            print("Invalid move")
+            break
 
         print("Board after move:")
         board.display_board()
+
+        if game.is_won():
+            print("You Win!")
+            print(f"Final score: {game.score}")
+            print(f"Number of turns used: {game.turn}")
+            break
+
+    if not game.is_won():
+        print("You Lose")
+        print(f"Final score: {game.score}")
+        print(f"Number of turns used: {game.turn}")
 
 
 main()

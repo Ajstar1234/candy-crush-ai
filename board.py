@@ -105,9 +105,9 @@ class Board:
 
         # The valid swap has already been made by is_valid_swap(),
         # so now resolve the resulting matches and cascades
-        self.resolve_board()
+        total_cleared = self.resolve_board()
 
-        return True
+        return total_cleared
 
     # (In progress) Update the board when candy is matched and new candy replacec it by falling from a higher up column 
     def update_board(self):
@@ -278,23 +278,30 @@ class Board:
     # Will check the board for horizontal, vertical, or powerup matches
     # Matches will be destroyed and the index replaced 
     def check_for_matches(self):
-        col = 0 
-        match_count = 0
-        for row in range(0, len(self.board)):
-            for col in range(0, len(self.board[row])):
-                powerup_creation_check = self.check_for_powerup_creation(row, col)
-                if powerup_creation_check == True:
-                    continue
+        matched_positions = set()
+
+        for row in range(len(self.board)):
+            for col in range(len(self.board[row])):
+                #powerup_creation_check = self.check_for_powerup_creation(row, col)
+
+                #if powerup_creation_check == True:
+                    #continue
+
                 left_index, right_index = self.check_for_horizontal_matches(row, col)
                 top_index, bottom_index = self.check_for_vertical_matches(row, col)
-                if left_index is not None and right_index is not None:
-                    match_count += 1
-                    self.check_for_powerup_match(row, col)
-                    self.destroy_horizontal_match(row, left_index, right_index)
-                if top_index is not None and bottom_index is not None:
-                    match_count += 1
-                    self.destroy_vertical_match(col, top_index, bottom_index)
-        return match_count
+
+                if left_index is not None:
+                    for c in range(left_index, right_index + 1):
+                        matched_positions.add((row, c))
+                
+                if top_index is not None:
+                    for r in range(top_index, bottom_index + 1):
+                        matched_positions.add((r, col))
+
+        for row, col in matched_positions:
+            self.board[row][col].type = None
+
+        return len(matched_positions)
 
     def check_for_powerup_match(self, row, col,):
         candy = self.board[row][col] 
@@ -313,12 +320,16 @@ class Board:
             self.board[candy_index][col].type = None
 
     def resolve_board(self):
+        total_cleared = 0
+
         while True:
             matches = self.check_for_matches()
 
             if matches == 0:
                 break
+            
+            total_cleared += matches
 
             self.update_board()
 
-    
+        return total_cleared
