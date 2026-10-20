@@ -26,7 +26,27 @@ class Board:
     def display_board(self):
         for row in self.board:
             for candy in row:
-                print(candy.type, end=" ")
+
+                if candy.type is None:
+                    symbol = "."
+
+                elif candy.powerup == "Horizontal Striped":
+                    symbol = f"{candy.type}H"
+
+                elif candy.powerup == "Vertical Striped":
+                    symbol = f"{candy.type}V"
+
+                elif candy.powerup == "Wrapped":
+                    symbol = f"{candy.type}W"
+
+                elif candy.powerup == "Colorbomb":
+                    symbol = "CB"
+
+                else:
+                    symbol = str(candy.type)
+
+                print(f"{symbol:>3}", end=" ")
+
             print()
 
     def swap_candies(self, row1, col1, row2, col2):
@@ -48,6 +68,16 @@ class Board:
         # First make sure the candies are adjacent
         if not self.swap_candies(row1, col1, row2, col2):
             return False
+
+        # Color bombs can swap without making a normal match
+        first_candy = self.board[row1][col1]
+        second_candy = self.board[row2][col2]
+
+        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, 5):
+            return True
+
+        if second_candy.powerup == "Colorbomb" and first_candy.type in range(1, 5):
+            return True
 
         # Check whether either swapped candy is now part of a match
         first_horizontal = self.check_for_horizontal_matches(row1, col1)
@@ -103,9 +133,46 @@ class Board:
         if not self.is_valid_swap(row1, col1, row2, col2):
             return False
 
-        # The valid swap has already been made by is_valid_swap(),
-        # so now resolve the resulting matches and cascades
-        total_cleared = self.resolve_board()
+        # Check for color bomb activation after the swap
+        first_candy = self.board[row1][col1]
+        second_candy = self.board[row2][col2]
+
+        bomb_position = None
+        target_color = None
+
+        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, 5):
+            bomb_position = (row1, col1)
+            target_color = second_candy.type
+
+        elif second_candy.powerup == "Colorbomb" and first_candy.type in range(1, 5):
+            bomb_position = (row2, col2)
+            target_color = first_candy.type
+
+        if bomb_position is not None:
+            cleared_positions = set()
+
+            for row in range(self.rows):
+                for col in range(self.cols):
+                    candy = self.board[row][col]
+
+                    if candy.type == target_color or (row, col) == bomb_position:
+                        cleared_positions.add((row, col))
+
+            # Clear all candies of the selected color and the bomb itself
+            for row, col in cleared_positions:
+                self.board[row][col].type = None
+                self.board[row][col].powerup = None
+
+            total_cleared = len(cleared_positions)
+
+            # Apply gravity and resolve any additional cascades
+            self.update_board()
+            total_cleared += self.resolve_board()
+
+        else:
+            total_cleared = self.resolve_board(
+                swapped_positions=[(row1, col1), (row2, col2)]
+            )
 
         return total_cleared
 
@@ -136,114 +203,9 @@ class Board:
             for row in range(self.rows):
                 self.board[row][col] = new_column[row]
 
-    # (In progress) Checks a candy's index for specific powerup combinations
-    def check_for_powerup_creation(self, row, col):
-
-        left_index, right_index = self.check_for_horizontal_matches(row, col)
-        top_index, bottom_index = self.check_for_vertical_matches(row, col)
-
-        horizontal_match = left_index is not None
-        vertical_match = top_index is not None
-
-        if not horizontal_match and not vertical_match:
-            return False
-
-        horizontal_length = right_index - left_index + 1 if horizontal_match else 0
-        vertical_length = bottom_index - top_index + 1 if vertical_match else 0
-        
-        if horizontal_length == 4 or vertical_length == 4:
-
-            if horizontal_length == 4:
-                self.board[row][col].create_horizontal_striped_powerup()
-            
-            else:
-                self.board[row][col].create_vertical_striped_powerup()
-
-            return True
-
-
-            self.board[row][col].create_colorbomb_powerup()
-
-            if right_index - left_index >= 4:
-
-                self.destroy_horizontal_match(row, left_index, col - 1)
-                self.destroy_horizontal_match(row, col + 1, right_index)
-
-            if bottom_index - top_index >= 4:
-
-                self.destroy_vertical_match(col, top_index, row - 1)
-                self.destroy_vertical_match(col, row + 1, bottom_index )
-
-            return True
-        
-        elif right_index - left_index >= 3 and bottom_index - top_index >= 3:
-            self.board[row][col].create_wrapped_powerup()
-
-            self.destroy_horizontal_match(row, left_index, col - 1)
-            self.destroy_horizontal_match(row, col + 1, right_index)
-            self.destroy_vertical_match(col, top_index, row - 1)
-            self.destroy_vertical_match(col, row + 1, bottom_index)
-
-            return True
-        
-        elif right_index - left_index >= 3 or bottom_index - top_index >= 3:
-
-            if right_index - left_index >= 3:
-                self.board[row][col].create_horizontal_striped_powerup()
-
-                self.destroy_horizontal_match(row, left_index, col - 1)
-                self.destroy_horizontal_match(row, col + 1, right_index)
-
-            if bottom_index - top_index >= 3:
-                self.board[row][col].create_vertical_striped_powerup()
-
-                self.destroy_vertical_match(col, top_index, row - 1)
-                self.destroy_vertical_match(col, row + 1, bottom_index )
-
-            return True
-        
-        elif right_index - left_index == 1 and bottom_index - top_index == 1:
-            self.board[row][col].create_fish_powerup()
-
-            self.destroy_horizontal_match(row, left_index, col - 1)
-            self.destroy_horizontal_match(row, col + 1, right_index)
-            self.destroy_vertical_match(col, top_index, row - 1)
-            self.destroy_vertical_match(col, row + 1, bottom_index )
-
-            return True
-        
-        else:
-            return False
-        
-    def horizontal_striped_powerup(self, row, col):
-        for candy in self.board[row]:
-            if candy is not None:
-                candy.type = None
-
-    def vertical_striped_powerup(self, row, col):
-        for candy in self.board:
-            if candy[col] is not None:
-                candy[col].type = None
-
-    def colorbomb_powerup(self, row, col):
-        for candies in self.board:
-            for candy in candies:
-                if candy.type == self.board[row][col].type:
-                    candy.type = None
-
-    def wrapped_powerup(self, row, col):
-        for i in range(row - 1, row + 2):
-            for j in range(col - 1, col + 2):
-                if i >= 0 and i < len(self.board) and j >= 0 and j < len(self.board[i]):
-                    if self.board[i][j] is not None:
-                        self.board[i][j].type = None
-
-    def fish_powerup(self, row, col):
-        pass
-
     # Checks for if the candy at the candy_index contains any horizontal matches
     def check_for_horizontal_matches(self, row, col):
-        if self.board[row][col].type is None:
+        if self.board[row][col].type is None or self.board[row][col].type == 0:
             return None, None
         
         match_count = 1
@@ -281,6 +243,8 @@ class Board:
 
     # Checks for if the candy at the candy_index contains any vertical matches
     def check_for_vertical_matches(self, row, col):
+        if self.board[row][col].type is None or self.board[row][col].type == 0:
+            return None, None
         match_count = 1
 
         # Checks the top side of the candy_index
@@ -314,10 +278,13 @@ class Board:
 
     # Will check the board for horizontal, vertical, or powerup matches
     # Matches will be destroyed and the index replaced 
-    def check_for_matches(self):
+    def check_for_matches(self, swapped_positions=None):
         matched_positions = set()
         protected_positions = set()
         powerups_to_create = set()
+        processed_horizontal = set()
+        processed_vertical = set()
+        overlapping_positions = set()
 
         for row in range(len(self.board)):
 
@@ -328,13 +295,84 @@ class Board:
                 horizontal_length = right_index - left_index + 1 if left_index is not None else 0
                 vertical_length = bottom_index - top_index + 1 if top_index is not None else 0
 
-                if horizontal_length == 4:
-                    protected_positions.add((row, left_index))
-                    powerups_to_create.add((row, left_index, "Horizontal Striped"))
+                if horizontal_length >= 3 and vertical_length >= 3:
+                    overlapping_positions.add((row, col))
 
-                if vertical_length == 4:
-                    protected_positions.add((top_index, col))
-                    powerups_to_create.add((top_index, col, "Vertical Striped"))
+                if horizontal_length >= 5:
+                    match_key = (row, left_index, right_index)
+
+                    if match_key not in processed_horizontal:
+                        processed_horizontal.add(match_key)
+
+                        powerup_position = (row, left_index)
+
+                        if swapped_positions is not None:
+                            for swap_row, swap_col in swapped_positions:
+                                if swap_row == row and left_index <= swap_col <= right_index:
+                                    powerup_position = (swap_row, swap_col)
+                                    break
+
+                        protected_positions.add(powerup_position)
+                        powerups_to_create.add(
+                            (*powerup_position, "Colorbomb")
+                        )
+
+                elif horizontal_length == 4:
+                    match_key = (row, left_index, right_index)
+
+                    if match_key not in processed_horizontal:
+                        processed_horizontal.add(match_key)
+
+                        powerup_position = (row, left_index)
+
+                        if swapped_positions is not None:
+                            for swap_row, swap_col in swapped_positions:
+                                if swap_row == row and left_index <= swap_col <= right_index:
+                                    powerup_position = (swap_row, swap_col)
+                                    break
+
+                        protected_positions.add(powerup_position)
+                        powerups_to_create.add(
+                            (*powerup_position, "Horizontal Striped")
+                        )
+
+                if vertical_length >= 5:
+                    match_key = (col, top_index, bottom_index)
+
+                    if match_key not in processed_vertical:
+                        processed_vertical.add(match_key)
+
+                        powerup_position = (top_index, col)
+
+                        if swapped_positions is not None:
+                            for swap_row, swap_col in swapped_positions:
+                                if swap_col == col and top_index <= swap_row <= bottom_index:
+                                    powerup_position = (swap_row, swap_col)
+                                    break
+
+                        protected_positions.add(powerup_position)
+                        powerups_to_create.add(
+                            (*powerup_position, "Colorbomb")
+                        )
+
+                elif vertical_length == 4:
+                    match_key = (col, top_index, bottom_index)
+
+                    if match_key not in processed_vertical:
+                        processed_vertical.add(match_key)
+
+                        powerup_position = (top_index, col)
+
+                        if swapped_positions is not None:
+                            for swap_row, swap_col in swapped_positions:
+                                if swap_col == col and top_index <= swap_row <= bottom_index:
+                                    powerup_position = (swap_row, swap_col)
+                                    break
+
+                        protected_positions.add(powerup_position)
+                        powerups_to_create.add(
+                            (*powerup_position, "Vertical Striped")
+                        )
 
                 if left_index is not None:
                     for c in range(left_index, right_index + 1):
@@ -344,6 +382,19 @@ class Board:
                     for r in range(top_index, bottom_index + 1):
                         matched_positions.add((r, col))
 
+        # Prioritize wrapped candies at overlapping positions
+        for row, col in overlapping_positions:
+
+            # Remove conflicting striped power-ups
+            powerups_to_create = {
+                (r, c, powerup_type)
+                for r, c, powerup_type in powerups_to_create
+                if (r, c) != (row, col)
+            }
+
+            protected_positions.add((row, col))
+            powerups_to_create.add((row, col, "Wrapped"))
+
         for row, col, powerup_type in powerups_to_create:
             if powerup_type == "Horizontal Striped":
                 self.board[row][col].create_horizontal_striped_powerup()
@@ -351,39 +402,77 @@ class Board:
             elif powerup_type == "Vertical Striped":
                 self.board[row][col].create_vertical_striped_powerup()
 
+            elif powerup_type == "Wrapped":
+                self.board[row][col].create_wrapped_powerup()
+
+            elif powerup_type == "Colorbomb":
+                self.board[row][col].create_colorbomb_powerup()
+                self.board[row][col].type = 0
+
+        # Activate striped candies and handle chain reactions
+        positions_to_check = list(matched_positions)
+        activated_powerups = set()
+
+        while positions_to_check:
+            row, col = positions_to_check.pop()
+
+            if (row, col) in protected_positions:
+                continue
+
+            candy = self.board[row][col]
+
+            if (row, col) in activated_powerups:
+                continue
+
+            if candy.powerup == "Horizontal Striped":
+                activated_powerups.add((row, col))
+
+                for c in range(self.cols):
+                    if (row, c) not in matched_positions:
+                        matched_positions.add((row, c))
+                        positions_to_check.append((row, c))
+
+            elif candy.powerup == "Vertical Striped":
+                activated_powerups.add((row, col))
+
+                for r in range(self.rows):
+                    if (r, col) not in matched_positions:
+                        matched_positions.add((r, col))
+                        positions_to_check.append((r, col))
+
+            elif candy.powerup == "Wrapped":
+                activated_powerups.add((row, col))
+
+                # Clear the 3x3 area surrounding the wrapped candy
+                for r in range(row - 1, row + 2):
+                    for c in range(col - 1, col + 2):
+
+                        #Make sure the position is inside the board
+                        if 0 <= r < self.rows and 0 <= c < self.cols:
+
+                            if (r, c) not in matched_positions:
+                                matched_positions.add((r, c))
+                                positions_to_check.append((r, c))
+
         for row, col in matched_positions:
             if (row, col) not in protected_positions:
                 self.board[row][col].type = None
 
         return len(matched_positions - protected_positions)
 
-    def check_for_powerup_match(self, row, col,):
-        candy = self.board[row][col] 
-        if candy.powerup == "Horizontal Striped":
-            self.horizontal_striped_powerup(row, col)
-
-        pass
-
-    # Destroys the candies in a horizontal match based on it's row from the left index to the right index
-    def destroy_horizontal_match(self, row, left_index, right_index):
-        for candy_index in range(left_index, right_index + 1):
-            self.board[row][candy_index].type = None 
-
-    def destroy_vertical_match(self, col, top_index, bottom_index):
-        for candy_index in range(top_index, bottom_index + 1):
-            self.board[candy_index][col].type = None
-
-    def resolve_board(self):
+    def resolve_board(self, swapped_positions=None):
         total_cleared = 0
 
         while True:
-            matches = self.check_for_matches()
+            matches = self.check_for_matches(swapped_positions)
 
             if matches == 0:
                 break
-            
-            total_cleared += matches
 
+            total_cleared += matches
             self.update_board()
+
+            # Cascades are not directly caused by a swap
+            swapped_positions = None
 
         return total_cleared

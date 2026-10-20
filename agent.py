@@ -27,6 +27,31 @@ class Agent:
         # Temporarily swap the candies
         board.swap_candies(row1, col1, row2, col2)
 
+        # Evaluate color bomb swaps
+        first_candy = board.board[row1][col1]
+        second_candy = board.board[row2][col2]
+
+        target_color = None
+
+        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, 5):
+            target_color = second_candy.type
+
+        elif second_candy.powerup == "Colorbomb" and first_candy.type in range(1, 5):
+            target_color = first_candy.type
+
+        if target_color is not None:
+            score = 1  # Include the color bomb itself
+
+            for row in board.board:
+                for candy in row:
+                    if candy.type == target_color:
+                        score += 1
+
+            # Undo the temporary swap before returning
+            board.swap_candies(row1, col1, row2, col2)
+
+            return score
+
         matched_positions = set()
 
         # Check both candies for matches
