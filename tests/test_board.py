@@ -67,3 +67,102 @@ def test_multiple_matches():
     matches = board.find_matches()
 
     assert matches == {(2, 0), (3, 0), (4, 0), (4, 2), (4, 3), (4, 4)}
+
+def test_horizontal_striped_creation():
+    board = Board(5, 5)
+    board.board = [
+        [Candy(1), Candy(1), Candy(1), Candy(1), Candy(4)],
+        [Candy(1), Candy(3), Candy(4), Candy(1), Candy(2)], 
+        [Candy(2), Candy(2), Candy(3), Candy(2), Candy(3)],
+        [Candy(1), Candy(4), Candy(1), Candy(2), Candy(4)],
+        [Candy(2), Candy(2), Candy(1), Candy(3), Candy(1)]
+    ]
+
+    protected_positions = board.create_powerup()
+
+    assert board.board[0][0].powerup == 'Horizontal Striped'
+    assert (0, 0) in protected_positions
+
+def test_vertical_striped_creation():
+    board = Board(5, 5)
+    board.board = [
+        [Candy(1), Candy(2), Candy(3), Candy(4), Candy(1)],
+        [Candy(1), Candy(3), Candy(4), Candy(1), Candy(2)], 
+        [Candy(1), Candy(2), Candy(3), Candy(2), Candy(3)],
+        [Candy(1), Candy(4), Candy(1), Candy(2), Candy(4)],
+        [Candy(2), Candy(2), Candy(1), Candy(3), Candy(1)]
+    ]
+
+    protected_positions = board.create_powerup()
+
+    assert board.board[0][0].powerup == 'Vertical Striped'
+    assert (0, 0) in protected_positions
+
+def test_wrapped_candy_creation():
+    board = Board(5, 5)
+    board.board = [
+        [Candy(1), Candy(1), Candy(1), Candy(3), Candy(4)],
+        [Candy(1), Candy(3), Candy(4), Candy(1), Candy(2)], 
+        [Candy(1), Candy(2), Candy(3), Candy(2), Candy(3)],
+        [Candy(3), Candy(4), Candy(1), Candy(2), Candy(4)],
+        [Candy(2), Candy(2), Candy(1), Candy(3), Candy(1)]
+    ]
+
+    protected_positions = board.create_powerup()
+
+    assert board.board[0][0].powerup == 'Wrapped'
+    assert (0, 0) in protected_positions
+
+def test_colorbomb_creation():
+    board = Board(5, 5)
+    board.board = [
+        [Candy(1), Candy(1), Candy(1), Candy(1), Candy(1)],
+        [Candy(2), Candy(3), Candy(4), Candy(1), Candy(2)], 
+        [Candy(2), Candy(2), Candy(3), Candy(2), Candy(3)],
+        [Candy(3), Candy(4), Candy(1), Candy(2), Candy(4)],
+        [Candy(2), Candy(2), Candy(1), Candy(3), Candy(1)]
+    ]
+
+    protected_positions = board.create_powerup()
+
+    assert board.board[0][0].powerup == 'Colorbomb'
+    assert board.board[0][0].type == 0
+    assert (0, 0) in protected_positions
+
+def test_horizontal_striped_activation():
+    board = Board(5, 5)
+    board.board = [
+        [Candy(1, 'Horizontal Striped'), Candy(2), Candy(3), Candy(4), Candy(1)],
+        [Candy(2), Candy(3), Candy(4), Candy(1), Candy(2)], 
+        [Candy(1), Candy(2), Candy(3), Candy(2), Candy(3)],
+        [Candy(3), Candy(4), Candy(1), Candy(2), Candy(4)],
+        [Candy(2), Candy(2), Candy(1), Candy(3), Candy(1)]
+    ]
+
+    matched_positions = {(0, 0)}
+    protected_positions = set()
+
+    result = board.activate_powerup((matched_positions, protected_positions))
+
+    expected_positions = {(0, 0), (0, 1), (0, 2), (0, 3), (0, 4)}
+
+    assert result == expected_positions
+
+def test_vertical_striped_activation():
+    board = Board(5, 5)
+    board.board = [
+        [Candy(1), Candy(2), Candy(3), Candy(4), Candy(1)],
+        [Candy(2, 'Vertical Striped'), Candy(3), Candy(4), Candy(1), Candy(2)], 
+        [Candy(1), Candy(2), Candy(3), Candy(2), Candy(3)],
+        [Candy(3), Candy(4), Candy(1), Candy(2), Candy(4)],
+        [Candy(2), Candy(2), Candy(1), Candy(3), Candy(1)]
+    ]
+
+    matched_positions = {(1, 0)}
+    protected_positions = set()
+
+    result = board.activate_powerup(matched_positions, protected_positions)
+
+    expected_positions = {(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)}
+
+    assert result == expected_positions
