@@ -5,6 +5,11 @@ import random
 # Class that makes, displays, and updates the board of the game
 # Takes the parameters rows and cols (columns) which are the demesions of the board
 class Board:
+
+    #==================================
+    # Board initialization
+    #==================================
+
     def __init__(self, rows, cols):
         self.rows = rows
         self.cols = cols
@@ -48,6 +53,10 @@ class Board:
                 print(f"{symbol:>3}", end=" ")
 
             print()
+
+    #===============================
+    # Move handling
+    #===============================
 
     def swap_candies(self, row1, col1, row2, col2):
         row_difference = abs(row1 - row2)
@@ -176,32 +185,9 @@ class Board:
 
         return total_cleared
 
-    # (In progress) Update the board when candy is matched and new candy replacec it by falling from a higher up column 
-    def update_board(self):
-        for col in range(self.cols):
-
-            remaining_candies = []
-
-            # Collect all non-destroyed candies in this column
-            for row in range(self.rows):
-                if self.board[row][col].type is not None:
-                    remaining_candies.append(self.board[row][col])
-
-            # Number of new candies needed
-            missing = self.rows - len(remaining_candies)
-
-            # Create new candies for the top
-            new_candies = []
-
-            for i in range(missing):
-                new_candies.append(Candy(random.randint(1, 4)))
-
-            # New column = new candies on top + existing candies below
-            new_column = new_candies + remaining_candies
-
-            # Put the column back into the board
-            for row in range(self.rows):
-                self.board[row][col] = new_column[row]
+    #===========================
+    # Match detection
+    #===========================
 
     # Checks for if the candy at the candy_index contains any horizontal matches
     def check_for_horizontal_matches(self, row, col):
@@ -274,12 +260,41 @@ class Board:
             return top_index, bottom_index
         else:
             return None, None
+
+    def find_matches(self):
+        matched_positions = set()
+
+        for row in range(self.rows):
+            for col in range(self.cols):
+                left, right = self.check_for_horizontal_matches(row, col)
+
+                if left is not None:
+                    for c in range(left, right + 1):
+                        matched_positions.add((row, c))
+
+                top, bottom = self.check_for_vertical_matches(row, col)
+
+                if top is not None:
+                    for r in range(top, bottom + 1):
+                        matched_positions.add((r, col))
+
+        return matched_positions
         
 
     # Will check the board for horizontal, vertical, or powerup matches
     # Matches will be destroyed and the index replaced 
     def check_for_matches(self, swapped_positions=None):
-        matched_positions = set()
+        matched_positions = self.find_matches()
+        protected_positions = self.create_powerup(swapped_positions)
+        matched_positions = self.activate_powerup(matched_positions, protected_positions)
+
+        for row, col in matched_positions:
+            if (row, col) not in protected_positions:
+                self.board[row][col].type = None
+
+        return len(matched_positions - protected_positions)
+
+    def create_powerup(self, swapped_positions=None):
         protected_positions = set()
         powerups_to_create = set()
         processed_horizontal = set()
@@ -335,7 +350,7 @@ class Board:
                         powerups_to_create.add(
                             (*powerup_position, "Horizontal Striped")
                         )
-
+                
                 if vertical_length >= 5:
                     match_key = (col, top_index, bottom_index)
 
@@ -374,18 +389,8 @@ class Board:
                             (*powerup_position, "Vertical Striped")
                         )
 
-                if left_index is not None:
-                    for c in range(left_index, right_index + 1):
-                        matched_positions.add((row, c))
-                
-                if top_index is not None:
-                    for r in range(top_index, bottom_index + 1):
-                        matched_positions.add((r, col))
-
-        # Prioritize wrapped candies at overlapping positions
+        # Handle overlapping matches
         for row, col in overlapping_positions:
-
-            # Remove conflicting striped power-ups
             powerups_to_create = {
                 (r, c, powerup_type)
                 for r, c, powerup_type in powerups_to_create
@@ -395,23 +400,19 @@ class Board:
             protected_positions.add((row, col))
             powerups_to_create.add((row, col, "Wrapped"))
 
+        # Apply powerups to candies
         for row, col, powerup_type in powerups_to_create:
-            if powerup_type == "Horizontal Striped":
-                self.board[row][col].create_horizontal_striped_powerup()
+            self.board[row][col].powerup = powerup_type
 
-            elif powerup_type == "Vertical Striped":
-                self.board[row][col].create_vertical_striped_powerup()
-
-            elif powerup_type == "Wrapped":
-                self.board[row][col].create_wrapped_powerup()
-
-            elif powerup_type == "Colorbomb":
-                self.board[row][col].create_colorbomb_powerup()
+            if powerup_type == "Colorbomb":
                 self.board[row][col].type = 0
 
-        # Activate striped candies and handle chain reactions
-        positions_to_check = list(matched_positions)
+        return protected_positions
+
+
+    def activate_powerup(self, matched_positions, protected_positions):
         activated_powerups = set()
+        positions_to_check = list(matched_positions)
 
         while positions_to_check:
             row, col = positions_to_check.pop()
@@ -447,18 +448,49 @@ class Board:
                 for r in range(row - 1, row + 2):
                     for c in range(col - 1, col + 2):
 
-                        #Make sure the position is inside the board
+                        # Make sure the position is inside the board
                         if 0 <= r < self.rows and 0 <= c < self.cols:
 
                             if (r, c) not in matched_positions:
                                 matched_positions.add((r, c))
                                 positions_to_check.append((r, c))
 
-        for row, col in matched_positions:
-            if (row, col) not in protected_positions:
-                self.board[row][col].type = None
+        return matched_positions
 
-        return len(matched_positions - protected_positions)
+
+
+    #============================
+    # Board updates
+    #============================
+
+    # (In progress) Update the board when candy is matched and new candy replacec it by falling from a higher up column 
+    def update_board(self):
+        for col in range(self.cols):
+
+            remaining_candies = []
+
+            # Collect all non-destroyed candies in this column
+            for row in range(self.rows):
+                if self.board[row][col].type is not None:
+                    remaining_candies.append(self.board[row][col])
+
+            # Number of new candies needed
+            missing = self.rows - len(remaining_candies)
+
+            # Create new candies for the top
+            new_candies = []
+
+            for i in range(missing):
+                new_candies.append(Candy(random.randint(1, 4)))
+
+            # New column = new candies on top + existing candies below
+            new_column = new_candies + remaining_candies
+
+            # Put the column back into the board
+            for row in range(self.rows):
+                self.board[row][col] = new_column[row]
+
+
 
     def resolve_board(self, swapped_positions=None):
         total_cleared = 0
