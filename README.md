@@ -1,10 +1,8 @@
 # Candy Crush AI
 
-An AI-focused Candy Crush-style game environment built in Python, designed to explore intelligent decision-making, game-state evaluation, and eventually machine learning and reinforcement learning.
+This project focuses on developing a match-three game environment and an AI agent that selects moves under configurable move limits, with the long-term goal of completing levels with specific objectives.
 
 ## Project Overview
-
-This project focuses on developing a match-three game environment and an AI agent capable of selecting moves to complete levels with specific objectives and move constraints.
 
 Rather than simply recreating Candy Crush, the goal is to explore different AI approaches, beginning with heuristic-based decision-making and progressing toward machine learning and reinforcement learning.
 
@@ -20,22 +18,24 @@ Rather than simply recreating Candy Crush, the goal is to explore different AI a
 - Heuristic AI agent that evaluates moves based on immediate matches
 - Automated move selection using heuristic scores
 - Scoring system awarding points for candies cleared, including cascades
-- Score and turn tracking
-- Configurable target score with win detection
-- Basic 10-move level limit and win/loss reporting
-- Initial power-up implementations (currently being refined)
+- Score and turn tracking with win/loss conditions
 - Configurable move limits and target scores
-- Score-based win/lose conditions
+- Refactored game logic with modular functions for match detection, power-up creation, and activation
+- Automated unit tests using pytest for board generation, match detection, and multiple-match scenarios
+- Initial special candy implementations:
+  - Horizontal and vertical striped candies
+  - Wrapped candies
+  - Color bombs
 
 ## Planned Features
 
--  Additional level objectives, including clearing specific candy types
-- Fully functional special candies and power-ups
-  - Striped candies
-  - Wrapped candies
-  - Color bombs
+- Additional level objectives, including clearing specific candy types
+- Complete and test special candy mechanics:
+  - Striped candy activation and chain reactions
+  - Wrapped candy explosions and interactions
+  - Color bomb combinations and interactions
   - Fish candies
-- Objective-based levels, including clearing specific candy types
+- Comprehensive automated tests for special candy mechanics
 - Improved heuristic evaluation considering objectives, power-ups, and future moves
 - Game-state representation for machine learning
 - Gameplay data collection and performance evaluation
@@ -76,6 +76,25 @@ Evaluate performance against the heuristic-based agent.
 - Heuristic Search and Decision-Making
 - Artificial Intelligence
 - Machine Learning / Reinforcement Learning (planned)
+- pytest (Unit Testing)
+
+## Testing
+
+The project uses pytest for automated unit testing to validate core game mechanics.
+
+Current test coverage includes:
+- Board initialization and dimensions
+- Horizontal match detection
+- Vertical match detection
+- Detection of multiple matches on the same board
+
+Run tests from the project root: 
+
+```bash
+py -m pytest tests/ -v
+```
+
+Additional tests for power-up creation, activation, and game-state transitions are planned.
 
 ## Project Status
 
@@ -83,4 +102,4 @@ Evaluate performance against the heuristic-based agent.
 
 The core match-three environment, basic heuristic AI agent, scoring system, and score-based victory conditions are implemented.
 
-Current development focuses on completing special candy mechanics, expanding level objectives, and preparing the environment for machine learning and reinforcement learning experiments.
+Current development focuses on refining special candy mechanics, refactoring game logic for maintainability, expanding automated test coverage, and preparing for objective-based gameplay and future machine learning experiments.
