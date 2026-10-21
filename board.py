@@ -13,6 +13,7 @@ class Board:
     def __init__(self, rows, cols):
         self.rows = rows
         self.cols = cols
+        self.cleared_candies = {}
 
     # Creates the initial board filled with random types of candy
     def create_board(self):
@@ -142,6 +143,9 @@ class Board:
         if not self.is_valid_swap(row1, col1, row2, col2):
             return False
 
+        # Reset candy counts for this move
+        self.cleared_candies = {}
+
         # Check for color bomb activation after the swap
         first_candy = self.board[row1][col1]
         second_candy = self.board[row2][col2]
@@ -169,6 +173,14 @@ class Board:
 
             # Clear all candies of the selected color and the bomb itself
             for row, col in cleared_positions:
+                candy = self.board[row][col]
+                candy_type = candy.type
+
+                if candy_type is not None and candy_type != 0:
+                    self.cleared_candies[candy_type] = self.cleared_candies.get(candy_type, 0) + 1
+
+
+
                 self.board[row][col].type = None
                 self.board[row][col].powerup = None
 
@@ -288,9 +300,20 @@ class Board:
         protected_positions = self.create_powerup(swapped_positions)
         matched_positions = self.activate_powerup(matched_positions, protected_positions)
 
+        cleared_candies = {}
+
         for row, col in matched_positions:
+
             if (row, col) not in protected_positions:
+                candy_type = self.board[row][col].type
+
+                if candy_type is not None and candy_type != 0:
+                    cleared_candies[candy_type] = cleared_candies.get(candy_type, 0) + 1
+
                 self.board[row][col].type = None
+
+        for candy_type, count in cleared_candies.items():
+            self.cleared_candies[candy_type] = self.cleared_candies.get(candy_type, 0) + count
 
         return len(matched_positions - protected_positions)
 

@@ -227,6 +227,7 @@ def test_colorbomb_activation():
         for row in board.board
         for candy in row
     )
+    assert board.cleared_candies.get(2, 0) >= 7
 
 def test_invalid_swap():
     board = Board(5, 5)
