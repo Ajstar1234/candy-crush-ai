@@ -27,7 +27,7 @@ def main():
             print("No valid moves available")
             break
 
-        move = agent.choose_move(board)
+        move = agent.choose_move(board, game)
 
         print("Agent chose:")
         print(move)

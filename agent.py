@@ -3,7 +3,7 @@ import random
 
 class Agent:
 
-    def choose_move(self, board):
+    def choose_move(self, board, game=None):
         valid_moves = board.get_valid_moves()
 
         if len(valid_moves) == 0:
@@ -13,7 +13,7 @@ class Agent:
         best_score = -1
 
         for move in valid_moves:
-            score = self.evaluate_move(board, move)
+            score = self.evaluate_move(board, move, game)
 
             if score > best_score:
                 best_score = score
@@ -21,8 +21,10 @@ class Agent:
 
         return best_move
 
-    def evaluate_move(self, board, move):
+    def evaluate_move(self, board, move, game=None):
         (row1, col1), (row2, col2) = move
+
+        target_matches = 0 
 
         # Temporarily swap the candies
         board.swap_candies(row1, col1, row2, col2)
@@ -47,6 +49,12 @@ class Agent:
                     if candy.type == target_color:
                         score += 1
 
+            # Apply objective bonus after counting all candies 
+            if game is not None and game.target_candy_type is not None:
+                if target_color == game.target_candy_type:
+                    target_matches = score - 1
+                score += 2 * target_matches
+
             # Undo the temporary swap before returning
             board.swap_candies(row1, col1, row2, col2)
 
@@ -69,7 +77,12 @@ class Agent:
                 for r in range(top, bottom + 1):
                     matched_positions.add((r, col))
 
+        if game is not None and game.target_candy_type is not None:
+            for row, col in matched_positions:
+                if board.board[row][col].type == game.target_candy_type:
+                    target_matches += 1    
+
         # Undo the temporary swap
         board.swap_candies(row1, col1, row2, col2)
 
-        return len(matched_positions)
+        return len(matched_positions) + 2 * target_matches
