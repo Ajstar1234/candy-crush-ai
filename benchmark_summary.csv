@@ -1,0 +1,7 @@
+difficulty,agent,average_score,win_rate,average_turns,average_candies,average_winning_turns
+Easy,Objective-Aware,419.5,92.0,4.99,11.52,4.728260869565218
+Easy,Greedy,449.7,84.0,5.24,11.47,4.714285714285714
+Medium,Objective-Aware,419.3,63.0,5.0,11.42,4.412698412698413
+Medium,Greedy,446.3,56.99999999999999,5.16,11.43,4.526315789473684
+Hard,Greedy,418.6,22.0,4.84,10.66,4.2727272727272725
+Hard,Objective-Aware,403.4,21.0,4.81,10.87,4.095238095238095

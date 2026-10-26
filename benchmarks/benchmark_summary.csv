@@ -1,0 +1,3 @@
+agent,average_score,win_rate,average_turns,average_candies
+Objective-Aware,419.5,92.0,4.99,11.52
+Greedy,449.7,84.0,5.24,11.47
