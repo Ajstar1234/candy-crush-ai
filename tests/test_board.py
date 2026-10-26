@@ -1,5 +1,6 @@
 from board import Board
 from candy import Candy
+from unittest.mock import patch
 
 def test_create_board():
     board = Board(5, 5)
@@ -280,3 +281,67 @@ def test_invalid_adjacent_swap():
     ]
 
     assert current_board == original_board
+
+def test_reshuffle_board():
+    board = Board(5, 5)
+
+    board.board = [
+        [Candy(1), Candy(2), Candy(3), Candy(4), Candy(1)],
+        [Candy(2), Candy(3), Candy(4), Candy(1), Candy(2)],
+        [Candy(3), Candy(4), Candy(1), Candy(2), Candy(3)],
+        [Candy(4), Candy(1), Candy(2), Candy(3), Candy(4)],
+        [Candy(1), Candy(2), Candy(3), Candy(4), Candy(1)]
+    ]
+
+    original_candies = sorted(
+        candy.type for row in board.board for candy in row
+    )
+
+    result = board.reshuffle_board()
+
+    reshuffled_candies = sorted(
+        candy.type for row in board.board for candy in row
+    )
+
+    assert result is True
+    assert len(board.board) == 5
+    assert all(len(row) == 5 for row in board.board)
+    assert original_candies == reshuffled_candies
+    assert len(board.find_matches()) == 0
+    assert len(board.get_valid_moves()) > 0
+
+def test_colorbomb_objective_tracking():
+    board = Board(5, 5)
+
+    board.board = [
+        [Candy(1), Candy(2), Candy(3), Candy(4), Candy(1)],
+        [Candy(2), Candy(3), Candy(4), Candy(1), Candy(2)],
+        [Candy(3), Candy(1), Candy(0, "Colorbomb"), Candy(2), Candy(4)],
+        [Candy(4), Candy(2), Candy(3), Candy(4), Candy(1)],
+        [Candy(1), Candy(4), Candy(2), Candy(3), Candy(2)]
+    ]
+
+    # Swap the color bomb with a red candy
+    move = ((2, 2), (2, 1))
+
+    total_cleared = board.make_move(move)
+
+    assert total_cleared >= 6
+    assert board.cleared_candies.get(1, 0) >= 6
+
+def test_cascade_objective_tracking():
+    board = Board(5, 5)
+
+    board.board = [
+        [Candy(1), Candy(1), Candy(1), Candy(4), Candy(1)],
+        [Candy(2), Candy(3), Candy(4), Candy(1), Candy(2)],
+        [Candy(3), Candy(4), Candy(1), Candy(2), Candy(3)],
+        [Candy(4), Candy(1), Candy(2), Candy(3), Candy(4)],
+        [Candy(1), Candy(2), Candy(3), Candy(4), Candy(1)]
+    ]
+
+    with patch("board.random.randint", side_effect=[1, 1, 1, 2, 3, 4]):
+        board.resolve_board()
+
+    assert board.cleared_candies.get(1, 0) >= 6
+    assert len(board.find_matches()) == 0

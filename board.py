@@ -531,3 +531,31 @@ class Board:
             swapped_positions = None
 
         return total_cleared
+
+    def reshuffle_board(self):
+        candies = []
+
+        for row in self.board:
+            for candy in row:
+                candies.append(candy)
+
+        for attempt in range(100):
+            random.shuffle(candies)
+
+            self.board = []
+
+            for row in range(self.rows):
+                start = row * self.cols
+                end = start + self.cols
+
+                new_row = candies[start:end]
+                self.board.append(new_row)
+
+            if len(self.find_matches()) == 0 and len(self.get_valid_moves()) > 0:
+                return True
+            
+        # If reshuffling fails, gerneate a fresh board
+        self.create_board()
+        self.resolve_board()
+
+        return len(self.get_valid_moves()) > 0

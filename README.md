@@ -15,7 +15,6 @@ Rather than simply recreating Candy Crush, the goal is to explore different AI a
 - Automatic match removal, gravity, and board refilling
 - Cascading matches after moves
 - Automated generation of available legal moves
-- Heuristic AI agent that evaluates moves based on immediate matches
 - Automated move selection using heuristic scores
 - Scoring system awarding points for candies cleared, including cascades
 - Score and turn tracking with win/loss conditions
@@ -26,22 +25,24 @@ Rather than simply recreating Candy Crush, the goal is to explore different AI a
   - Horizontal and vertical striped candies
   - Wrapped candies
   - Color bombs
+- Objective-based levels requiring collection of specific candy types
+- Tracking of collected candies across matches, cascades, and power-ups
+- Board reshuffling when no valid moves are available
+- Automated tests for objective completion, power-ups, and cascades
+- Heuristic AI agent that evaluates valid moves based on immediate matches and level objectives
+- Automated move selection using heuristic scores
 
 ## Planned Features
 
-- Additional level objectives, including clearing specific candy types
-- Complete and test special candy mechanics:
-  - Striped candy activation and chain reactions
-  - Wrapped candy explosions and interactions
-  - Color bomb combinations and interactions
-  - Fish candies
-- Comprehensive automated tests for special candy mechanics
-- Improved heuristic evaluation considering objectives, power-ups, and future moves
+- Additional level objectives and more complex win conditions
+- Advanced special candy combinations and interactions
+- Improved heuristic evaluation considering future moves
+- Automated gameplay benchmarking and performance analysis
 - Game-state representation for machine learning
-- Gameplay data collection and performance evaluation
-- Neural network-based move evaluation
-- Reinforcement learning agent trained through simulated gameplay
-- Comparison of heuristic and learned agent performance across multiple levels
+- Neural network-based move evaluation using PyTorch
+- Reinforcement learning through simulated gameplay
+- Comparison of heuristic and learned agent performance
+- Optional graphical user interface
 
 ## AI Development Roadmap
 
@@ -49,15 +50,21 @@ Rather than simply recreating Candy Crush, the goal is to explore different AI a
 
 Develop the core mechanics required for automated gameplay, including board generation, match detection, swapping, gravity, refilling, and cascading matches.
 
-### Phase 2: Heuristic AI Agent — In Progress
+### Phase 2: Heuristic AI Agent — Implemented
 
-Develop an agent capable of identifying valid moves, evaluating potential matches, and selecting moves based on heuristic scores.
+Developed an AI agent capable of identifying valid moves,
+evaluating matches, and selecting moves based on heuristic scores.
 
-Current progress includes immediate match evaluation, automated move selection, and integration with the game's scoring and win conditions.
+The agent supports objective-aware evaluation, prioritizing
+candies needed to complete collection objectives.
 
-### Phase 3: Objective-Based Gameplay — Planned
+### Phase 3: Objective-Based Gameplay — Implemented
 
-Implement multiple level objectives and move constraints. Improve the agent's decision-making to prioritize completing objectives rather than only maximizing immediate matches.
+Implemented candy collection objectives, configurable move limits,
+objective tracking, and win/loss conditions.
+
+Added support for board reshuffling and automated tests
+covering objective tracking, power-ups, and cascades.
 
 ### Phase 4: Machine Learning — Planned
 
@@ -75,31 +82,43 @@ Evaluate performance against the heuristic-based agent.
 - Object-Oriented Programming
 - Heuristic Search and Decision-Making
 - Artificial Intelligence
-- Machine Learning / Reinforcement Learning (planned)
-- pytest (Unit Testing)
+- pytest (Automated Unit Testing)
+
+### Planned Technologies
+- NumPy
+- pandas
+- PyTorch
+- Reinforcement Learning
 
 ## Testing
 
-The project uses pytest for automated unit testing to validate core game mechanics.
+The project uses pytest to validate game mechanics and AI behavior.
 
-Current test coverage includes:
-- Board initialization and dimensions
-- Horizontal match detection
-- Vertical match detection
-- Detection of multiple matches on the same board
+Current tests cover:
+- Board initialization and match detection
+- Valid and invalid swaps
+- Special candy creation and activation
+- Power-up chain reactions
+- Color bomb activation
+- Board reshuffling
+- Candy collection through cascades
+- Objective-based win/loss conditions
+- Agent move evaluation and objective prioritization
 
-Run tests from the project root: 
+Run tests from the project root:
 
 ```bash
 py -m pytest tests/ -v
 ```
 
-Additional tests for power-up creation, activation, and game-state transitions are planned.
-
 ## Project Status
 
 **Actively in Development**
 
-The core match-three environment, basic heuristic AI agent, scoring system, and score-based victory conditions are implemented.
+The core match-three environment is implemented, including candy swapping, match detection, cascades, special candies, scoring, and objective-based win/loss conditions.
 
-Current development focuses on refining special candy mechanics, refactoring game logic for maintainability, expanding automated test coverage, and preparing for objective-based gameplay and future machine learning experiments.
+The heuristic AI agent evaluates available moves and prioritizes candies required for collection objectives. Automated tests cover core game mechanics, special candy activation, objective tracking, and board reshuffling.
+
+Current development focuses on improving gameplay reliability and building an automated benchmarking system to evaluate agent performance across multiple games.
+
+Future development will introduce gameplay data collection, supervised machine learning with PyTorch, and reinforcement learning.

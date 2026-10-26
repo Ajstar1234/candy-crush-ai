@@ -9,7 +9,6 @@ class Game:
         self.target_candy_type = target_candy_type
         self.target_candy_count = target_candy_count
         self.collect_candies = 0
-
     
     # Updates the score of the game
     def update_score(self, points):

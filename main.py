@@ -24,8 +24,14 @@ def main():
         valid_moves = board.get_valid_moves()
 
         if len(valid_moves) == 0:
-            print("No valid moves available")
-            break
+            print("No valid moves available. Reshuffling board...")
+
+            if not board.reshuffle_board():
+                print("Unable to generate a playable board.")
+                break
+
+            print("Board after reshuffling:")
+            board.display_board()
 
         move = agent.choose_move(board, game)
 
@@ -46,11 +52,12 @@ def main():
 
             game.update_turn()
 
-            print(f"Turn {turn}")
             print(f"Candies cleared: {total_cleared}")
             print(f"Points earned: {points_earned}")
-            print(f"Total score: {game.score}")        
-            print(f"{candy.create_candy()} candies collected {game.collect_candies}/{game.target_candy_count}") 
+            print(f"Total score: {game.score}")  
+                 
+            if game.target_candy_type is not None: 
+                print(f"{candy.create_candy()} candies collected {game.collect_candies}/{game.target_candy_count}") 
 
         else:
             print("Invalid move")
