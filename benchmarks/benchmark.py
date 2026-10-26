@@ -50,7 +50,7 @@ combined_df = pd.concat(
 print(combined_df.head())
 print(f"Total simulation records: {len(combined_df)}")
 
-combined_df.to_csv("benchmark_results.csv", index=False)
+combined_df.to_csv("benchmarks/benchmark_results.csv", index=False)
 
 summary = combined_df.groupby(["difficulty", "agent"]).agg({
     "score": "mean",
@@ -78,55 +78,53 @@ average_winning_turns = winning_games.groupby(
 
 summary["average_winning_turns"] = average_winning_turns
 
-summary.reset_index().to_csv("benchmark_summary.csv", index=False)
+summary.reset_index().to_csv("benchmarks/benchmark_summary.csv", index=False)
 
 win_rate_data = summary["win_rate"]
 
 win_rate_table = win_rate_data.unstack("agent")
 
-print(win_rate_table)
+win_rate_table = win_rate_table.reindex(
+    ["Easy", "Medium", "Hard"]
+)
 
-"""""
-plt.bar(summary.index, summary["win_rate"])
+ax = win_rate_table.plot(kind="bar")
 
-plt.title("Agent Comparison")
-plt.xlabel("Agent")
+plt.title("AI Agent Win Rates by Difficulty")
+plt.xlabel("Difficulty")
 plt.ylabel("Win Rate (%)")
-plt.ylim(0,100)
+plt.ylim(0,105)
+plt.xticks(rotation=0)
 
-for i, win_rate in enumerate(summary["win_rate"]):
-    plt.text(
-        i,
-        win_rate + 1,
-        f"{win_rate:.1f}%",
-        ha="center"
-    )
+for container in ax.containers:
+    ax.bar_label(container, fmt="%.1f%%", padding=3)
 
-plt.savefig("agent_win_rates.png", dpi=300, bbox_inches="tight")
+plt.savefig("benchmarks/agent_win_rates.png", dpi=300, bbox_inches="tight")
 
 plt.show()
 
-plt.figure()
+average_turns_data = summary["average_turns"]
 
-plt.bar(summary.index, summary["average_turns"])
+average_turns_table = average_turns_data.unstack("agent")
 
-plt.title("Agent Average Turns")
-plt.xlabel("Agent")
+average_turns_table = average_turns_table.reindex(
+    ["Easy", "Medium", "Hard"]
+)
+
+ax = average_turns_table.plot(kind="bar")
+
+plt.title("AI Agent Average Turns by Difficulty")
+plt.xlabel("Difficulty")
 plt.ylabel("Average Turns")
-plt.ylim(0, 8)
+plt.ylim(0, 9)
+plt.xticks(rotation=0)
 
-for i, average_turns in enumerate(summary["average_turns"]):
-    plt.text(
-        i,
-        average_turns + 0.15,
-        f"{average_turns:.2f}",
-        ha="center"
-    )
+for container in ax.containers:
+    ax.bar_label(container, fmt="%.2f%%", padding=3)
 
-plt.savefig("agent_average_turns.png", dpi=300, bbox_inches="tight")
+plt.savefig("benchmarks/agent_average_turns.png", dpi=300, bbox_inches="tight")
 
 plt.show()
-"""
 
 comparison = combined_df.pivot(
     index=["difficulty", "game_id"],

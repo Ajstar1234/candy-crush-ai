@@ -30,14 +30,20 @@ Rather than simply recreating Candy Crush, the goal is to explore different AI a
 - Board reshuffling when no valid moves are available
 - Automated tests for objective completion, power-ups, and cascades
 - Heuristic AI agent that evaluates valid moves based on immediate matches and level objectives
-- Automated move selection using heuristic scores
+- Automated gameplay simulations for evaluating AI agent performance
+- Reproducible benchmarks using fixed random seeds
+- Greedy and objective-aware agent comparisons
+- Configurable Easy, Medium, and Hard difficulty levels
+- Performance analysis using pandas, including win rates, average scores, turns used, and candies collected
+- Paired-game comparisons to identify which agent performs better on matching random seeds
+- Data visualization using Matplotlib with grouped bar charts
+- Export of simulation results, benchmark summaries, and visualizations to CSV and PNG files
 
 ## Planned Features
 
 - Additional level objectives and more complex win conditions
 - Advanced special candy combinations and interactions
 - Improved heuristic evaluation considering future moves
-- Automated gameplay benchmarking and performance analysis
 - Game-state representation for machine learning
 - Neural network-based move evaluation using PyTorch
 - Reinforcement learning through simulated gameplay
@@ -66,6 +72,55 @@ objective tracking, and win/loss conditions.
 Added support for board reshuffling and automated tests
 covering objective tracking, power-ups, and cascades.
 
+## AI Agent Benchmark Results
+
+The project includes an automated benchmarking system that evaluates two heuristic agents:
+
+- **Greedy Agent:** Selects moves based primarily on immediate matching opportunities.
+- **Objective-Aware Agent:** Prioritizes moves that help complete candy collection objectives.
+
+Both agents are evaluated across three difficulty levels using matching random seeds.
+
+### Benchmark Configuration
+
+| Difficulty | Move Limit | Target Candies | Games per Agent |
+|---|---:|---:|---:|
+| Easy | 8 | 10 | 100 |
+| Medium | 6 | 12 | 100 |
+| Hard | 5 | 15 | 100 |
+
+A total of 600 games were simulated.
+
+### Results
+
+| Difficulty | Greedy Win Rate | Objective-Aware Win Rate |
+|---|---:|---:|
+| Easy | 84% | 92% |
+| Medium | 57% | 63% |
+| Hard | 22% | 21% |
+
+Across all difficulties, the objective-aware agent achieved 40 wins in games where the greedy agent lost, compared with 27 wins for the greedy agent where the objective-aware agent lost.
+
+This represents a net improvement of 13 wins across 300 paired game comparisons.
+
+The objective-aware agent performed better on Easy and Medium levels, while both agents performed similarly on Hard levels.
+
+These results establish an initial performance baseline for evaluating future machine learning agents.
+
+### Benchmarking Tools
+
+- **pandas:** Processes gameplay records and calculates performance metrics.
+- **Matplotlib:** Generates grouped comparison charts.
+- **CSV Export:** Saves individual simulation results and aggregated benchmark statistics.
+
+Run the benchmark from the project root:
+
+```bash
+py -m benchmarks.benchmark
+```
+
+The script generates benchmark CSV files and charts comparing agent performance across difficulty levels.
+
 ### Phase 4: Machine Learning — Planned
 
 Collect gameplay data and experiment with supervised learning models that predict move quality from board states and available actions.
@@ -83,10 +138,12 @@ Evaluate performance against the heuristic-based agent.
 - Heuristic Search and Decision-Making
 - Artificial Intelligence
 - pytest (Automated Unit Testing)
+- pandas (Gameplay Data Analysis)
+- Matplotlib (Benchmark Visualization)
 
 ### Planned Technologies
+
 - NumPy
-- pandas
 - PyTorch
 - Reinforcement Learning
 
@@ -115,10 +172,18 @@ py -m pytest tests/ -v
 
 **Actively in Development**
 
-The core match-three environment is implemented, including candy swapping, match detection, cascades, special candies, scoring, and objective-based win/loss conditions.
+The core match-three game environment is implemented, including candy swapping, match detection, cascades, special candies, scoring, objective-based gameplay, and board reshuffling.
 
-The heuristic AI agent evaluates available moves and prioritizes candies required for collection objectives. Automated tests cover core game mechanics, special candy activation, objective tracking, and board reshuffling.
+Two heuristic AI strategies have been implemented: a greedy agent and an objective-aware agent that prioritizes collection objectives.
 
-Current development focuses on improving gameplay reliability and building an automated benchmarking system to evaluate agent performance across multiple games.
+An automated benchmarking system evaluates both agents across three difficulty levels using reproducible gameplay simulations. Benchmark data is analyzed using pandas, with performance metrics exported to CSV files and visualized using Matplotlib.
 
-Future development will introduce gameplay data collection, supervised machine learning with PyTorch, and reinforcement learning.
+Current development is transitioning toward machine learning, beginning with numerical game-state representations using NumPy and gameplay data collection for supervised learning.
+
+Future development will introduce neural network-based move evaluation using PyTorch, followed by experiments with reinforcement learning.
+
+### Benchmark Visualizations
+
+![AI Agent Win Rates](benchmarks/agent_win_rates.png)
+
+![AI Agent Average Turns](benchmarks/agent_average_turns.png)
