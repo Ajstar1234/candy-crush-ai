@@ -1,5 +1,6 @@
 from candy import Candy
 
+import numpy as np
 import random
 
 # Class that makes, displays, and updates the board of the game
@@ -54,6 +55,16 @@ class Board:
                 print(f"{symbol:>3}", end=" ")
 
             print()
+
+    def to_numpy(self):
+        numeric_board = [
+            [candy.type for candy in row]
+            for row in self.board
+        ]
+
+        board_array = np.array(numeric_board)
+
+        return board_array
 
     #===============================
     # Move handling

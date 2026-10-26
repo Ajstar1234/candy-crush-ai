@@ -2,6 +2,8 @@ from board import Board
 from candy import Candy
 from unittest.mock import patch
 
+import numpy as np
+
 def test_create_board():
     board = Board(5, 5)
     board.create_board()
@@ -222,6 +224,16 @@ def test_colorbomb_activation():
     move = ((2,2), (2, 3))
     total_cleared = board.make_move(move)
 
+    print("\nBoard after color bomb activation:")
+    board.display_board()
+
+    for row in range(board.rows):
+        for col in range(board.cols):
+            candy = board.board[row][col]
+
+            if candy.powerup == "Colorbomb":
+                print(f"Color bomb found at ({row}, {col})")
+
     assert total_cleared >= 8
     assert all(
         candy.powerup != "Colorbomb"
@@ -345,3 +357,13 @@ def test_cascade_objective_tracking():
 
     assert board.cleared_candies.get(1, 0) >= 6
     assert len(board.find_matches()) == 0
+
+def test_to_numpy():
+    board = Board(5, 5)
+    board.create_board()
+
+    board_array = board.to_numpy()
+
+    assert board_array.shape == (5, 5)
+    assert board_array.size == 25
+    assert np.all((board_array >= 1) & (board_array <= 4))
