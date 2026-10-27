@@ -364,6 +364,36 @@ def test_to_numpy():
 
     board_array = board.to_numpy()
 
-    assert board_array.shape == (5, 5)
-    assert board_array.size == 25
-    assert np.all((board_array >= 1) & (board_array <= 4))
+    assert board_array.shape == (5, 5, 2)
+    assert board_array.size == 50
+    assert np.all((board_array[:, :, 0] >= 1) & (board_array[:, :, 0] <= 4))
+    assert np.all(board_array[:, :, 1] == 0) 
+
+def test_to_numpy_powerups():
+    board = Board(5, 5)
+    board.create_board()
+
+    board.board[0][0].powerup = "Horizontal Striped"
+
+    board.board[2][2].type = 0
+    board.board[2][2].powerup = "Colorbomb"
+
+    board_array = board.to_numpy()
+
+    assert board_array[0, 0, 1] == 1
+    assert np.array_equal(board_array[2, 2], [0, 4])
+
+def test_to_numpy_empty_candy():
+    board = Board(5, 5)
+    board.create_board()
+
+    board.board[1][3].type = None
+
+    board_array = board.to_numpy()
+
+    assert board_array[1, 3, 0] == -1
+
+    assert board_array.dtype == np.int64
+
+    assert np.array_equal(board_array[1, 3], [-1, 0])
+    

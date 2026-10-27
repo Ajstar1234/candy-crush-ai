@@ -57,14 +57,34 @@ class Board:
             print()
 
     def to_numpy(self):
+        powerup_mapping = {
+            None: 0,
+            "Horizontal Striped": 1,
+            "Vertical Striped": 2,
+            "Wrapped": 3,
+            "Colorbomb": 4
+        }
+
         numeric_board = [
-            [candy.type for candy in row]
+            [candy.type if candy.type is not None else -1 for candy in row]
             for row in self.board
         ]
 
-        board_array = np.array(numeric_board)
+        board_array = np.array(numeric_board, dtype=np.int64)
 
-        return board_array
+        powerup_board = [
+            [powerup_mapping[candy.powerup] for candy in row]
+            for row in self.board
+        ]
+
+        powerup_array = np.array(powerup_board, dtype=np.int64)
+
+        combined_array = np.stack(
+            [board_array, powerup_array],
+            axis=-1
+        )
+
+        return combined_array
 
     #===============================
     # Move handling
