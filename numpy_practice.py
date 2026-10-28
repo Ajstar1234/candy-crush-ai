@@ -127,3 +127,17 @@ features = encode_state_move(board, move)
 
 print(features.shape)
 print(features[-4:])
+
+from game import Game
+from ml_features import encode_state_move
+
+board = Board(5, 5)
+board.create_board()
+
+game = Game(target_candy_type=3, target_candy_count=10)
+move = ((1, 2), (1, 3))
+
+features = encode_state_move(board, move, game)
+
+print(features.shape)
+print(features[-5:])

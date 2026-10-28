@@ -15,6 +15,7 @@ def test_encode_state_move():
 
     flattened_board = combined_array.flatten()
 
-    assert features.shape == (54,)
-    assert np.array_equal(features[-4:], [1, 2, 1, 3])
+    assert features.shape == (55,)
+    assert np.array_equal(features[-5:-1], [1, 2, 1, 3])
+    assert features[-1] == 0
     assert np.array_equal(features[:50], flattened_board)
