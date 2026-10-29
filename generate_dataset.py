@@ -8,14 +8,17 @@ from ml_features import encode_state_move
 
 
 def generate_training_data(num_games=100, seed=None):
-    if seed is not None:
-        random.seed(seed)
 
     X = []
     y = []
 
     for game_index in range(num_games):
+        if seed is not None:
+            game_seed = seed + game_index
+            random.seed(game_seed)
+
         target_type = random.randint(1, 4)
+        
         board = Board(5, 5)
         board.create_board()
         board.resolve_board()

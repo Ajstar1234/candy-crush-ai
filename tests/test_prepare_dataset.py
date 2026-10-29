@@ -14,3 +14,12 @@ def test_prepare_datasets():
         assert X.shape[1] == 55
         assert X.shape[0] == y.shape[0]
         assert X.shape[0] > 0
+
+def test_dataset_seed_ranges():
+    train_seeds = set(range(0, 100))
+    val_seeds = set(range(100, 120))
+    test_seeds = set(range(120, 140))
+
+    assert train_seeds.isdisjoint(val_seeds)
+    assert train_seeds.isdisjoint(test_seeds)
+    assert val_seeds.isdisjoint(test_seeds)

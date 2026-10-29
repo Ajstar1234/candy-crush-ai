@@ -2,11 +2,11 @@ from generate_dataset import generate_training_data
 
 
 def prepare_datasets():
-    X_train, y_train = generate_training_data(num_games=100, seed=42)
+    X_train, y_train = generate_training_data(num_games=100, seed=0)
 
-    X_val, y_val = generate_training_data(num_games=20, seed=123)
+    X_val, y_val = generate_training_data(num_games=20, seed=100)
 
-    X_test, y_test = generate_training_data(num_games=20, seed=999)
+    X_test, y_test = generate_training_data(num_games=20, seed=120)
 
     return X_train, y_train, X_val, y_val, X_test, y_test
 
