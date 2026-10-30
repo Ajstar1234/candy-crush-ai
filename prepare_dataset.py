@@ -2,7 +2,7 @@ from generate_dataset import generate_training_data
 
 
 def prepare_datasets():
-    X_train, y_train = generate_training_data(num_games=100, seed=0)
+    X_train, y_train = generate_training_data(num_games=500, seed=0)
 
     X_val, y_val = generate_training_data(num_games=20, seed=100)
 

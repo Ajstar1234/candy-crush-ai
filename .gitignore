@@ -5,3 +5,6 @@ venv/
 .env
 .idea/
 .vscode/
+*.pth
+__pycache__/
+.pytest_cache/

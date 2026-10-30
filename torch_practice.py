@@ -51,3 +51,16 @@ mse_loss = torch.nn.MSELoss()
 loss = mse_loss(predictions, targets)
 
 print(loss)
+
+import torch.nn.functional as F
+
+candy_types = torch.tensor([1, 3, 2, 4])
+candy_types_one_hot = F.one_hot(candy_types - 1, num_classes=4).float()
+
+print(candy_types_one_hot)
+print(candy_types_one_hot.shape)
+
+candy_types = torch.tensor([-1, 0, 1, 2, 3, 4])
+candy_types_one_hot = F.one_hot(candy_types + 1, num_classes=6).float()
+print(candy_types_one_hot)
+print(candy_types_one_hot.shape)

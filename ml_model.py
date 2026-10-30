@@ -5,7 +5,7 @@ class MoveEvaluationModel(nn.Module):
     def __init__(self):
         super().__init__()
 
-        self.fc1 = nn.Linear(55, 64)
+        self.fc1 = nn.Linear(180, 64)
         self.fc2 = nn.Linear(64, 32)
         self.fc3 = nn.Linear(32, 1)
 

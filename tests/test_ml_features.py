@@ -11,11 +11,10 @@ def test_encode_state_move():
 
     features = encode_state_move(board, move)
 
-    combined_array = board.to_numpy()
+    assert features.shape == (180,)
+    assert np.array_equal(features[175:179], [1, 2, 1, 3])
+    assert np.array_equal(features[179:], [0])
 
-    flattened_board = combined_array.flatten()
+    encoded_colors = features[:150].reshape(25, 6)
 
-    assert features.shape == (55,)
-    assert np.array_equal(features[-5:-1], [1, 2, 1, 3])
-    assert features[-1] == 0
-    assert np.array_equal(features[:50], flattened_board)
+    assert np.all(encoded_colors.sum(axis=1) == 1)
