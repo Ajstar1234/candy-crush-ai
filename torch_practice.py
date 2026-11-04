@@ -64,3 +64,17 @@ candy_types = torch.tensor([-1, 0, 1, 2, 3, 4])
 candy_types_one_hot = F.one_hot(candy_types + 1, num_classes=6).float()
 print(candy_types_one_hot)
 print(candy_types_one_hot.shape)
+
+predicted_scores = torch.tensor([4.2, 7.1, 5.8])
+highest_score = torch.argmax(predicted_scores)
+print(highest_score.item())
+
+valid_moves = [
+    ((0, 1), (0, 2)),
+    ((1, 2), (2, 2)),
+    ((3, 1), (3, 2))
+]
+predicted_scores = torch.tensor([4.2, 7.1, 5.8])
+best_index = torch.argmax(predicted_scores)
+best_move = valid_moves[best_index]
+print(best_move)

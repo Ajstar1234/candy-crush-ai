@@ -20,8 +20,6 @@ def encode_state_move(board, move, game=None):
     flattened_one_hot_colors = one_hot_colors.flatten()
     flattened_powerups = powerups.flatten()
 
-    print(one_hot_colors.shape)
-
     (row1, col1), (row2, col2) = move
 
     move_array = np.array([row1, col1, row2, col2])
@@ -32,7 +30,5 @@ def encode_state_move(board, move, game=None):
         move_array,
         target_array
     ])
-
-    print(feature_vector.shape)
 
     return feature_vector

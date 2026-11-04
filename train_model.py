@@ -40,6 +40,8 @@ def train_model():
 
     num_epochs = 10
 
+    best_val_loss = float("inf")
+
     for epoch in range(num_epochs):
         model.train()
         total_loss = 0
@@ -65,6 +67,11 @@ def train_model():
                 val_total_loss += loss.item() * X_batch.shape[0]
 
         val_average_loss = val_total_loss / len(val_dataset)
+
+        if val_average_loss < best_val_loss:
+            best_val_loss = val_average_loss
+            torch.save(model.state_dict(), "best_move_model.pth")
+            print(f"New best model saved! Validation MSE: {best_val_loss:.4f}")
 
         print(
             f"Epoch {epoch + 1}/{num_epochs} | "
