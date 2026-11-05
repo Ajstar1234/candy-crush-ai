@@ -30,10 +30,10 @@ class MLAgent:
         features_tensor = torch.tensor(features_array, dtype=torch.float32)
 
         with torch.no_grad():
-                predicted_scores = self.model(features_tensor).squeeze(-1)
+            predicted_scores = self.model(features_tensor).squeeze(-1)
 
-                highest_score_index = torch.argmax(predicted_scores)
+        highest_score_index = torch.argmax(predicted_scores)
 
-                best_move = valid_moves[highest_score_index.item()]
+        best_move = valid_moves[highest_score_index.item()]
 
-                return best_move
+        return best_move

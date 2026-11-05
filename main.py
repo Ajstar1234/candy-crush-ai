@@ -2,10 +2,11 @@ from board import Board
 from agent import Agent
 from game import Game
 from candy import Candy 
+from ml_agent import MLAgent
 
 def main():
     board = Board(5, 5)
-    agent = Agent()
+    agent = MLAgent()
     game = Game(max_turns=8, target_candy_type=1, target_candy_count=10)
 
     board.create_board()
