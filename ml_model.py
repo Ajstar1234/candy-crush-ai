@@ -2,10 +2,10 @@ import torch
 import torch.nn as nn
 
 class MoveEvaluationModel(nn.Module):
-    def __init__(self):
+    def __init__(self, input_size=180):
         super().__init__()
 
-        self.fc1 = nn.Linear(180, 64)
+        self.fc1 = nn.Linear(input_size, 64)
         self.fc2 = nn.Linear(64, 32)
         self.fc3 = nn.Linear(32, 1)
 

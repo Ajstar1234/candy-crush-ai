@@ -11,9 +11,10 @@ class Board:
     # Board initialization
     #==================================
 
-    def __init__(self, rows, cols):
+    def __init__(self, rows, cols, num_candy_types=4):
         self.rows = rows
         self.cols = cols
+        self.num_candy_types = num_candy_types
         self.cleared_candies = {}
 
     # Creates the initial board filled with random types of candy
@@ -24,7 +25,7 @@ class Board:
             row = []
             # Create and fill each row in a with candy
             for j in range(0, self.cols):
-                candy = Candy(random.randint(1, 4))
+                candy = Candy(random.randint(1, self.num_candy_types))
                 row.append(candy)
 
             self.board.append(row)
@@ -114,10 +115,10 @@ class Board:
         first_candy = self.board[row1][col1]
         second_candy = self.board[row2][col2]
 
-        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, 5):
+        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, self.num_candy_types + 1):
             return True
 
-        if second_candy.powerup == "Colorbomb" and first_candy.type in range(1, 5):
+        if second_candy.powerup == "Colorbomb" and first_candy.type in range(1, self.num_candy_types + 1):
             return True
 
         # Check whether either swapped candy is now part of a match
@@ -184,11 +185,11 @@ class Board:
         bomb_position = None
         target_color = None
 
-        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, 5):
+        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, self.num_candy_types + 1):
             bomb_position = (row1, col1)
             target_color = second_candy.type
 
-        elif second_candy.powerup == "Colorbomb" and first_candy.type in range(1, 5):
+        elif second_candy.powerup == "Colorbomb" and first_candy.type in range(1, self.num_candy_types + 1):
             bomb_position = (row2, col2)
             target_color = first_candy.type
 
@@ -535,7 +536,7 @@ class Board:
             new_candies = []
 
             for i in range(missing):
-                new_candies.append(Candy(random.randint(1, 4)))
+                new_candies.append(Candy(random.randint(1, self.num_candy_types)))
 
             # New column = new candies on top + existing candies below
             new_column = new_candies + remaining_candies

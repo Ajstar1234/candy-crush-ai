@@ -7,7 +7,7 @@ from agent import Agent
 from ml_features import encode_state_move
 
 
-def generate_training_data(num_games=100, seed=None):
+def generate_training_data(num_games=100, seed=None, rows=5, cols=5, num_candy_types=4):
 
     X = []
     y = []
@@ -17,9 +17,9 @@ def generate_training_data(num_games=100, seed=None):
             game_seed = seed + game_index
             random.seed(game_seed)
 
-        target_type = random.randint(1, 4)
+        target_type = random.randint(1, num_candy_types)
         
-        board = Board(5, 5)
+        board = Board(rows, cols, num_candy_types=num_candy_types)
         board.create_board()
         board.resolve_board()
 
@@ -59,7 +59,7 @@ def generate_training_data(num_games=100, seed=None):
 
 
 if __name__ == "__main__":
-    X, y = generate_training_data(num_games=10, seed=42)
+    X, y = generate_training_data(num_games=10, seed=42, rows=9, cols=9, num_candy_types=6)
 
     print("X shape:", X.shape)
     print("y shape:", y.shape)

@@ -1,4 +1,5 @@
 from board import Board
+import board
 from candy import Candy
 from unittest.mock import patch
 
@@ -396,4 +397,34 @@ def test_to_numpy_empty_candy():
     assert board_array.dtype == np.int64
 
     assert np.array_equal(board_array[1, 3], [-1, 0])
-    
+
+def test_configurable_board():
+    board = Board(9, 9, num_candy_types=6)
+    board.create_board()
+
+    assert all(len(row) == 9 for row in board.board)
+    assert len(board.board) == 9
+    assert all(
+        candy.type in range(1, 7)
+        for row in board.board
+        for candy in row
+    )
+
+def test_configurable_board_refill():
+    board = Board(9, 9, num_candy_types=6)
+    board.create_board()
+
+    for row in board.board:
+        for candy in row:
+            candy.type = None
+
+    board.update_board()
+
+    assert len(board.board) == 9
+    assert all(len(row) == 9 for row in board.board)
+
+    assert all(
+        candy.type in range(1, 7)
+        for row in board.board
+        for candy in row
+    )

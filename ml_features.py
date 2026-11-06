@@ -8,6 +8,7 @@ def encode_state_move(board, move, game=None):
 
     target_array = np.array([target_type])
 
+    num_categories = board.num_candy_types + 2
     board_array = board.to_numpy()
 
     colors = board_array[:, :, 0]
@@ -15,7 +16,7 @@ def encode_state_move(board, move, game=None):
 
     colors = colors + 1
 
-    one_hot_colors = np.eye(6)[colors]
+    one_hot_colors = np.eye(num_categories)[colors]
 
     flattened_one_hot_colors = one_hot_colors.flatten()
     flattened_powerups = powerups.flatten()

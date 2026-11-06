@@ -18,6 +18,10 @@ class Candy:
             return "Blue"
         elif self.type == 4:
             return "Purple"
+        elif self.type == 5:
+            return "Orange"
+        elif self.type == 6:
+            return "Yellow"
 
     def create_vertical_striped_powerup(self):
         self.powerup = "Vertical Striped"
