@@ -5,12 +5,17 @@ from prepare_dataset import prepare_datasets
 from torch.utils.data import TensorDataset, DataLoader
 
 def train_model():
-    model = MoveEvaluationModel()
+    X_train, y_train, X_val, y_val, X_test, y_test = prepare_datasets(
+        rows=9,
+        cols=9,
+        num_candy_types=6
+    )
+
+    input_size = X_train.shape[1]
+    model = MoveEvaluationModel(input_size)
 
     loss_fn = torch.nn.MSELoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-
-    X_train, y_train, X_val, y_val, X_test, y_test = prepare_datasets()
 
     X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
     y_train_tensor = torch.tensor(y_train, dtype=torch.float32)
@@ -70,7 +75,7 @@ def train_model():
 
         if val_average_loss < best_val_loss:
             best_val_loss = val_average_loss
-            torch.save(model.state_dict(), "best_move_model.pth")
+            torch.save(model.state_dict(), "models/best_move_model_9x9.pth")
             print(f"New best model saved! Validation MSE: {best_val_loss:.4f}")
 
         print(

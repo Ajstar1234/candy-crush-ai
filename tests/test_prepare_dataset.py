@@ -11,7 +11,7 @@ def test_prepare_datasets():
 ]
 
     for X, y in datasets:
-        assert X.shape[1] == 55
+        assert X.shape[1] == 180
         assert X.shape[0] == y.shape[0]
         assert X.shape[0] > 0
 

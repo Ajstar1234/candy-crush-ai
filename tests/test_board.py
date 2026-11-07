@@ -222,6 +222,7 @@ def test_colorbomb_activation():
         [Candy(1), Candy(4), Candy(2), Candy(3), Candy(2)]
     ]
 
+    original_colorbomb = board.board[2][2]
     move = ((2,2), (2, 3))
     total_cleared = board.make_move(move)
 
@@ -237,7 +238,7 @@ def test_colorbomb_activation():
 
     assert total_cleared >= 8
     assert all(
-        candy.powerup != "Colorbomb"
+        candy is not original_colorbomb
         for row in board.board
         for candy in row
     )

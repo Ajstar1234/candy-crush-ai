@@ -4,7 +4,7 @@ from prepare_dataset import prepare_datasets
 
 model = MoveEvaluationModel()
 model.load_state_dict(
-    torch.load("best_move_model.pth", weights_only=True, map_location="cpu")
+    torch.load("models/best_move_model.pth", weights_only=True, map_location="cpu")
 )
 
 X_train, y_train, X_val, y_val, X_test, y_test = prepare_datasets()

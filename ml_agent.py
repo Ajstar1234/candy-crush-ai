@@ -6,11 +6,11 @@ from ml_features import encode_state_move
 
 
 class MLAgent:
-    def __init__(self):
-        self.model = MoveEvaluationModel()
+    def __init__(self, input_size=180, checkpoint_path="models/best_move_model.pth"):
+        self.model = MoveEvaluationModel(input_size=input_size)
 
         self.model.load_state_dict(
-            torch.load("best_move_model.pth", weights_only=True, map_location="cpu")
+            torch.load(checkpoint_path, weights_only=True, map_location="cpu")
         )
 
         self.model.eval()

@@ -3,11 +3,11 @@ from game import Game
 from ml_agent import MLAgent
 import random
 
-def run_ml_game(agent, seed=None, max_turns=8, target_candy_count=10):
+def run_ml_game(agent, seed=None, max_turns=8, target_candy_count=10, rows=5, cols=5, num_candy_types=4):
     if seed is not None:
         random.seed(seed)
 
-    board = Board(5,5)
+    board = Board(rows, cols, num_candy_types=num_candy_types)
     board.create_board()
     board.resolve_board()
     game = Game(max_turns=max_turns, target_candy_type=1, target_candy_count=target_candy_count)
@@ -45,12 +45,13 @@ def run_ml_game(agent, seed=None, max_turns=8, target_candy_count=10):
 
     return results
 
-def benchmark_ml(num_games=100, max_turns=8, target_candy_count=10):
-    agent = MLAgent()
+def benchmark_ml(num_games=100, max_turns=8, target_candy_count=10, rows=5, cols=5, num_candy_types=4, checkpoint_path="models/best_move_model.pth"):
+    input_size = rows * cols * (num_candy_types + 3) + 5
+    agent = MLAgent(input_size=input_size, checkpoint_path=checkpoint_path)
     results = []
 
     for i in range(num_games):
-        game_result = run_ml_game(agent, seed=i, max_turns=max_turns, target_candy_count=target_candy_count)
+        game_result = run_ml_game(agent, seed=i, max_turns=max_turns, target_candy_count=target_candy_count, rows=rows, cols=cols, num_candy_types=num_candy_types)
         results.append(game_result)
 
     return results
@@ -64,7 +65,15 @@ if __name__ == "__main__":
 
     for difficulty, settings in difficulties.items():
         print(f"Running benchmark for {difficulty} difficulty...")
-        results = benchmark_ml(num_games=100, max_turns=settings["max_turns"], target_candy_count=settings["target_candy_count"])
+        results = benchmark_ml(
+            num_games=100, 
+            max_turns=settings["max_turns"], 
+            target_candy_count=settings["target_candy_count"],
+            rows=9,
+            cols=9,
+            num_candy_types=6,
+            checkpoint_path="models/best_move_model_9x9.pth"
+        )
 
         total_wins = 0
         total_score = 0

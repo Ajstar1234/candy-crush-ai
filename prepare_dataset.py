@@ -1,17 +1,39 @@
 from generate_dataset import generate_training_data
 
 
-def prepare_datasets():
-    X_train, y_train = generate_training_data(num_games=500, seed=0)
+def prepare_datasets(rows=5, cols=5, num_candy_types=4):
+    X_train, y_train = generate_training_data(
+    num_games=500,
+    seed=0,
+    rows=rows,
+    cols=cols,
+    num_candy_types=num_candy_types
+)
 
-    X_val, y_val = generate_training_data(num_games=20, seed=500)
+    X_val, y_val = generate_training_data(
+    num_games=20,
+    seed=500,
+    rows=rows,
+    cols=cols,
+    num_candy_types=num_candy_types
+)
 
-    X_test, y_test = generate_training_data(num_games=20, seed=520)
+    X_test, y_test = generate_training_data(
+    num_games=20,
+    seed=520,
+    rows=rows,
+    cols=cols,
+    num_candy_types=num_candy_types
+)
 
     return X_train, y_train, X_val, y_val, X_test, y_test
 
 if __name__ == "__main__":
-    X_train, y_train, X_val, y_val, X_test, y_test = prepare_datasets()
+    X_train, y_train, X_val, y_val, X_test, y_test = prepare_datasets(
+        rows=9,
+        cols=9,
+        num_candy_types=6
+    )
 
     print("Training:", X_train.shape, y_train.shape)
     print("Validation:", X_val.shape, y_val.shape)

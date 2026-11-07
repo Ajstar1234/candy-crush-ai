@@ -9,7 +9,7 @@ def test_generate_training_data():
     assert y.ndim == 1
     assert X.shape[0] == y.shape[0]
     assert X.shape[0] > 0
-    assert X.shape[1] == 55
+    assert X.shape[1] == 180
 
 def test_generate_training_data_reproducible():
     X1, y1 = generate_training_data(num_games=10, seed=42)

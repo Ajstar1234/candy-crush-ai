@@ -1,10 +1,18 @@
+# Python cache
 __pycache__/
 *.pyc
+.pytest_cache/
+
+# Virtual environments
 .venv/
 venv/
+
+# Environment variables
 .env
+
+# IDE settings
 .idea/
 .vscode/
+
+# Trained PyTorch models
 *.pth
-__pycache__/
-.pytest_cache/

@@ -5,11 +5,11 @@ from game import Game
 import random
 
 
-def simulate_game(objective_aware=True, seed=None, max_turns=8, target_candy_count=10):
+def simulate_game(objective_aware=True, seed=None, max_turns=8, target_candy_count=10, rows=5, cols=5, num_candy_types=4):
     if seed is not None:
         random.seed(seed)
 
-    board = Board(5, 5)
+    board = Board(rows, cols, num_candy_types=num_candy_types)
     agent = Agent()
     game = Game(
         max_turns=max_turns,
@@ -56,14 +56,22 @@ def simulate_game(objective_aware=True, seed=None, max_turns=8, target_candy_cou
 
     return results
 
-def run_simulations(num_games=100, objective_aware=True, max_turns=8, target_candy_count=10):
+def run_simulations(num_games=100, objective_aware=True, max_turns=8, target_candy_count=10, rows=5, cols=5, num_candy_types=4):
     if num_games <= 0:
         raise ValueError("num_games must be greater than zero")
     
     results = []
 
     for i in range(num_games):
-        game_result = simulate_game(objective_aware=objective_aware, seed=i, max_turns=max_turns, target_candy_count=target_candy_count)
+        game_result = simulate_game(
+            objective_aware=objective_aware,
+            seed=i,
+            max_turns=max_turns,
+            target_candy_count=target_candy_count,
+            rows=rows,
+            cols=cols,
+            num_candy_types=num_candy_types
+        )
         results.append(game_result)
 
     games_won = sum(result["won"] for result in results)
@@ -87,8 +95,21 @@ def run_simulations(num_games=100, objective_aware=True, max_turns=8, target_can
     }
 
 if __name__ == "__main__":
-    greedy_stats = run_simulations(100, objective_aware=False)
-    objective_stats = run_simulations(100, objective_aware=True)
+    greedy_stats = run_simulations(
+        num_games=100,
+        objective_aware=False,
+        rows=9,
+        cols=9,
+        num_candy_types=6
+    )
+
+    objective_stats = run_simulations(
+        num_games=100,
+        objective_aware=True,
+        rows=9,
+        cols=9,
+        num_candy_types=6
+    )
 
     print("Greedy agent:")
     print(f"Win rate: {greedy_stats['win_rate']:.2f}%")

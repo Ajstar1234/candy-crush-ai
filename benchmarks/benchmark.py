@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from simulation import run_simulations
+from benchmarks.simulation import run_simulations
 
 difficulties = {
     "Easy": {"max_turns": 8, "target_candy_count": 10},
@@ -17,14 +17,20 @@ for difficulty, settings in difficulties.items():
         num_games=100,
         max_turns=settings["max_turns"],
         target_candy_count=settings["target_candy_count"],
-        objective_aware=False
+        objective_aware=False,
+        rows=9,
+        cols=9,
+        num_candy_types=6
     )
 
     objective_stats = run_simulations(
         num_games=100,
         max_turns=settings["max_turns"],
         target_candy_count=settings["target_candy_count"],
-        objective_aware=True
+        objective_aware=True,
+        rows=9,
+        cols=9,
+        num_candy_types=6
     )
 
     greedy_df = pd.DataFrame(greedy_stats["results"])
@@ -50,7 +56,7 @@ combined_df = pd.concat(
 print(combined_df.head())
 print(f"Total simulation records: {len(combined_df)}")
 
-combined_df.to_csv("benchmarks/benchmark_results.csv", index=False)
+combined_df.to_csv("benchmarks/benchmark_results_9x9.csv", index=False)
 
 summary = combined_df.groupby(["difficulty", "agent"]).agg({
     "score": "mean",
@@ -78,7 +84,7 @@ average_winning_turns = winning_games.groupby(
 
 summary["average_winning_turns"] = average_winning_turns
 
-summary.reset_index().to_csv("benchmarks/benchmark_summary.csv", index=False)
+summary.reset_index().to_csv("benchmarks/benchmark_summary_9x9.csv", index=False)
 
 win_rate_data = summary["win_rate"]
 
@@ -90,7 +96,7 @@ win_rate_table = win_rate_table.reindex(
 
 ax = win_rate_table.plot(kind="bar")
 
-plt.title("AI Agent Win Rates by Difficulty")
+plt.title("AI Agent Win Rates by Difficulty (9x9, 6 Colors)")
 plt.xlabel("Difficulty")
 plt.ylabel("Win Rate (%)")
 plt.ylim(0,105)
@@ -99,7 +105,7 @@ plt.xticks(rotation=0)
 for container in ax.containers:
     ax.bar_label(container, fmt="%.1f%%", padding=3)
 
-plt.savefig("benchmarks/agent_win_rates.png", dpi=300, bbox_inches="tight")
+plt.savefig("benchmarks/agent_win_rates_9x9.png", dpi=300, bbox_inches="tight")
 
 plt.show()
 
@@ -113,16 +119,16 @@ average_turns_table = average_turns_table.reindex(
 
 ax = average_turns_table.plot(kind="bar")
 
-plt.title("AI Agent Average Turns by Difficulty")
+plt.title("AI Agent Average Turns by Difficulty (9x9, 6 Colors)")
 plt.xlabel("Difficulty")
 plt.ylabel("Average Turns")
 plt.ylim(0, 9)
 plt.xticks(rotation=0)
 
 for container in ax.containers:
-    ax.bar_label(container, fmt="%.2f%%", padding=3)
+    ax.bar_label(container, fmt="%.2f", padding=3)
 
-plt.savefig("benchmarks/agent_average_turns.png", dpi=300, bbox_inches="tight")
+plt.savefig("benchmarks/agent_average_turns_9x9.png", dpi=300, bbox_inches="tight")
 
 plt.show()
 
