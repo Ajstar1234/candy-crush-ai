@@ -110,3 +110,25 @@ def test_choose_move_prioritizes_objective():
 
     # Verify the objective move receives its expected bonus
     assert agent.evaluate_move(board, objective_move, game) == 9
+
+def test_colorbomb_six_candy_types():
+    board = Board(5, 5, num_candy_types=6)
+    agent = Agent()
+    game = Game(
+        max_turns=8,
+        target_candy_type=6,
+        target_candy_count=10
+    )
+
+    board.board = [
+        [Candy(0, "Colorbomb"), Candy(2), Candy(3), Candy(4), Candy(5)],
+        [Candy(6), Candy(1), Candy(2), Candy(3), Candy(4)],
+        [Candy(5), Candy(6), Candy(1), Candy(2), Candy(3)],
+        [Candy(4), Candy(5), Candy(6), Candy(1), Candy(2)],
+        [Candy(3), Candy(4), Candy(5), Candy(6), Candy(1)]
+    ]
+
+    move = ((0, 0), (1, 0))
+    score = agent.evaluate_move(board, move, game)
+
+    assert score == 13

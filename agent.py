@@ -35,10 +35,10 @@ class Agent:
 
         target_color = None
 
-        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, 5):
+        if first_candy.powerup == "Colorbomb" and second_candy.type in range(1, board.num_candy_types + 1):
             target_color = second_candy.type
 
-        elif second_candy.powerup == "Colorbomb" and first_candy.type in range(1, 5):
+        elif second_candy.powerup == "Colorbomb" and first_candy.type in range(1, board.num_candy_types + 1):
             target_color = first_candy.type
 
         if target_color is not None:

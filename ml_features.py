@@ -33,3 +33,17 @@ def encode_state_move(board, move, game=None):
     ])
 
     return feature_vector
+
+def encode_state_move_with_target_mask(board, move, game=None):
+    feature_vector = encode_state_move(board, move, game)
+
+    target_mask = np.zeros((board.rows, board.cols), dtype=int)
+
+    if game is not None and game.target_candy_type is not None:
+        target_mask = (
+            board.to_numpy()[:, :, 0] == game.target_candy_type
+        ).astype(int)
+
+    target_mask = target_mask.flatten()
+
+    return np.concatenate([feature_vector, target_mask])
