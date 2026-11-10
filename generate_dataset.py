@@ -4,10 +4,10 @@ import random
 from board import Board
 from game import Game
 from agent import Agent
-from ml_features import encode_state_move
+from ml_features import encode_state_move, encode_state_move_with_target_mask
 
 
-def generate_training_data(num_games=100, seed=None, rows=5, cols=5, num_candy_types=4):
+def generate_training_data(num_games=100, seed=None, rows=5, cols=5, num_candy_types=4, use_target_mask=False):
 
     X = []
     y = []
@@ -35,7 +35,10 @@ def generate_training_data(num_games=100, seed=None, rows=5, cols=5, num_candy_t
                 break
 
             for move in valid_moves:
-                features = encode_state_move(board, move, game)
+                if use_target_mask:
+                    features = encode_state_move_with_target_mask(board, move, game)
+                else:
+                    features = encode_state_move(board, move, game)
                 score = agent.evaluate_move(board, move, game)
 
                 X.append(features)
@@ -59,10 +62,17 @@ def generate_training_data(num_games=100, seed=None, rows=5, cols=5, num_candy_t
 
 
 if __name__ == "__main__":
-    X, y = generate_training_data(num_games=10, seed=42, rows=9, cols=9, num_candy_types=6)
+    X, y = generate_training_data(
+        num_games=10,
+        seed=42,
+        rows=9,
+        cols=9,
+        num_candy_types=6,
+        use_target_mask=True
+    )
 
     print("X shape:", X.shape)
     print("y shape:", y.shape)
-    print("Target types:", np.unique(X[:, -1]))
+    print("Target types:", np.unique(X[:, -82]))
     print("Minimum heuristic score:", np.min(y))
     print("Maximum heuristic score:", np.max(y))

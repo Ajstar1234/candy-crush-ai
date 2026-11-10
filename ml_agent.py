@@ -2,11 +2,11 @@ import torch
 import numpy as np
 
 from ml_model import MoveEvaluationModel
-from ml_features import encode_state_move
+from ml_features import encode_state_move, encode_state_move_with_target_mask
 
 
 class MLAgent:
-    def __init__(self, input_size=180, checkpoint_path="models/best_move_model.pth"):
+    def __init__(self, input_size=180, checkpoint_path="models/best_move_model.pth", use_target_mask=False):
         self.model = MoveEvaluationModel(input_size=input_size)
 
         self.model.load_state_dict(
@@ -14,6 +14,7 @@ class MLAgent:
         )
 
         self.model.eval()
+        self.use_target_mask = use_target_mask
 
     def choose_move(self, board, game=None):
         valid_moves = board.get_valid_moves()
@@ -24,7 +25,10 @@ class MLAgent:
         move_features = []
 
         for move in valid_moves:
-            move_features.append(encode_state_move(board, move, game))
+            if self.use_target_mask:
+                move_features.append(encode_state_move_with_target_mask(board, move, game))
+            else:
+                move_features.append(encode_state_move(board, move, game))
 
         features_array = np.array(move_features)
         features_tensor = torch.tensor(features_array, dtype=torch.float32)

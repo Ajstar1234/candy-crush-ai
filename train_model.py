@@ -8,8 +8,11 @@ def train_model():
     X_train, y_train, X_val, y_val, X_test, y_test = prepare_datasets(
         rows=9,
         cols=9,
-        num_candy_types=6
+        num_candy_types=6,
+        use_target_mask=True
     )
+
+    torch.manual_seed(42)
 
     input_size = X_train.shape[1]
     model = MoveEvaluationModel(input_size)
@@ -75,7 +78,7 @@ def train_model():
 
         if val_average_loss < best_val_loss:
             best_val_loss = val_average_loss
-            torch.save(model.state_dict(), "models/best_move_model_9x9.pth")
+            torch.save(model.state_dict(), "models/best_move_model_9x9_target_mask.pth")
             print(f"New best model saved! Validation MSE: {best_val_loss:.4f}")
 
         print(
@@ -83,6 +86,14 @@ def train_model():
             f"Train Loss: {average_loss:.4f} | "
             f"Val Loss: {val_average_loss:.4f}"
         )
+
+    model.load_state_dict(
+        torch.load(
+            "models/best_move_model_9x9_target_mask.pth",
+            weights_only=True,
+            map_location="cpu"
+        )
+    )
 
     model.eval()
 

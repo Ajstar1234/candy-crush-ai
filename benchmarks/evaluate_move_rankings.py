@@ -8,16 +8,24 @@ from ml_agent import MLAgent
 def evaluate_move_ranking(num_boards=100, seed=1000):
     heuristic_agent = Agent()
 
-    ml_agent = MLAgent(
+    original_ml_agent = MLAgent(
         input_size=734,
         checkpoint_path="models/best_move_model_9x9.pth"
     )
 
-    correct_predictions = 0
+    target_mask_ml_agent = MLAgent(
+        input_size=815,
+        checkpoint_path="models/best_move_model_9x9_target_mask.pth",
+        use_target_mask=True
+    )
+
+    original_correct_predictions = 0
     total_evaluations = 0
-    total_score_gap = 0
+    original_total_score_gap = 0
     total_random_accuracy = 0
     total_random_score_gap = 0
+    target_mask_correct_predictions = 0
+    target_mask_total_score_gap = 0
 
     for i in range(num_boards):
         random.seed(seed + i)
@@ -53,28 +61,52 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
         total_random_accuracy += random_accuracy
         total_random_score_gap += random_score_gap
 
-        ml_move = ml_agent.choose_move(board, game)
-        ml_heuristic_score = heuristic_agent.evaluate_move(board, ml_move, game)
-        score_gap = best_heuristic_score - ml_heuristic_score
-        total_evaluations += 1
-        total_score_gap += score_gap
+        original_ml_move = original_ml_agent.choose_move(board, game)
 
-        if score_gap == 0:
-            correct_predictions += 1
+        original_ml_score = heuristic_agent.evaluate_move(
+            board, original_ml_move, game
+        )
+
+        original_score_gap = best_heuristic_score - original_ml_score
+
+        original_total_score_gap += original_score_gap
+
+        if original_score_gap == 0:
+            original_correct_predictions += 1
+
+        target_mask_ml_move = target_mask_ml_agent.choose_move(board, game)
+
+        target_mask_ml_score = heuristic_agent.evaluate_move(
+            board, target_mask_ml_move, game
+        )
+
+        target_mask_score_gap = best_heuristic_score - target_mask_ml_score
+
+        target_mask_total_score_gap += target_mask_score_gap
+
+        if target_mask_score_gap == 0:
+            target_mask_correct_predictions += 1
+
+        total_evaluations += 1
 
     if total_evaluations == 0:
         raise ValueError("No valid board states were evaluated")
 
-    move_ranking_accuracy = correct_predictions / total_evaluations * 100
-    average_heuristic_score_gap = total_score_gap / total_evaluations
+    original_move_ranking_accuracy = original_correct_predictions / total_evaluations * 100
+    original_average_heuristic_score_gap = original_total_score_gap / total_evaluations
+    target_mask_move_ranking_accuracy = target_mask_correct_predictions / total_evaluations * 100
+    target_mask_average_heuristic_score_gap = target_mask_total_score_gap / total_evaluations
     average_random_accuracy = total_random_accuracy / total_evaluations * 100
     average_random_score_gap = total_random_score_gap / total_evaluations
 
 
     print(f"Boards evaluated: {total_evaluations}")
-    print(f"Correct predictions: {correct_predictions}")
-    print(f"Move-ranking accuracy: {move_ranking_accuracy:.2f}%")
-    print(f"Average heuristic score gap: {average_heuristic_score_gap:.2f}")
+    print(f"Original correct predictions: {original_correct_predictions}")
+    print(f"Original move-ranking accuracy: {original_move_ranking_accuracy:.2f}%")
+    print(f"Original average heuristic score gap: {original_average_heuristic_score_gap:.2f}")
+    print(f"Target mask correct predictions: {target_mask_correct_predictions}")
+    print(f"Target mask move-ranking accuracy: {target_mask_move_ranking_accuracy:.2f}%")
+    print(f"Target mask average heuristic score gap: {target_mask_average_heuristic_score_gap:.2f}")
     print(f"Random optimal-move accuracy: {average_random_accuracy:.2f}%")
     print(f"Random average heuristic score gap: {average_random_score_gap:.2f}")
 

@@ -39,3 +39,32 @@ def test_ml_agent_9x9():
     move = agent.choose_move(board, game)
 
     assert move in valid_moves
+
+def test_ml_agent_target_mask():
+    board = Board(9, 9, num_candy_types=6)
+    board.create_board()
+    board.resolve_board()
+
+    game = Game(
+        max_turns=8,
+        target_candy_type=1,
+        target_candy_count=10
+    )
+
+    agent = MLAgent(
+        input_size=815,
+        checkpoint_path="models/best_move_model_9x9_target_mask.pth",
+        use_target_mask=True
+    )
+
+    valid_moves = board.get_valid_moves()
+
+    if not valid_moves:
+        assert board.reshuffle_board()
+        valid_moves = board.get_valid_moves()
+
+    assert valid_moves
+
+    move = agent.choose_move(board, game)
+
+    assert move in valid_moves
