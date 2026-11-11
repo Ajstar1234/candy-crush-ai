@@ -10,7 +10,7 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
 
     original_ml_agent = MLAgent(
         input_size=734,
-        checkpoint_path="models/best_move_model_9x9.pth"
+        checkpoint_path="models/best_move_model_9x9_corrected.pth"
     )
 
     target_mask_ml_agent = MLAgent(
@@ -101,9 +101,9 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
 
 
     print(f"Boards evaluated: {total_evaluations}")
-    print(f"Original correct predictions: {original_correct_predictions}")
-    print(f"Original move-ranking accuracy: {original_move_ranking_accuracy:.2f}%")
-    print(f"Original average heuristic score gap: {original_average_heuristic_score_gap:.2f}")
+    print(f"Corrected baseline correct predictions: {original_correct_predictions}")
+    print(f"Corrected baseline accuracy: {original_move_ranking_accuracy:.2f}%")
+    print(f"Corrected baseline average heuristic score gap: {original_average_heuristic_score_gap:.2f}")
     print(f"Target mask correct predictions: {target_mask_correct_predictions}")
     print(f"Target mask move-ranking accuracy: {target_mask_move_ranking_accuracy:.2f}%")
     print(f"Target mask average heuristic score gap: {target_mask_average_heuristic_score_gap:.2f}")
@@ -111,4 +111,4 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
     print(f"Random average heuristic score gap: {average_random_score_gap:.2f}")
 
 if __name__ == "__main__":
-    evaluate_move_ranking(num_boards=100, seed=1000)
+    evaluate_move_ranking(num_boards=500, seed=1000)

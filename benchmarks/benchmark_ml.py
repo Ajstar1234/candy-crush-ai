@@ -45,13 +45,40 @@ def run_ml_game(agent, seed=None, max_turns=8, target_candy_count=10, rows=5, co
 
     return results
 
-def benchmark_ml(num_games=100, max_turns=8, target_candy_count=10, rows=5, cols=5, num_candy_types=4, checkpoint_path="models/best_move_model.pth"):
+def benchmark_ml(
+        num_games=100, 
+        max_turns=8, 
+        target_candy_count=10, 
+        rows=5, cols=5, 
+        num_candy_types=4, 
+        checkpoint_path="models/best_move_model.pth",
+        use_target_mask=False,
+        seed_start=1000
+    ):
+
     input_size = rows * cols * (num_candy_types + 3) + 5
-    agent = MLAgent(input_size=input_size, checkpoint_path=checkpoint_path)
+
+    if use_target_mask:
+        input_size += rows * cols
+
+    agent = MLAgent(
+        input_size=input_size, 
+        checkpoint_path=checkpoint_path,
+        use_target_mask=use_target_mask
+    )
+
     results = []
 
     for i in range(num_games):
-        game_result = run_ml_game(agent, seed=i, max_turns=max_turns, target_candy_count=target_candy_count, rows=rows, cols=cols, num_candy_types=num_candy_types)
+        game_result = run_ml_game(
+            agent, 
+            seed=seed_start + i, 
+            max_turns=max_turns, 
+            target_candy_count=target_candy_count, 
+            rows=rows, cols=cols, 
+            num_candy_types=num_candy_types
+        )
+
         results.append(game_result)
 
     return results
@@ -63,36 +90,54 @@ if __name__ == "__main__":
         "Hard": {"max_turns": 5, "target_candy_count": 15}
     }
 
-    for difficulty, settings in difficulties.items():
-        print(f"Running benchmark for {difficulty} difficulty...")
-        results = benchmark_ml(
-            num_games=100, 
-            max_turns=settings["max_turns"], 
-            target_candy_count=settings["target_candy_count"],
-            rows=9,
-            cols=9,
-            num_candy_types=6,
-            checkpoint_path="models/best_move_model_9x9.pth"
-        )
+    models = {
+        "Corrected Baseline": {
+            "checkpoint_path": "models/best_move_model_9x9_corrected.pth",
+            "use_target_mask": False
+        },
+        "Target Mask": {
+            "checkpoint_path": "models/best_move_model_9x9_target_mask.pth",
+            "use_target_mask": True
+        }
+    }
 
-        total_wins = 0
-        total_score = 0
-        total_turns = 0
-        total_target_candies_collected = 0
-        for result in results:
-            if result["won"]:
-                total_wins += 1
+    for model_name, model_settings in models.items():
+        print(f"\nBenchmarking {model_name}")
 
-            total_score += result["score"]
-            total_turns += result["turns"]
-            total_target_candies_collected += result["candies_collected"]
+        for difficulty, settings in difficulties.items():
+            print(f"Running benchmark for {difficulty} difficulty with {model_name}...")
 
-        win_rate = total_wins / len(results) * 100
-        average_score = total_score / len(results)
-        average_turns = total_turns / len(results)
-        average_target_candies_collected = total_target_candies_collected / len(results)
+            results = benchmark_ml(
+                num_games=100,
+                max_turns=settings["max_turns"],
+                target_candy_count=settings["target_candy_count"],
+                rows=9,
+                cols=9,
+                num_candy_types=6,
+                checkpoint_path=model_settings["checkpoint_path"],
+                use_target_mask=model_settings["use_target_mask"],
+                seed_start=2000
+            )
 
-        print(f"Win rate: {win_rate:.2f}%")
-        print(f"Average score: {average_score:.2f}")
-        print(f"Average turns: {average_turns:.2f}")
-        print(f"Average target candies collected: {average_target_candies_collected:.2f}")
+            total_wins = 0
+            total_score = 0
+            total_turns = 0
+            total_target_candies_collected = 0
+
+            for result in results:
+                if result["won"]:
+                    total_wins += 1
+
+                total_score += result["score"]
+                total_turns += result["turns"]
+                total_target_candies_collected += result["candies_collected"]
+
+            win_rate = total_wins / len(results) * 100
+            average_score = total_score / len(results)
+            average_turns = total_turns / len(results)
+            average_target_candies_collected = total_target_candies_collected / len(results)
+
+            print(f"Win rate: {win_rate:.2f}%")
+            print(f"Average score: {average_score:.2f}")
+            print(f"Average turns: {average_turns:.2f}")
+            print(f"Average target candies collected: {average_target_candies_collected:.2f}")
