@@ -1,99 +1,90 @@
 # Candy Crush AI
 
-An AI-focused match-three game built in Python to explore heuristic search, supervised machine learning, and reinforcement learning through automated gameplay.
+An AI-focused match-three game built in Python to explore heuristic decision-making, supervised machine learning, and eventually reinforcement learning through automated gameplay.
 
 ## Project Overview
 
-This project develops a Candy Crush-style game environment where AI agents select moves to complete levels under configurable objectives and move limits.
+Candy Crush AI is a custom match-three game environment where artificial intelligence agents select moves to complete objectives within configurable move limits.
 
-Rather than simply recreating Candy Crush, the project compares different AI approaches, beginning with heuristic-based decision-making and progressing toward supervised learning and reinforcement learning.
+The project focuses on developing and comparing AI approaches rather than simply recreating Candy Crush. It currently includes greedy and objective-aware heuristic agents, a supervised PyTorch neural network, automated gameplay benchmarks, and experiments investigating how feature engineering affects AI decision-making.
+
+The long-term goal is to develop a reinforcement learning agent and evaluate its performance against the existing approaches.
 
 ## Current Features
 
 ### Game Environment
+
 - Object-oriented Python architecture with separate board, candy, game, and agent classes
-- Randomized 5×5 game board generation
+- Configurable board dimensions, including 5×5 and 9×9 environments
+- Configurable candy types, including six-color boards
 - Horizontal and vertical match detection
 - Legal move validation and automated move generation
-- Automatic match removal, gravity, board refilling, and cascading matches
-- Special candies, including horizontal and vertical striped candies, wrapped candies, and color bombs
+- Match removal, gravity, refilling, and cascading
+- Horizontal and vertical striped candies, wrapped candies, and color bombs
+- Special-candy activation and chain reactions
 - Board reshuffling when no valid moves are available
 - Configurable move limits and candy collection objectives
 - Score tracking, objective progress, and win/loss conditions
-- Automated tests using pytest
+- Automated unit tests using pytest
 
 ### AI Agents
-- Greedy agent prioritizing immediate matching opportunities
-- Objective-aware agent prioritizing moves that collect target candies
-- PyTorch neural network trained to predict heuristic move scores
-- ML agent that evaluates legal moves and selects the highest-scoring prediction
-- Batched model inference using PyTorch
-- Saved model checkpoints for inference
 
-### Machine Learning Pipeline
-- Game-state and move encoding using NumPy
-- 180-feature representation of board states, special candies, move coordinates, and level objectives
-- Automated supervised dataset generation from heuristic gameplay
+**Greedy Agent**
+
+Evaluates legal moves using immediate matching opportunities.
+
+**Objective-Aware Agent**
+
+Prioritizes moves that collect candies required by the current level objective.
+
+**Supervised ML Agent**
+
+Uses a fully connected PyTorch neural network to predict heuristic move scores and select the highest-scoring legal move.
+
+Supports configurable model input sizes, checkpoint loading, and multiple feature encoders.
+
+## Machine Learning Pipeline
+
+The supervised learning pipeline uses the objective-aware heuristic to generate labeled move-evaluation examples from simulated gameplay.
+
+### Feature Engineering
+
+Three feature representations have been implemented:
+
+| Representation | Board Configuration | Input Features |
+|---|---|---:|
+| Original one-hot encoding | 5×5, 4 colors | 180 |
+| Expanded one-hot encoding | 9×9, 6 colors | 734 |
+| Target-mask encoding | 9×9, 6 colors | 815 |
+
+Features include:
+
+- One-hot encoded candy colors
+- Special-candy information
+- Candidate move coordinates
+- Target candy objective
+- An optional target-candy mask identifying objective-colored cells
+
+The target-mask representation explicitly identifies candies relevant to the current objective, reducing the need for the model to infer this relationship solely from the original feature representation.
+
+### Neural Network
+
+Implemented using PyTorch with:
+
+- Configurable input dimensions
+- Two fully connected hidden layers (64 and 32 neurons)
+- ReLU activation functions
+- Mean squared error loss
+- Adam optimizer
+- Mini-batch training
+- Validation-based checkpoint selection
 - Separate training, validation, and test datasets
-- Fully connected neural network implemented in PyTorch
-- Model training using the Adam optimizer and mean squared error loss
-- Validation-based model checkpointing
-- Held-out test evaluation against a constant-mean prediction baseline
 
-### Benchmarking and Analysis
-- Automated gameplay simulations using fixed random seeds
-- Easy, Medium, and Hard difficulty configurations
-- Comparisons between Greedy, Objective-Aware, and ML agents
-- Win rate, average score, average turns, and objective completion metrics
-- Statistical analysis using pandas
-- Visualization using Matplotlib
-- CSV exports of heuristic benchmark results and summaries
-
-## AI Development Roadmap
-
-### Phase 1: Game Environment — Implemented
-
-Developed the core match-three environment, including board generation, match detection, swapping, gravity, refilling, cascades, and special candies.
-
-### Phase 2: Heuristic AI Agents — Implemented
-
-Developed greedy and objective-aware agents that evaluate valid moves using immediate matching opportunities and level objectives.
-
-### Phase 3: Objective-Based Gameplay — Implemented
-
-Implemented candy collection objectives, configurable move limits, objective tracking, win/loss conditions, and board reshuffling.
-
-Added automated tests for move validation, special candies, objective tracking, and gameplay mechanics.
-
-### Phase 4: Supervised Machine Learning — Implemented, Improving Performance
-
-Developed a supervised learning pipeline that generates labeled move-evaluation data using heuristic gameplay.
-
-Created a 180-feature representation of the board state and candidate move, including candy colors, special candies, move coordinates, and target objectives.
-
-Implemented a fully connected PyTorch neural network with two hidden layers to predict heuristic move scores.
-
-Added training, validation, and test evaluation, checkpoint saving/loading, and a neural-network-powered ML agent.
-
-Integrated the ML agent into the game environment and evaluated its performance across 300 simulated games.
-
-Current improvements focus on move-ranking accuracy, generalization, and gameplay performance relative to heuristic agents.
-
-### Phase 5: Reinforcement Learning — Planned
-
-Train an agent through simulated gameplay using rewards based on scoring, objective completion, and move efficiency.
-
-Compare reinforcement learning performance against supervised and heuristic agents.
+The pipeline supports multiple feature representations while preserving separately trained model checkpoints.
 
 ## AI Agent Benchmark Results
 
-The project evaluates three AI approaches:
-
-- **Greedy Agent:** Selects moves based on immediate matching opportunities.
-- **Objective-Aware Agent:** Prioritizes moves that help complete candy collection objectives.
-- **ML Agent:** Uses a trained PyTorch neural network to predict move scores and select actions.
-
-### Benchmark Configuration
+Automated benchmarks evaluate agent performance across three difficulty levels.
 
 | Difficulty | Move Limit | Target Candies | Games per Agent |
 |---|---:|---:|---:|
@@ -101,52 +92,116 @@ The project evaluates three AI approaches:
 | Medium | 6 | 12 | 100 |
 | Hard | 5 | 15 | 100 |
 
-A total of **900 benchmark games** have been evaluated across the three agents and difficulty levels: 600 heuristic-agent games and 300 ML-agent games.
+### Original 5×5 Benchmark
 
-### Win Rate Results
+Win rates on 5×5 boards with four candy colors:
 
-| Difficulty | Greedy | Objective-Aware | ML Agent |
+| Difficulty | Greedy | Objective-Aware | ML |
 |---|---:|---:|---:|
 | Easy | 84% | 92% | 68% |
 | Medium | 57% | 63% | 33% |
 | Hard | 22% | 21% | 7% |
 
-The objective-aware agent achieved the highest win rates on Easy and Medium difficulties.
+These results established the initial performance baseline for the three agents.
 
-The ML agent successfully completed levels across all difficulties but currently performs below the heuristic agents.
+### Expanded 9×9 Benchmark
 
-Because the supervised model was trained to approximate heuristic scores, imperfect predictions can cause it to select suboptimal moves.
+Win rates on 9×9 boards with six candy colors:
 
-These results establish a baseline for improving supervised move selection and evaluating future reinforcement learning agents.
-
-### ML Agent Performance
-
-| Metric | Easy | Medium | Hard |
+| Difficulty | Greedy | Objective-Aware | ML |
 |---|---:|---:|---:|
-| Win Rate | 68% | 33% | 7% |
-| Average Score | 411.30 | 356.20 | 322.20 |
-| Average Turns | 6.45 | 5.59 | 4.98 |
-| Average Target Candies Collected | 10.39 | 8.94 | 7.89 |
+| Easy | 33% | 75% | 16% |
+| Medium | 22% | 46% | 4% |
+| Hard | 7% | 18% | 1% |
 
-### Supervised Model Evaluation
+The objective-aware heuristic substantially outperformed the greedy and supervised ML agents.
 
-The model was evaluated using a held-out test dataset.
+Interestingly, the greedy agent sometimes achieved higher average scores despite winning fewer games, demonstrating that maximizing immediate points does not necessarily maximize objective completion.
 
-- Neural network test MSE: 6.81
-- Constant-mean baseline test MSE: 6.40
+The 9×9 ML gameplay results use the original 734-feature model. The newer target-mask model has not yet completed equivalent full-game benchmarks.
 
-The neural network has not yet outperformed the constant-mean baseline on prediction accuracy.
+Results across board sizes are not directly comparable as measures of model improvement because the board dimensions and candy counts differ.
 
-Future evaluation will focus on move-ranking accuracy and whether the model selects moves that maximize objective completion.
+## Supervised ML Evaluation
+
+### Original Model Evaluation
+
+The initial 5×5 neural network achieved:
+
+- Test MSE: 6.81
+- Constant-mean test baseline MSE: 6.40
+
+The model did not outperform the constant-mean baseline on prediction error.
+
+This motivated further investigation into move-ranking accuracy and feature representation.
+
+### Move-Ranking Evaluation
+
+A dedicated evaluation pipeline compares neural network selections against the objective-aware heuristic's highest-scoring legal moves.
+
+The evaluation measures:
+
+- **Optimal-move accuracy:** Percentage of boards where the model selects a heuristic-optimal move, including ties
+- **Average heuristic score gap:** Difference between the best available heuristic score and the score of the model's selected move
+- **Random baseline:** Expected performance when selecting uniformly from legal moves
+
+Results on 100 reproducibly generated 9×9 board states:
+
+| Metric | Original ML | Target-Mask ML | Random |
+|---|---:|---:|---:|
+| Optimal-move accuracy | 11.00% | 18.00% | 15.61% |
+| Average heuristic score gap | 7.53 | 6.46 | 6.85 |
+
+The target-mask model improved optimal-move accuracy by 7 percentage points and reduced the average heuristic score gap by approximately 14.2% relative to the original model.
+
+The target-mask network also achieved a best validation MSE of **2.7996**, compared with a constant-mean validation baseline of **2.9126**.
+
+These results are encouraging but preliminary. The original model was trained before a correction to six-color heuristic evaluation, so the observed differences cannot yet be attributed solely to the target mask.
+
+A controlled experiment using both encoders and the corrected heuristic is planned.
+
+## AI Development Roadmap
+
+### Phase 1: Game Environment — Implemented
+
+Developed the match-three engine, board generation, swapping, match detection, gravity, cascades, and special candies.
+
+### Phase 2: Heuristic AI Agents — Implemented
+
+Developed greedy and objective-aware agents to evaluate legal moves using matching opportunities and level objectives.
+
+### Phase 3: Objective-Based Gameplay — Implemented
+
+Added configurable move limits, candy collection objectives, objective tracking, win/loss conditions, and board reshuffling.
+
+### Phase 4: Supervised Machine Learning — Implemented, Improving Performance
+
+Developed the supervised training pipeline and neural-network-powered agent.
+
+Current work includes:
+
+- Evaluating move-ranking accuracy
+- Improving feature representations
+- Comparing neural network variants
+- Investigating model generalization
+- Improving gameplay performance against heuristic baselines
+
+**Next milestone:** Train a corrected 734-feature baseline to isolate the effect of target-mask encoding, followed by further model evaluation.
+
+### Phase 5: Reinforcement Learning — Planned
+
+Train an agent through simulated gameplay using rewards based on objective completion, scoring, and move efficiency.
+
+Compare its performance against the heuristic and supervised ML agents.
 
 ## Technologies
 
-- **Python:** Game logic, simulation, and AI development
+- **Python:** Game environment, algorithms, simulation, and AI development
 - **PyTorch:** Neural network training and inference
-- **NumPy:** Board-state encoding and feature engineering
-- **pandas:** Gameplay analysis and benchmark summaries
-- **Matplotlib:** Benchmark visualization
-- **pytest:** Automated testing
+- **NumPy:** State encoding and feature engineering
+- **pandas:** Benchmark analysis and result aggregation
+- **Matplotlib:** Performance visualization
+- **pytest:** Automated unit testing
 - **Git/GitHub:** Version control
 
 ## Running the Project
@@ -157,45 +212,78 @@ Run the main gameplay simulation from the project root:
 py main.py
 ```
 
-The agent can be selected in `main.py` by initializing the desired agent class.
+The desired agent and board configuration can be selected in `main.py`.
 
-To run gameplay using the ML agent, a trained model checkpoint (`best_move_model.pth`) must be available in the project root.
+### Training
 
-Model checkpoint files are excluded from version control and must be generated through the training pipeline.
+Generate sample supervised training data:
+
+```bash
+py generate_dataset.py
+```
+
+Run dataset preparation:
+
+```bash
+py prepare_dataset.py
+```
+
+Train the currently configured neural network:
+
+```bash
+py train_model.py
+```
+
+The current training configuration uses the 9×9 target-mask representation and saves its best checkpoint to:
+
+```text
+models/best_move_model_9x9_target_mask.pth
+```
+
+PyTorch checkpoint files (`.pth`) are excluded from Git version control. Models must be trained or supplied separately before loading them for inference.
 
 ## Benchmarking
 
-Run the original heuristic-agent benchmark:
+Run the heuristic-agent benchmark:
 
 ```bash
 py -m benchmarks.benchmark
 ```
 
-This benchmark evaluates Greedy and Objective-Aware agents and generates CSV results and comparison charts.
-
-Run the supervised ML-agent benchmark:
+Run the original 9×9 ML-agent gameplay benchmark:
 
 ```bash
 py -m benchmarks.benchmark_ml
 ```
 
-This evaluates the trained ML agent across Easy, Medium, and Hard difficulty levels.
+Evaluate move-ranking performance:
+
+```bash
+py -m benchmarks.evaluate_move_rankings
+```
+
+The move-ranking evaluator compares both trained 9×9 models and a random-move baseline on identical generated board states.
+
+The benchmark scripts require their corresponding model checkpoints to be available locally.
+
+Benchmark outputs include gameplay statistics, CSV summaries, and Matplotlib visualizations.
 
 ## Testing
 
-The project uses pytest to validate game mechanics and AI behavior.
-
-Current tests include:
+The project includes automated tests covering:
 
 - Board initialization and match detection
-- Valid and invalid swaps
-- Special candy creation and activation
+- Legal and invalid swaps
+- Special-candy creation and activation
+- Color bomb interactions with configurable candy types
 - Power-up chain reactions
-- Color bomb activation
-- Objective-based win/loss conditions
-- Agent move evaluation and objective prioritization
-- Machine learning feature encoding
-- ML agent legal move selection
+- Objective tracking and win/loss conditions
+- Heuristic agent decisions
+- Configurable board generation
+- ML feature encoding and target-mask correctness
+- Dataset generation and reproducibility
+- Neural network input and output dimensions
+- ML agent move selection
 
 Run the test suite from the project root:
 
@@ -203,26 +291,16 @@ Run the test suite from the project root:
 py -m pytest tests/ -v
 ```
 
+Tests that load trained checkpoints require the corresponding model files to be available locally.
+
 ## Project Status
 
 **Actively in Development**
 
-The core match-three game environment, objective-based gameplay, heuristic agents, and automated benchmarking systems are implemented.
+The core game environment, heuristic agents, supervised ML pipeline, and automated evaluation systems are implemented.
 
-The project now includes a supervised machine learning pipeline and a PyTorch-powered agent capable of selecting moves and completing levels.
+Current development focuses on improving the supervised model's decision-making through feature engineering, controlled experiments, and move-ranking evaluation.
 
-The supervised agent has been evaluated across 300 games and currently achieves win rates of 68% on Easy, 33% on Medium, and 7% on Hard.
+Future work will investigate additional learning approaches, including reinforcement learning.
 
-Current development focuses on improving the supervised model's move-ranking accuracy and evaluating its decision-making relative to heuristic agents.
-
-Future work will introduce reinforcement learning through simulated gameplay.
-
-## Benchmark Visualizations
-
-### AI Agent Win Rates
-
-![AI Agent Win Rates](benchmarks/agent_win_rates.png)
-
-### AI Agent Average Turns
-
-![AI Agent Average Turns](benchmarks/agent_average_turns.png)
+The project serves as an ongoing exploration of AI decision-making, machine learning evaluation, and software engineering through a custom interactive game environment.
