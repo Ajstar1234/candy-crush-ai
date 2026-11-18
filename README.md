@@ -1,248 +1,364 @@
+
 # Candy Crush AI
 
-An AI-focused match-three game built in Python to explore heuristic decision-making, supervised machine learning, and eventually reinforcement learning through automated gameplay.
+A Python match-three game and AI experimentation platform for comparing heuristic search, supervised machine learning, and deep reinforcement learning.
 
 ## Project Overview
 
-Candy Crush AI is a custom match-three game environment where artificial intelligence agents select moves to complete objectives within configurable move limits.
+Candy Crush AI is a custom match-three environment where agents select legal swaps to collect target-colored candies before running out of moves. The project emphasizes **agent design, reproducible experiments, and software engineering** rather than recreating every feature of the commercial game.
 
-The project focuses on developing and comparing AI approaches rather than simply recreating Candy Crush. It currently includes greedy and objective-aware heuristic agents, a supervised PyTorch neural network, automated gameplay benchmarks, and experiments investigating how feature engineering affects AI decision-making.
+The project currently includes:
 
-The long-term goal is to develop a reinforcement learning agent and evaluate its performance against the existing approaches.
+- A configurable, object-oriented match-three game engine
+- Greedy and objective-aware heuristic agents
+- Supervised PyTorch move-evaluation models, including target-aware features and pairwise ranking experiments
+- A Deep Q-Network (DQN) agent with experience replay, a target network, and epsilon-greedy exploration
+- Automated unit tests and agent benchmarks
 
-## Current Features
+**Current focus:** Standardizing evaluation across agents and investigating why DQN performance improves early in training but deteriorates with additional updates.
+
+## Features
 
 ### Game Environment
 
-- Object-oriented Python architecture with separate board, candy, game, and agent classes
-- Configurable board dimensions, including 5×5 and 9×9 environments
-- Configurable candy types, including six-color boards
-- Horizontal and vertical match detection
-- Legal move validation and automated move generation
-- Match removal, gravity, refilling, and cascading
-- Horizontal and vertical striped candies, wrapped candies, and color bombs
+- Object-oriented board, candy, game, and agent classes
+- Configurable board sizes (including 5×5 and 9×9) and candy counts (including six-color boards)
+- Horizontal and vertical matches; legal swaps and move generation
+- Candy removal, gravity, refill, and cascading matches
+- Horizontal/vertical striped candies, wrapped candies, and color bombs
 - Special-candy activation and chain reactions
-- Board reshuffling when no valid moves are available
-- Configurable move limits and candy collection objectives
-- Score tracking, objective progress, and win/loss conditions
-- Automated unit tests using pytest
+- Reshuffling when no legal moves remain
+- Configurable move limits and candy-collection objectives
+- Score, objective-progress, and win/loss tracking
+- Automated tests with `pytest`
 
 ### AI Agents
 
-**Greedy Agent**
+| Agent | Approach |
+|---|---|
+| Greedy | Selects moves based on immediate matching opportunities |
+| Objective-aware | Prioritizes moves that collect candies required by the level objective |
+| Supervised ML | Uses a PyTorch neural network to score candidate moves |
+| DQN | Learns state-action values from gameplay rewards and selects moves using an epsilon-greedy policy |
 
-Evaluates legal moves using immediate matching opportunities.
+The supervised experiments also compare **mean squared error (MSE)** training with **pairwise move-ranking** objectives.
 
-**Objective-Aware Agent**
-
-Prioritizes moves that collect candies required by the current level objective.
-
-**Supervised ML Agent**
-
-Uses a fully connected PyTorch neural network to predict heuristic move scores and select the highest-scoring legal move.
-
-Supports configurable model input sizes, checkpoint loading, and multiple feature encoders.
-
-## Machine Learning Pipeline
-
-The supervised learning pipeline uses the objective-aware heuristic to generate labeled move-evaluation examples from simulated gameplay.
+## Supervised Machine Learning
 
 ### Feature Engineering
 
-Three feature representations have been implemented:
-
-| Representation | Board Configuration | Input Features |
+| Feature representation | Board | Input features |
 |---|---|---:|
-| Original one-hot encoding | 5×5, 4 colors | 180 |
-| Expanded one-hot encoding | 9×9, 6 colors | 734 |
-| Target-mask encoding | 9×9, 6 colors | 815 |
+| Original one-hot encoding | 5×5, four colors | 180 |
+| Expanded encoding | 9×9, six colors | 734 |
+| Target-mask encoding | 9×9, six colors | 815 |
+| RL state-action encoding | 9×9, six colors | 817 |
 
-Features include:
+The feature vector represents candy colors, special-candy information, the candidate swap, and the objective. The target-mask representation explicitly marks cells containing the target candy. The RL representation extends it with remaining turns and remaining target candies.
 
-- One-hot encoded candy colors
-- Special-candy information
-- Candidate move coordinates
-- Target candy objective
-- An optional target-candy mask identifying objective-colored cells
+### Neural Network and Training
 
-The target-mask representation explicitly identifies candies relevant to the current objective, reducing the need for the model to infer this relationship solely from the original feature representation.
+The move-evaluation model uses a fully connected PyTorch network with two hidden layers (64 and 32 units), ReLU activations, and a scalar output.
 
-### Neural Network
+Supervised training includes:
 
-Implemented using PyTorch with:
-
-- Configurable input dimensions
-- Two fully connected hidden layers (64 and 32 neurons)
-- ReLU activation functions
-- Mean squared error loss
+- Mini-batch optimization
 - Adam optimizer
-- Mini-batch training
 - Validation-based checkpoint selection
-- Separate training, validation, and test datasets
+- Separate training, validation, and test data
+- Multiple feature representations
+- MSE regression and pairwise ranking experiments
 
-The pipeline supports multiple feature representations while preserving separately trained model checkpoints.
+The initial 5×5 supervised model achieved **6.81 test MSE**, versus **6.40** for a constant-mean baseline, motivating work on more informative features and the distinction between score regression and move selection.
 
-## AI Agent Benchmark Results
+In a subsequent 9×9 target-mask experiment, the best validation MSE was **2.7996**, versus **2.9126** for a constant-mean validation baseline.
 
-Automated benchmarks evaluate agent performance across three difficulty levels.
+### Corrected Move-Ranking Comparison
 
-| Difficulty | Move Limit | Target Candies | Games per Agent |
-|---|---:|---:|---:|
-| Easy | 8 | 10 | 100 |
-| Medium | 6 | 12 | 100 |
-| Hard | 5 | 15 | 100 |
+The following results were measured on **500 generated 9×9 boards** using a corrected six-color heuristic and the same evaluation board seeds for each model.
 
-### Original 5×5 Benchmark
+"Optimal-move accuracy" counts a move as correct if it ties for the heuristic's highest-scoring legal action. The score gap measures the average difference from the heuristic's best move.
 
-Win rates on 5×5 boards with four candy colors:
+| Move-selection method | Heuristic-optimal move accuracy | Mean heuristic score gap |
+|---|---:|---:|
+| Corrected 734-feature MSE model | 12.8% | 6.90 |
+| **815-feature target-mask MSE model** | **17.2%** | **6.02** |
+| Pairwise ranking model (learning rate 0.001) | 13.2% | 6.90 |
+| Pairwise ranking model (learning rate 0.0001) | 13.2% | 6.92 |
+| Random legal move | 14.24% | 6.60 |
 
-| Difficulty | Greedy | Objective-Aware | ML |
+The target-mask MSE model performed best among these learned variants on these metrics.
+
+Pairwise ranking training did not improve move-selection performance in these experiments.
+
+These metrics evaluate agreement with the **heuristic**, not necessarily the best action under the full game simulator.
+
+### Gameplay Benchmarks
+
+The following historical gameplay results use different board configurations and model versions. They should **not** be interpreted as a controlled comparison of model training improvements.
+
+#### Original 5×5 Benchmark
+
+Four candy colors:
+
+| Difficulty | Greedy | Objective-aware | Supervised ML |
 |---|---:|---:|---:|
 | Easy | 84% | 92% | 68% |
 | Medium | 57% | 63% | 33% |
 | Hard | 22% | 21% | 7% |
 
-These results established the initial performance baseline for the three agents.
+#### Earlier Expanded 9×9 Benchmark
 
-### Expanded 9×9 Benchmark
+Six candy colors, using the original 734-feature ML model:
 
-Win rates on 9×9 boards with six candy colors:
-
-| Difficulty | Greedy | Objective-Aware | ML |
+| Difficulty | Greedy | Objective-aware | Supervised ML |
 |---|---:|---:|---:|
 | Easy | 33% | 75% | 16% |
 | Medium | 22% | 46% | 4% |
 | Hard | 7% | 18% | 1% |
 
-The objective-aware heuristic substantially outperformed the greedy and supervised ML agents.
+For these benchmark difficulties, the configurations were:
 
-Interestingly, the greedy agent sometimes achieved higher average scores despite winning fewer games, demonstrating that maximizing immediate points does not necessarily maximize objective completion.
+| Difficulty | Move limit | Target candies |
+|---|---:|---:|
+| Easy | 8 | 10 |
+| Medium | 6 | 12 |
+| Hard | 5 | 15 |
 
-The 9×9 ML gameplay results use the original 734-feature model. The newer target-mask model has not yet completed equivalent full-game benchmarks.
+Each agent was evaluated on 100 games per difficulty.
 
-Results across board sizes are not directly comparable as measures of model improvement because the board dimensions and candy counts differ.
+#### Corrected Model vs. Target-Mask Model
 
-## Supervised ML Evaluation
+A later 9×9 comparison of the corrected 734-feature and target-mask MSE models yielded the following win rates, again with 100 games per difficulty:
 
-### Original Model Evaluation
+| Difficulty | Corrected 734-feature ML | Target-mask ML |
+|---|---:|---:|
+| Easy | 19% | 25% |
+| Medium | 9% | 9% |
+| Hard | 2% | 1% |
 
-The initial 5×5 neural network achieved:
+The objective-aware heuristic remains a substantially stronger gameplay baseline than the current supervised models.
 
-- Test MSE: 6.81
-- Constant-mean test baseline MSE: 6.40
+## Deep Reinforcement Learning
 
-The model did not outperform the constant-mean baseline on prediction error.
+### DQN Implementation
 
-This motivated further investigation into move-ranking accuracy and feature representation.
+The reinforcement learning agent operates on the **9×9, six-color** environment.
 
-### Move-Ranking Evaluation
+Its state-action encoder returns **817 features**, including:
 
-A dedicated evaluation pipeline compares neural network selections against the objective-aware heuristic's highest-scoring legal moves.
+- Candy colors and special-candy information
+- Proposed move coordinates
+- Target-color information
+- Remaining turns
+- Remaining target candies
 
-The evaluation measures:
+The DQN implementation includes:
 
-- **Optimal-move accuracy:** Percentage of boards where the model selects a heuristic-optimal move, including ties
-- **Average heuristic score gap:** Difference between the best available heuristic score and the score of the model's selected move
-- **Random baseline:** Expected performance when selecting uniformly from legal moves
+- An online/policy Q-network and a periodically synchronized target network
+- Epsilon-greedy action selection over legal moves
+- A replay buffer with a capacity of 2,000 experiences
+- Mini-batch Bellman updates (batch size 32) using Huber loss
+- Discount factor `gamma = 0.99`
+- Adam optimization
+- Epsilon decay from `1.0` toward a minimum of `0.05`
+- Reproducible training seeds and checkpoints at episodes 0, 25, 50, 75, and 100
 
-Results on 100 reproducibly generated 9×9 board states:
+### Reward Function
 
-| Metric | Original ML | Target-Mask ML | Random |
-|---|---:|---:|---:|
-| Optimal-move accuracy | 11.00% | 18.00% | 15.61% |
-| Average heuristic score gap | 7.53 | 6.46 | 6.85 |
+The current reward function prioritizes completion of candy-collection objectives.
 
-The target-mask model improved optimal-move accuracy by 7 percentage points and reduced the average heuristic score gap by approximately 14.2% relative to the original model.
+For each move:
 
-The target-mask network also achieved a best validation MSE of **2.7996**, compared with a constant-mean validation baseline of **2.9126**.
+- The agent receives a reward equal to the number of target-colored candies collected.
+- Successfully completing the level provides an additional reward of 10.
 
-These results are encouraging but preliminary. The original model was trained before a correction to six-color heuristic evaluation, so the observed differences cannot yet be attributed solely to the target mask.
+The reward function does not currently include a general score reward or a per-move efficiency penalty.
 
-A controlled experiment using both encoders and the corrected heuristic is planned.
+### Training Experiments
 
-## AI Development Roadmap
+Initial DQN experiments were conducted over 25 and 100 training episodes.
 
-### Phase 1: Game Environment — Implemented
+The agent successfully collected gameplay experiences, updated its policy network using experience replay, and periodically synchronized its target network.
 
-Developed the match-three engine, board generation, swapping, match detection, gravity, cascades, and special candies.
+However, additional training did not consistently improve gameplay performance.
 
-### Phase 2: Heuristic AI Agents — Implemented
+To investigate this, checkpoints were saved throughout a single reproducible 100-episode training run.
 
-Developed greedy and objective-aware agents to evaluate legal moves using matching opportunities and level objectives.
+### DQN Checkpoint Evaluation
 
-### Phase 3: Objective-Based Gameplay — Implemented
+Each checkpoint was evaluated using a greedy policy (`epsilon = 0`) on 500 starting boards per evaluation set.
 
-Added configurable move limits, candy collection objectives, objective tracking, win/loss conditions, and board reshuffling.
+The random policy selects uniformly from legal moves.
 
-### Phase 4: Supervised Machine Learning — Implemented, Improving Performance
+| Agent / checkpoint | Seeds 20000–20499 | Fresh seeds 30000–30499 |
+|---|---:|---:|
+| Untrained (episode 0) | 20.8% | 19.8% |
+| Episode 25 | 30.6% | Not evaluated |
+| **Episode 50** | **38.2%** | **31.4%** |
+| Episode 75 | 18.6% | Not evaluated |
+| Episode 100 | 22.4% | 18.2% |
+| Random legal move | 27.2% | 25.4% |
 
-Developed the supervised training pipeline and neural-network-powered agent.
+On the fresh 500-game evaluation set:
 
-Current work includes:
+| Metric | DQN (50 episodes) | Random |
+|---|---:|---:|
+| Games | 500 | 500 |
+| Wins | 157 | 127 |
+| Win rate | **31.4%** | 25.4% |
+| Average reward | **11.04** | 9.90 |
 
-- Evaluating move-ranking accuracy
-- Improving feature representations
-- Comparing neural network variants
-- Investigating model generalization
-- Improving gameplay performance against heuristic baselines
+The episode-50 DQN outperformed random selection on both evaluation sets.
 
-**Next milestone:** Train a corrected 734-feature baseline to isolate the effect of target-mask encoding, followed by further model evaluation.
+However, the episode-100 DQN fell to **18.2%** on the fresh evaluation set.
 
-### Phase 5: Reinforcement Learning — Planned
+This demonstrates that **additional training updates did not reliably improve policy performance in this experiment**.
 
-Train an agent through simulated gameplay using rewards based on objective completion, scoring, and move efficiency.
+Potential explanations include unstable or overestimated Q-values, although the precise cause has not yet been established.
 
-Compare its performance against the heuristic and supervised ML agents.
+Because the episode-50 checkpoint was selected after inspecting the earlier evaluation results, the fresh evaluation provides a useful follow-up check. Independent training runs, broader target-color tests, and statistical comparisons are still needed.
+
+The current DQN has not yet demonstrated performance comparable to the objective-aware heuristic.
+
+### Planned RL Improvements
+
+Future experiments will investigate:
+
+- Double DQN to reduce Q-value overestimation
+- More extensive training with intermediate checkpoints
+- Larger experience replay buffers
+- Input and reward normalization
+- Performance evaluation across multiple random seeds
+- Alternative reward functions
+- Training stability and generalization
+
+Potential extensions include convolutional neural networks and supervised pretraining.
+
+## Development Roadmap
+
+### Phase 1: Game Environment — Complete
+
+- [x] Board generation and legal swaps
+- [x] Horizontal and vertical matching
+- [x] Gravity, refilling, and cascades
+- [x] Special candies and chain reactions
+
+### Phase 2: Heuristic Agents — Complete
+
+- [x] Greedy agent
+- [x] Objective-aware agent
+- [x] Automated gameplay evaluation
+
+### Phase 3: Objective-Based Gameplay — Complete
+
+- [x] Configurable move limits
+- [x] Candy-collection objectives
+- [x] Win/loss conditions
+- [x] Board reshuffling
+
+### Phase 4: Supervised Machine Learning — Complete
+
+- [x] Supervised dataset generation
+- [x] Neural network training
+- [x] Feature encoding experiments
+- [x] Corrected model comparisons
+- [x] Pairwise ranking experiments
+- [x] Move-ranking and gameplay benchmarks
+
+### Phase 5: Reinforcement Learning — In Progress
+
+- [x] Reinforcement learning environment
+- [x] State-action feature encoding
+- [x] Deep Q-Network agent
+- [x] Experience replay
+- [x] Target network synchronization
+- [x] Epsilon-greedy exploration
+- [x] Training and checkpoint saving
+- [x] Initial training and evaluation experiments
+- [ ] Improve training stability
+- [ ] Evaluate longer training runs
+- [ ] Compare RL against other agents under unified benchmark conditions
+
+### Final Project Improvements — Planned
+
+- [ ] Unified evaluation framework
+- [ ] Per-game results and confidence intervals
+- [ ] Evaluation across multiple target colors
+- [ ] Stronger lookahead heuristic baseline
+- [ ] Final performance charts
+- [ ] GitHub Actions CI
+- [ ] Final project documentation and analysis
 
 ## Technologies
 
-- **Python:** Game environment, algorithms, simulation, and AI development
+- **Python:** Game environment, algorithms, simulation, and AI agents
 - **PyTorch:** Neural network training and inference
-- **NumPy:** State encoding and feature engineering
-- **pandas:** Benchmark analysis and result aggregation
+- **NumPy:** Feature engineering and state encoding
+- **pandas:** Benchmark analysis and data processing
 - **Matplotlib:** Performance visualization
-- **pytest:** Automated unit testing
+- **pytest:** Automated testing
 - **Git/GitHub:** Version control
 
 ## Running the Project
 
-Run the main gameplay simulation from the project root:
+Commands below are run from the repository root.
+
+On Windows, `py` uses the Python launcher. On other systems, replace it with the appropriate Python command.
+
+### Gameplay
 
 ```bash
 py main.py
 ```
 
-The desired agent and board configuration can be selected in `main.py`.
+The gameplay configuration and selected agent can be adjusted in `main.py`.
 
-### Training
+### Supervised ML Training
 
-Generate sample supervised training data:
+Generate supervised training data:
 
 ```bash
 py generate_dataset.py
 ```
 
-Run dataset preparation:
+Prepare datasets:
 
 ```bash
 py prepare_dataset.py
 ```
 
-Train the currently configured neural network:
+Train the configured supervised model:
 
 ```bash
 py train_model.py
 ```
 
-The current training configuration uses the 9×9 target-mask representation and saves its best checkpoint to:
+The target-mask training configuration saves its selected model to:
 
 ```text
 models/best_move_model_9x9_target_mask.pth
 ```
 
-PyTorch checkpoint files (`.pth`) are excluded from Git version control. Models must be trained or supplied separately before loading them for inference.
+### DQN Training
 
-## Benchmarking
+Train the reinforcement learning agent:
+
+```bash
+py train_dqn.py
+```
+
+The current training script runs a seeded experiment and saves intermediate checkpoints, including:
+
+```text
+models/dqn_seed42_ep0.pth
+models/dqn_seed42_ep25.pth
+models/dqn_seed42_ep50.pth
+models/dqn_seed42_ep75.pth
+models/dqn_seed42_ep100.pth
+```
+
+### Benchmarking
 
 Run the heuristic-agent benchmark:
 
@@ -250,40 +366,37 @@ Run the heuristic-agent benchmark:
 py -m benchmarks.benchmark
 ```
 
-Run the original 9×9 ML-agent gameplay benchmark:
+Run the supervised ML gameplay benchmark:
 
 ```bash
 py -m benchmarks.benchmark_ml
 ```
 
-Evaluate move-ranking performance:
+Evaluate supervised move-ranking performance:
 
 ```bash
 py -m benchmarks.evaluate_move_rankings
 ```
 
-The move-ranking evaluator compares both trained 9×9 models and a random-move baseline on identical generated board states.
+Evaluate DQN checkpoints:
 
-The benchmark scripts require their corresponding model checkpoints to be available locally.
+```bash
+py -m benchmarks.benchmark_dqn
+```
 
-Benchmark outputs include gameplay statistics, CSV summaries, and Matplotlib visualizations.
+Each benchmark currently has its own agent and model configuration.
 
-## Testing
+**Results from different scripts are not necessarily directly comparable yet.**
 
-The project includes automated tests covering:
+A unified evaluation framework is a planned improvement.
 
-- Board initialization and match detection
-- Legal and invalid swaps
-- Special-candy creation and activation
-- Color bomb interactions with configurable candy types
-- Power-up chain reactions
-- Objective tracking and win/loss conditions
-- Heuristic agent decisions
-- Configurable board generation
-- ML feature encoding and target-mask correctness
-- Dataset generation and reproducibility
-- Neural network input and output dimensions
-- ML agent move selection
+### Model Checkpoints
+
+PyTorch checkpoint files (`.pth`) are excluded from Git version control.
+
+Models must be trained or supplied separately before loading them for inference.
+
+### Testing
 
 Run the test suite from the project root:
 
@@ -291,16 +404,67 @@ Run the test suite from the project root:
 py -m pytest tests/ -v
 ```
 
-Tests that load trained checkpoints require the corresponding model files to be available locally.
+The test suite covers:
+
+- Board initialization and match detection
+- Legal and invalid swaps
+- Special-candy creation and activation
+- Power-up chain reactions
+- Objective tracking and win/loss conditions
+- Configurable board generation
+- ML feature encoding
+- Supervised model behavior
+- RL environment transitions
+- Replay memory
+- DQN action selection
+- Network training and target-network synchronization
+
+Some model-loading tests require local checkpoint files.
+
+## Findings and Limitations
+
+### Objective-Aware Decision Making
+
+Maximizing immediate score does not necessarily maximize objective completion.
+
+The objective-aware heuristic consistently demonstrated the importance of selecting moves based on the level's candy-collection requirements.
+
+### Feature Engineering
+
+Explicit target-candy masks improved heuristic-aligned move ranking in the corrected supervised experiments.
+
+This suggests that providing the network with objective-relevant information can improve its decision-making.
+
+### Regression Accuracy vs. Move Quality
+
+Low prediction error does not guarantee that a model selects the strongest available action.
+
+The supervised experiments also demonstrated that pairwise ranking objectives do not automatically outperform regression-based models.
+
+### Reinforcement Learning Stability
+
+The DQN learned a policy that outperformed random selection during early training, but additional updates reduced its gameplay performance.
+
+This highlights the importance of evaluating intermediate checkpoints rather than assuming that lower training loss or longer training produces better policies.
+
+### Evaluation Methodology
+
+Reliable comparisons require consistent board configurations, objective settings, evaluation seeds, and sufficient games to measure uncertainty.
+
+A unified evaluation framework is a major planned improvement.
 
 ## Project Status
 
 **Actively in Development**
 
-The core game environment, heuristic agents, supervised ML pipeline, and automated evaluation systems are implemented.
+The core game environment, heuristic agents, supervised machine learning pipeline, and initial DQN training system are implemented.
 
-Current development focuses on improving the supervised model's decision-making through feature engineering, controlled experiments, and move-ranking evaluation.
+Current development focuses on:
 
-Future work will investigate additional learning approaches, including reinforcement learning.
+- Standardizing benchmarks across agents
+- Improving reinforcement learning stability
+- Investigating training generalization
+- Developing stronger performance baselines
+- Preparing final experimental comparisons and documentation
 
-The project serves as an ongoing exploration of AI decision-making, machine learning evaluation, and software engineering through a custom interactive game environment.
+The project serves as an ongoing exploration of artificial intelligence, machine learning experimentation, and software engineering through a custom match-three game environment.
