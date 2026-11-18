@@ -47,3 +47,19 @@ def encode_state_move_with_target_mask(board, move, game=None):
     target_mask = target_mask.flatten()
 
     return np.concatenate([feature_vector, target_mask])
+
+def encode_rl_state_move(board, move, game):
+    feature_vector = encode_state_move_with_target_mask(board, move, game)
+
+    remaining_turns = max(0, game.max_turns - game.turn)
+
+    remaining_targets = max(
+        0,
+        game.target_candy_count - game.collect_candies
+    )
+    feature_vector = np.concatenate([
+        feature_vector,
+        np.array([remaining_turns, remaining_targets])
+    ])
+
+    return feature_vector
