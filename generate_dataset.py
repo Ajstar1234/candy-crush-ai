@@ -7,10 +7,17 @@ from agent import Agent
 from ml_features import encode_state_move, encode_state_move_with_target_mask
 
 
-def generate_training_data(num_games=100, seed=None, rows=5, cols=5, num_candy_types=4, use_target_mask=False):
+def generate_training_data(
+        num_games=100, 
+        seed=None, rows=5, 
+        cols=5, 
+        num_candy_types=4, 
+        use_target_mask=False,
+        return_group_sizes=False):
 
     X = []
     y = []
+    group_sizes = []
 
     for game_index in range(num_games):
         if seed is not None:
@@ -33,6 +40,8 @@ def generate_training_data(num_games=100, seed=None, rows=5, cols=5, num_candy_t
 
             if not valid_moves:
                 break
+
+            group_sizes.append(len(valid_moves))
 
             for move in valid_moves:
                 if use_target_mask:
@@ -57,6 +66,9 @@ def generate_training_data(num_games=100, seed=None, rows=5, cols=5, num_candy_t
             target_candies_cleared = board.cleared_candies.get(game.target_candy_type, 0)
             game.update_collected_candies(target_candies_cleared)
             game.update_turn()
+
+    if return_group_sizes:
+        return np.array(X), np.array(y), group_sizes
 
     return np.array(X), np.array(y)
 

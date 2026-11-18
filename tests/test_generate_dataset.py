@@ -27,3 +27,20 @@ def test_generate_training_data_multiple_states():
 
     assert X.shape[0] > 0
     assert unique_boards.shape[0] > 1
+
+def test_generate_group_sizes():
+    X, y, group_sizes = generate_training_data(
+        num_games=2,
+        seed=42,
+        rows=5,
+        cols=5,
+        num_candy_types=4,
+        use_target_mask=True,
+        return_group_sizes=True
+    )
+
+    assert len(group_sizes) > 0
+    assert sum(group_sizes) == len(X)
+    assert len(X) == len(y)
+    assert X.shape[1] == 205
+    assert all(size > 0 for size in group_sizes)

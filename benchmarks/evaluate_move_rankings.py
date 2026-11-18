@@ -19,6 +19,12 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
         use_target_mask=True
     )
 
+    ranking_ml_agent = MLAgent(
+        input_size=815,
+        checkpoint_path="models/best_move_model_9x9_ranking_lr0001.pth",
+        use_target_mask=True
+    )
+
     original_correct_predictions = 0
     total_evaluations = 0
     original_total_score_gap = 0
@@ -26,6 +32,8 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
     total_random_score_gap = 0
     target_mask_correct_predictions = 0
     target_mask_total_score_gap = 0
+    ranking_correct_predictions = 0
+    ranking_total_score_gap = 0
 
     for i in range(num_boards):
         random.seed(seed + i)
@@ -87,6 +95,19 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
         if target_mask_score_gap == 0:
             target_mask_correct_predictions += 1
 
+        ranking_ml_move = ranking_ml_agent.choose_move(board, game)
+
+        ranking_ml_score = heuristic_agent.evaluate_move(
+            board, ranking_ml_move, game
+        )
+
+        ranking_score_gap = best_heuristic_score - ranking_ml_score
+
+        ranking_total_score_gap += ranking_score_gap
+
+        if ranking_score_gap == 0:
+            ranking_correct_predictions += 1
+
         total_evaluations += 1
 
     if total_evaluations == 0:
@@ -96,6 +117,8 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
     original_average_heuristic_score_gap = original_total_score_gap / total_evaluations
     target_mask_move_ranking_accuracy = target_mask_correct_predictions / total_evaluations * 100
     target_mask_average_heuristic_score_gap = target_mask_total_score_gap / total_evaluations
+    ranking_accuracy = ranking_correct_predictions / total_evaluations * 100
+    ranking_average_score_gap = ranking_total_score_gap / total_evaluations
     average_random_accuracy = total_random_accuracy / total_evaluations * 100
     average_random_score_gap = total_random_score_gap / total_evaluations
 
@@ -109,6 +132,9 @@ def evaluate_move_ranking(num_boards=100, seed=1000):
     print(f"Target mask average heuristic score gap: {target_mask_average_heuristic_score_gap:.2f}")
     print(f"Random optimal-move accuracy: {average_random_accuracy:.2f}%")
     print(f"Random average heuristic score gap: {average_random_score_gap:.2f}")
+    print(f"Ranking model correct predictions: {ranking_correct_predictions}")
+    print(f"Ranking model accuracy: {ranking_accuracy:.2f}%")
+    print(f"Ranking model average heuristic score gap: {ranking_average_score_gap:.2f}")
 
 if __name__ == "__main__":
-    evaluate_move_ranking(num_boards=500, seed=1000)
+    evaluate_move_ranking(num_boards=500, seed=3000)
