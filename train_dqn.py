@@ -4,10 +4,16 @@ import random
 
 from dqn_agent import DQNAgent
 from rl_environment import RLEnvironment
-from ml_features import encode_rl_state_move
+from ml_features import encode_rl_state_move, encode_normalized_rl_state_move
 
 def run_training_episode(env, agent, seed=None):
     env.reset(seed=seed)
+
+    encode_features = (
+        encode_normalized_rl_state_move
+        if agent.use_normalized_features
+        else encode_rl_state_move
+    )
 
     total_reward = 0.0
 
@@ -19,7 +25,7 @@ def run_training_episode(env, agent, seed=None):
         if move is None:
             raise RuntimeError("No legal moves in an active episode.")
 
-        features = encode_rl_state_move(env.board, move, env.game)
+        features = encode_features(env.board, move, env.game)
 
         observation, reward, done, info = env.step(move)
 
@@ -30,11 +36,10 @@ def run_training_episode(env, agent, seed=None):
         else:
             next_moves = env.get_valid_moves()
 
-            next_action_features = np.array(
-                [encode_rl_state_move(env.board, next_move, env.game)
-                 for next_move in next_moves],
-                dtype=np.float32
-            )
+            next_action_features = np.array([
+                encode_features(env.board, next_move, env.game)
+                for next_move in next_moves
+            ], dtype=np.float32)
 
         agent.remember(
             state_action_features=features,
@@ -58,11 +63,14 @@ def train_dqn(num_episodes=5):
     torch.manual_seed(42)
 
     env = RLEnvironment()
-    agent = DQNAgent()
+    agent = DQNAgent(
+        learning_rate=0.00005,
+        use_normalized_features=False
+    )
 
     torch.save(
         agent.policy_net.state_dict(),
-        "models/dqn_seed42_ep0.pth"
+        "models/double_dqn_long_seed42_ep0.pth"
     )
 
     for episode in range(num_episodes):
@@ -82,10 +90,10 @@ def train_dqn(num_episodes=5):
             if losses else 0.0
         )
 
-        if (episode + 1) in (25, 50, 75, 100):
+        if (episode + 1) in (100, 200, 300, 400, 500):
             torch.save(
                 agent.policy_net.state_dict(),
-                f"models/dqn_seed42_ep{episode + 1}.pth"
+                f"models/double_dqn_long_seed42_ep{episode + 1}.pth"
             )
     
 
@@ -101,7 +109,7 @@ def train_dqn(num_episodes=5):
 
     torch.save(
         agent.policy_net.state_dict(),
-        "models/dqn_100episodes.pth"
+        "models/double_dqn_long_500episodes.pth"
     )
 
     print("DQN checkpoint saved.")
@@ -109,4 +117,4 @@ def train_dqn(num_episodes=5):
     return agent
 
 if __name__ == "__main__":
-    agent = train_dqn(num_episodes=100)
+    agent = train_dqn(num_episodes=500)

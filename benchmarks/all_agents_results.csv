@@ -1,0 +1,2501 @@
+agent,seed,won,reward,turns,target_candy_type
+Random,30000,True,20.0,4,1
+Random,30001,False,4.0,8,1
+Random,30002,False,9.0,8,1
+Random,30003,False,6.0,8,1
+Random,30004,False,3.0,8,1
+Random,30005,True,22.0,7,1
+Random,30006,True,21.0,6,1
+Random,30007,False,7.0,8,1
+Random,30008,False,4.0,8,1
+Random,30009,False,6.0,8,1
+Random,30010,False,9.0,8,1
+Random,30011,False,0.0,8,1
+Random,30012,False,6.0,8,1
+Random,30013,False,9.0,8,1
+Random,30014,False,9.0,8,1
+Random,30015,False,9.0,8,1
+Random,30016,False,8.0,8,1
+Random,30017,True,20.0,7,1
+Random,30018,False,9.0,8,1
+Random,30019,False,7.0,8,1
+Random,30020,True,22.0,7,1
+Random,30021,False,3.0,8,1
+Random,30022,False,3.0,8,1
+Random,30023,False,6.0,8,1
+Random,30024,False,6.0,8,1
+Random,30025,False,3.0,8,1
+Random,30026,True,20.0,7,1
+Random,30027,False,3.0,8,1
+Random,30028,False,3.0,8,1
+Random,30029,False,4.0,8,1
+Random,30030,True,21.0,7,1
+Random,30031,True,20.0,6,1
+Random,30032,False,6.0,8,1
+Random,30033,True,22.0,8,1
+Random,30034,False,6.0,8,1
+Random,30035,False,9.0,8,1
+Random,30036,True,20.0,7,1
+Random,30037,False,3.0,8,1
+Random,30038,False,9.0,8,1
+Random,30039,True,23.0,6,1
+Random,30040,True,22.0,3,1
+Random,30041,False,9.0,8,1
+Random,30042,False,9.0,8,1
+Random,30043,False,6.0,8,1
+Random,30044,False,3.0,8,1
+Random,30045,False,9.0,8,1
+Random,30046,False,0.0,8,1
+Random,30047,False,6.0,8,1
+Random,30048,False,6.0,8,1
+Random,30049,False,6.0,8,1
+Random,30050,True,23.0,7,1
+Random,30051,False,6.0,8,1
+Random,30052,False,0.0,8,1
+Random,30053,False,3.0,8,1
+Random,30054,True,21.0,4,1
+Random,30055,True,22.0,8,1
+Random,30056,True,22.0,6,1
+Random,30057,False,6.0,8,1
+Random,30058,False,7.0,8,1
+Random,30059,False,6.0,8,1
+Random,30060,False,3.0,8,1
+Random,30061,False,0.0,8,1
+Random,30062,False,3.0,8,1
+Random,30063,True,24.0,5,1
+Random,30064,True,22.0,6,1
+Random,30065,False,3.0,8,1
+Random,30066,True,22.0,6,1
+Random,30067,True,22.0,6,1
+Random,30068,True,24.0,4,1
+Random,30069,False,6.0,8,1
+Random,30070,False,3.0,8,1
+Random,30071,False,9.0,8,1
+Random,30072,True,21.0,6,1
+Random,30073,False,9.0,8,1
+Random,30074,True,22.0,5,1
+Random,30075,False,3.0,8,1
+Random,30076,False,9.0,8,1
+Random,30077,True,22.0,8,1
+Random,30078,True,20.0,4,1
+Random,30079,False,6.0,8,1
+Random,30080,False,9.0,8,1
+Random,30081,True,21.0,7,1
+Random,30082,False,9.0,8,1
+Random,30083,True,22.0,5,1
+Random,30084,True,21.0,8,1
+Random,30085,False,0.0,8,1
+Random,30086,True,22.0,5,1
+Random,30087,True,20.0,6,1
+Random,30088,False,6.0,8,1
+Random,30089,True,22.0,4,1
+Random,30090,False,3.0,8,1
+Random,30091,False,3.0,8,1
+Random,30092,False,9.0,8,1
+Random,30093,True,22.0,7,1
+Random,30094,False,6.0,8,1
+Random,30095,False,9.0,8,1
+Random,30096,True,25.0,3,1
+Random,30097,False,4.0,8,1
+Random,30098,False,9.0,8,1
+Random,30099,False,3.0,8,1
+Random,30100,False,9.0,8,1
+Random,30101,False,3.0,8,1
+Random,30102,False,6.0,8,1
+Random,30103,False,0.0,8,1
+Random,30104,False,6.0,8,1
+Random,30105,False,7.0,8,1
+Random,30106,False,3.0,8,1
+Random,30107,False,9.0,8,1
+Random,30108,False,3.0,8,1
+Random,30109,False,6.0,8,1
+Random,30110,True,21.0,5,1
+Random,30111,True,25.0,3,1
+Random,30112,False,5.0,8,1
+Random,30113,False,9.0,8,1
+Random,30114,True,21.0,8,1
+Random,30115,True,27.0,5,1
+Random,30116,False,9.0,8,1
+Random,30117,False,4.0,8,1
+Random,30118,True,25.0,3,1
+Random,30119,False,6.0,8,1
+Random,30120,False,3.0,8,1
+Random,30121,False,3.0,8,1
+Random,30122,True,21.0,8,1
+Random,30123,False,9.0,8,1
+Random,30124,False,3.0,8,1
+Random,30125,False,6.0,8,1
+Random,30126,False,4.0,8,1
+Random,30127,False,3.0,8,1
+Random,30128,False,6.0,8,1
+Random,30129,False,3.0,8,1
+Random,30130,False,7.0,8,1
+Random,30131,False,6.0,8,1
+Random,30132,False,9.0,8,1
+Random,30133,True,20.0,3,1
+Random,30134,False,9.0,8,1
+Random,30135,True,20.0,5,1
+Random,30136,False,6.0,8,1
+Random,30137,False,6.0,8,1
+Random,30138,False,9.0,8,1
+Random,30139,False,6.0,8,1
+Random,30140,True,23.0,5,1
+Random,30141,False,3.0,8,1
+Random,30142,False,6.0,8,1
+Random,30143,False,6.0,8,1
+Random,30144,False,3.0,8,1
+Random,30145,True,24.0,4,1
+Random,30146,False,3.0,8,1
+Random,30147,False,3.0,8,1
+Random,30148,False,3.0,8,1
+Random,30149,True,20.0,3,1
+Random,30150,True,20.0,7,1
+Random,30151,False,1.0,8,1
+Random,30152,False,0.0,8,1
+Random,30153,False,3.0,8,1
+Random,30154,False,6.0,8,1
+Random,30155,False,6.0,8,1
+Random,30156,False,9.0,8,1
+Random,30157,True,21.0,8,1
+Random,30158,True,22.0,8,1
+Random,30159,False,9.0,8,1
+Random,30160,False,6.0,8,1
+Random,30161,False,0.0,8,1
+Random,30162,False,3.0,8,1
+Random,30163,False,0.0,8,1
+Random,30164,False,6.0,8,1
+Random,30165,True,22.0,7,1
+Random,30166,False,3.0,8,1
+Random,30167,False,6.0,8,1
+Random,30168,False,3.0,8,1
+Random,30169,False,6.0,8,1
+Random,30170,True,25.0,7,1
+Random,30171,False,6.0,8,1
+Random,30172,False,9.0,8,1
+Random,30173,True,22.0,8,1
+Random,30174,False,3.0,8,1
+Random,30175,False,6.0,8,1
+Random,30176,True,22.0,3,1
+Random,30177,False,3.0,8,1
+Random,30178,True,22.0,8,1
+Random,30179,False,7.0,8,1
+Random,30180,False,3.0,8,1
+Random,30181,True,21.0,8,1
+Random,30182,False,6.0,8,1
+Random,30183,False,3.0,8,1
+Random,30184,False,3.0,8,1
+Random,30185,True,22.0,6,1
+Random,30186,False,9.0,8,1
+Random,30187,False,3.0,8,1
+Random,30188,False,6.0,8,1
+Random,30189,True,22.0,6,1
+Random,30190,False,3.0,8,1
+Random,30191,False,9.0,8,1
+Random,30192,False,9.0,8,1
+Random,30193,False,5.0,8,1
+Random,30194,False,7.0,8,1
+Random,30195,False,3.0,8,1
+Random,30196,False,6.0,8,1
+Random,30197,False,9.0,8,1
+Random,30198,False,3.0,8,1
+Random,30199,False,9.0,8,1
+Random,30200,False,3.0,8,1
+Random,30201,True,20.0,8,1
+Random,30202,True,22.0,7,1
+Random,30203,False,6.0,8,1
+Random,30204,False,6.0,8,1
+Random,30205,False,6.0,8,1
+Random,30206,False,3.0,8,1
+Random,30207,True,22.0,5,1
+Random,30208,False,3.0,8,1
+Random,30209,False,1.0,8,1
+Random,30210,False,6.0,8,1
+Random,30211,False,3.0,8,1
+Random,30212,True,21.0,4,1
+Random,30213,False,6.0,8,1
+Random,30214,False,6.0,8,1
+Random,30215,False,6.0,8,1
+Random,30216,False,9.0,8,1
+Random,30217,False,4.0,8,1
+Random,30218,True,22.0,8,1
+Random,30219,False,0.0,8,1
+Random,30220,True,22.0,8,1
+Random,30221,False,3.0,8,1
+Random,30222,False,4.0,8,1
+Random,30223,False,6.0,8,1
+Random,30224,False,6.0,8,1
+Random,30225,False,6.0,8,1
+Random,30226,False,9.0,8,1
+Random,30227,False,6.0,8,1
+Random,30228,False,7.0,8,1
+Random,30229,True,22.0,6,1
+Random,30230,False,9.0,8,1
+Random,30231,False,6.0,8,1
+Random,30232,True,22.0,7,1
+Random,30233,False,3.0,8,1
+Random,30234,False,3.0,8,1
+Random,30235,True,21.0,2,1
+Random,30236,True,28.0,4,1
+Random,30237,False,9.0,8,1
+Random,30238,True,24.0,1,1
+Random,30239,False,6.0,8,1
+Random,30240,False,1.0,8,1
+Random,30241,False,6.0,8,1
+Random,30242,False,3.0,8,1
+Random,30243,False,9.0,8,1
+Random,30244,False,3.0,8,1
+Random,30245,False,3.0,8,1
+Random,30246,True,22.0,2,1
+Random,30247,True,20.0,6,1
+Random,30248,False,9.0,8,1
+Random,30249,False,6.0,8,1
+Random,30250,False,9.0,8,1
+Random,30251,False,0.0,8,1
+Random,30252,True,20.0,4,1
+Random,30253,True,20.0,7,1
+Random,30254,True,21.0,6,1
+Random,30255,False,3.0,8,1
+Random,30256,False,6.0,8,1
+Random,30257,False,6.0,8,1
+Random,30258,False,8.0,8,1
+Random,30259,True,20.0,8,1
+Random,30260,True,22.0,5,1
+Random,30261,False,3.0,8,1
+Random,30262,False,4.0,8,1
+Random,30263,True,20.0,5,1
+Random,30264,False,8.0,8,1
+Random,30265,False,0.0,8,1
+Random,30266,False,6.0,8,1
+Random,30267,False,0.0,8,1
+Random,30268,False,6.0,8,1
+Random,30269,False,0.0,8,1
+Random,30270,True,22.0,8,1
+Random,30271,False,5.0,8,1
+Random,30272,False,7.0,8,1
+Random,30273,False,9.0,8,1
+Random,30274,False,6.0,8,1
+Random,30275,False,3.0,8,1
+Random,30276,True,20.0,5,1
+Random,30277,False,9.0,8,1
+Random,30278,True,22.0,5,1
+Random,30279,True,23.0,4,1
+Random,30280,False,0.0,8,1
+Random,30281,False,9.0,8,1
+Random,30282,False,8.0,8,1
+Random,30283,True,21.0,8,1
+Random,30284,False,4.0,8,1
+Random,30285,False,3.0,8,1
+Random,30286,False,8.0,8,1
+Random,30287,False,0.0,8,1
+Random,30288,False,3.0,8,1
+Random,30289,False,6.0,8,1
+Random,30290,False,9.0,8,1
+Random,30291,False,3.0,8,1
+Random,30292,False,7.0,8,1
+Random,30293,False,6.0,8,1
+Random,30294,True,22.0,8,1
+Random,30295,False,9.0,8,1
+Random,30296,True,22.0,5,1
+Random,30297,False,1.0,8,1
+Random,30298,True,22.0,8,1
+Random,30299,False,0.0,8,1
+Random,30300,False,1.0,8,1
+Random,30301,False,3.0,8,1
+Random,30302,True,22.0,6,1
+Random,30303,True,20.0,8,1
+Random,30304,False,6.0,8,1
+Random,30305,False,0.0,8,1
+Random,30306,False,6.0,8,1
+Random,30307,True,20.0,8,1
+Random,30308,True,21.0,8,1
+Random,30309,False,6.0,8,1
+Random,30310,False,3.0,8,1
+Random,30311,False,4.0,8,1
+Random,30312,False,6.0,8,1
+Random,30313,True,22.0,6,1
+Random,30314,True,28.0,2,1
+Random,30315,False,6.0,8,1
+Random,30316,False,5.0,8,1
+Random,30317,False,3.0,8,1
+Random,30318,False,0.0,8,1
+Random,30319,False,6.0,8,1
+Random,30320,False,9.0,8,1
+Random,30321,True,22.0,4,1
+Random,30322,False,6.0,8,1
+Random,30323,True,22.0,8,1
+Random,30324,True,20.0,8,1
+Random,30325,False,6.0,8,1
+Random,30326,False,6.0,8,1
+Random,30327,False,6.0,8,1
+Random,30328,False,6.0,8,1
+Random,30329,True,21.0,6,1
+Random,30330,False,3.0,8,1
+Random,30331,False,6.0,8,1
+Random,30332,False,6.0,8,1
+Random,30333,False,3.0,8,1
+Random,30334,False,6.0,8,1
+Random,30335,True,20.0,8,1
+Random,30336,False,2.0,8,1
+Random,30337,True,22.0,7,1
+Random,30338,False,6.0,8,1
+Random,30339,False,9.0,8,1
+Random,30340,False,9.0,8,1
+Random,30341,True,22.0,5,1
+Random,30342,True,20.0,8,1
+Random,30343,False,6.0,8,1
+Random,30344,False,6.0,8,1
+Random,30345,False,9.0,8,1
+Random,30346,False,3.0,8,1
+Random,30347,False,3.0,8,1
+Random,30348,False,7.0,8,1
+Random,30349,False,6.0,8,1
+Random,30350,False,9.0,8,1
+Random,30351,False,3.0,8,1
+Random,30352,False,7.0,8,1
+Random,30353,False,3.0,8,1
+Random,30354,False,7.0,8,1
+Random,30355,False,8.0,8,1
+Random,30356,False,3.0,8,1
+Random,30357,False,9.0,8,1
+Random,30358,False,9.0,8,1
+Random,30359,False,6.0,8,1
+Random,30360,True,22.0,6,1
+Random,30361,False,3.0,8,1
+Random,30362,False,6.0,8,1
+Random,30363,True,20.0,7,1
+Random,30364,False,6.0,8,1
+Random,30365,False,9.0,8,1
+Random,30366,False,8.0,8,1
+Random,30367,False,7.0,8,1
+Random,30368,True,22.0,8,1
+Random,30369,False,6.0,8,1
+Random,30370,False,6.0,8,1
+Random,30371,False,9.0,8,1
+Random,30372,False,6.0,8,1
+Random,30373,False,9.0,8,1
+Random,30374,False,6.0,8,1
+Random,30375,True,20.0,7,1
+Random,30376,False,0.0,8,1
+Random,30377,False,6.0,8,1
+Random,30378,False,3.0,8,1
+Random,30379,False,3.0,8,1
+Random,30380,False,6.0,8,1
+Random,30381,False,6.0,8,1
+Random,30382,False,9.0,8,1
+Random,30383,False,1.0,8,1
+Random,30384,True,22.0,3,1
+Random,30385,False,2.0,8,1
+Random,30386,False,0.0,8,1
+Random,30387,False,6.0,8,1
+Random,30388,False,3.0,8,1
+Random,30389,False,9.0,8,1
+Random,30390,False,6.0,8,1
+Random,30391,True,22.0,6,1
+Random,30392,False,9.0,8,1
+Random,30393,True,22.0,7,1
+Random,30394,False,6.0,8,1
+Random,30395,True,22.0,5,1
+Random,30396,False,3.0,8,1
+Random,30397,False,9.0,8,1
+Random,30398,False,5.0,8,1
+Random,30399,False,3.0,8,1
+Random,30400,False,9.0,8,1
+Random,30401,False,3.0,8,1
+Random,30402,False,6.0,8,1
+Random,30403,False,6.0,8,1
+Random,30404,False,3.0,8,1
+Random,30405,True,20.0,7,1
+Random,30406,True,22.0,4,1
+Random,30407,True,22.0,4,1
+Random,30408,True,23.0,8,1
+Random,30409,False,7.0,8,1
+Random,30410,False,3.0,8,1
+Random,30411,False,9.0,8,1
+Random,30412,True,22.0,8,1
+Random,30413,False,0.0,8,1
+Random,30414,False,6.0,8,1
+Random,30415,False,9.0,8,1
+Random,30416,False,9.0,8,1
+Random,30417,False,6.0,8,1
+Random,30418,False,6.0,8,1
+Random,30419,True,21.0,4,1
+Random,30420,False,0.0,8,1
+Random,30421,False,3.0,8,1
+Random,30422,False,6.0,8,1
+Random,30423,False,6.0,8,1
+Random,30424,True,24.0,3,1
+Random,30425,True,22.0,8,1
+Random,30426,True,21.0,7,1
+Random,30427,True,22.0,5,1
+Random,30428,False,7.0,8,1
+Random,30429,False,9.0,8,1
+Random,30430,False,0.0,8,1
+Random,30431,True,22.0,8,1
+Random,30432,False,3.0,8,1
+Random,30433,False,6.0,8,1
+Random,30434,True,22.0,6,1
+Random,30435,False,3.0,8,1
+Random,30436,True,20.0,7,1
+Random,30437,False,6.0,8,1
+Random,30438,False,3.0,8,1
+Random,30439,False,5.0,8,1
+Random,30440,False,6.0,8,1
+Random,30441,False,9.0,8,1
+Random,30442,True,22.0,6,1
+Random,30443,True,20.0,5,1
+Random,30444,False,6.0,8,1
+Random,30445,False,9.0,8,1
+Random,30446,False,6.0,8,1
+Random,30447,False,6.0,8,1
+Random,30448,False,9.0,8,1
+Random,30449,False,5.0,8,1
+Random,30450,False,5.0,8,1
+Random,30451,False,9.0,8,1
+Random,30452,True,22.0,8,1
+Random,30453,True,20.0,2,1
+Random,30454,False,5.0,8,1
+Random,30455,False,9.0,8,1
+Random,30456,False,6.0,8,1
+Random,30457,False,3.0,8,1
+Random,30458,False,3.0,8,1
+Random,30459,False,6.0,8,1
+Random,30460,False,9.0,8,1
+Random,30461,False,9.0,8,1
+Random,30462,True,22.0,3,1
+Random,30463,False,3.0,8,1
+Random,30464,False,6.0,8,1
+Random,30465,True,22.0,7,1
+Random,30466,False,3.0,8,1
+Random,30467,True,21.0,6,1
+Random,30468,False,3.0,8,1
+Random,30469,False,9.0,8,1
+Random,30470,False,6.0,8,1
+Random,30471,True,22.0,6,1
+Random,30472,False,3.0,8,1
+Random,30473,False,6.0,8,1
+Random,30474,False,3.0,8,1
+Random,30475,True,20.0,8,1
+Random,30476,False,6.0,8,1
+Random,30477,False,6.0,8,1
+Random,30478,False,3.0,8,1
+Random,30479,False,9.0,8,1
+Random,30480,True,20.0,6,1
+Random,30481,False,3.0,8,1
+Random,30482,False,5.0,8,1
+Random,30483,False,3.0,8,1
+Random,30484,False,3.0,8,1
+Random,30485,False,1.0,8,1
+Random,30486,False,7.0,8,1
+Random,30487,True,25.0,6,1
+Random,30488,False,9.0,8,1
+Random,30489,False,9.0,8,1
+Random,30490,False,6.0,8,1
+Random,30491,False,3.0,8,1
+Random,30492,False,5.0,8,1
+Random,30493,False,6.0,8,1
+Random,30494,False,3.0,8,1
+Random,30495,True,22.0,5,1
+Random,30496,False,0.0,8,1
+Random,30497,False,6.0,8,1
+Random,30498,False,0.0,8,1
+Random,30499,False,7.0,8,1
+Greedy,30000,True,21.0,3,1
+Greedy,30001,False,8.0,8,1
+Greedy,30002,True,21.0,8,1
+Greedy,30003,True,22.0,8,1
+Greedy,30004,False,6.0,8,1
+Greedy,30005,False,7.0,8,1
+Greedy,30006,False,7.0,8,1
+Greedy,30007,False,7.0,8,1
+Greedy,30008,True,20.0,8,1
+Greedy,30009,False,6.0,8,1
+Greedy,30010,False,6.0,8,1
+Greedy,30011,False,1.0,8,1
+Greedy,30012,False,9.0,8,1
+Greedy,30013,False,3.0,8,1
+Greedy,30014,False,6.0,8,1
+Greedy,30015,True,22.0,7,1
+Greedy,30016,True,20.0,6,1
+Greedy,30017,True,21.0,4,1
+Greedy,30018,False,6.0,8,1
+Greedy,30019,False,9.0,8,1
+Greedy,30020,False,6.0,8,1
+Greedy,30021,False,9.0,8,1
+Greedy,30022,True,20.0,7,1
+Greedy,30023,False,3.0,8,1
+Greedy,30024,True,28.0,4,1
+Greedy,30025,True,20.0,3,1
+Greedy,30026,False,9.0,8,1
+Greedy,30027,True,22.0,5,1
+Greedy,30028,False,4.0,8,1
+Greedy,30029,False,7.0,8,1
+Greedy,30030,False,9.0,8,1
+Greedy,30031,False,6.0,8,1
+Greedy,30032,True,22.0,7,1
+Greedy,30033,False,6.0,8,1
+Greedy,30034,True,21.0,8,1
+Greedy,30035,False,6.0,8,1
+Greedy,30036,True,22.0,7,1
+Greedy,30037,False,0.0,8,1
+Greedy,30038,False,6.0,8,1
+Greedy,30039,False,6.0,8,1
+Greedy,30040,True,25.0,4,1
+Greedy,30041,False,9.0,8,1
+Greedy,30042,False,9.0,8,1
+Greedy,30043,False,3.0,8,1
+Greedy,30044,False,3.0,8,1
+Greedy,30045,False,3.0,8,1
+Greedy,30046,False,3.0,8,1
+Greedy,30047,True,21.0,6,1
+Greedy,30048,False,3.0,8,1
+Greedy,30049,False,3.0,8,1
+Greedy,30050,True,22.0,6,1
+Greedy,30051,True,22.0,4,1
+Greedy,30052,False,6.0,8,1
+Greedy,30053,False,4.0,8,1
+Greedy,30054,True,22.0,6,1
+Greedy,30055,False,9.0,8,1
+Greedy,30056,False,3.0,8,1
+Greedy,30057,False,6.0,8,1
+Greedy,30058,False,9.0,8,1
+Greedy,30059,False,6.0,8,1
+Greedy,30060,False,9.0,8,1
+Greedy,30061,True,25.0,6,1
+Greedy,30062,False,7.0,8,1
+Greedy,30063,True,21.0,5,1
+Greedy,30064,True,22.0,4,1
+Greedy,30065,True,22.0,3,1
+Greedy,30066,False,3.0,8,1
+Greedy,30067,True,22.0,5,1
+Greedy,30068,True,22.0,6,1
+Greedy,30069,False,9.0,8,1
+Greedy,30070,False,4.0,8,1
+Greedy,30071,True,20.0,7,1
+Greedy,30072,False,8.0,8,1
+Greedy,30073,False,6.0,8,1
+Greedy,30074,False,6.0,8,1
+Greedy,30075,False,3.0,8,1
+Greedy,30076,True,22.0,8,1
+Greedy,30077,True,21.0,5,1
+Greedy,30078,False,9.0,8,1
+Greedy,30079,True,22.0,6,1
+Greedy,30080,True,20.0,7,1
+Greedy,30081,False,7.0,8,1
+Greedy,30082,True,22.0,8,1
+Greedy,30083,True,22.0,7,1
+Greedy,30084,True,41.0,8,1
+Greedy,30085,False,0.0,8,1
+Greedy,30086,True,25.0,3,1
+Greedy,30087,False,6.0,8,1
+Greedy,30088,False,7.0,8,1
+Greedy,30089,True,22.0,6,1
+Greedy,30090,True,21.0,6,1
+Greedy,30091,False,0.0,8,1
+Greedy,30092,False,4.0,8,1
+Greedy,30093,False,9.0,8,1
+Greedy,30094,False,9.0,8,1
+Greedy,30095,True,22.0,6,1
+Greedy,30096,True,26.0,6,1
+Greedy,30097,False,9.0,8,1
+Greedy,30098,False,9.0,8,1
+Greedy,30099,False,8.0,8,1
+Greedy,30100,False,7.0,8,1
+Greedy,30101,False,4.0,8,1
+Greedy,30102,False,9.0,8,1
+Greedy,30103,False,9.0,8,1
+Greedy,30104,False,3.0,8,1
+Greedy,30105,False,9.0,8,1
+Greedy,30106,False,6.0,8,1
+Greedy,30107,False,6.0,8,1
+Greedy,30108,False,9.0,8,1
+Greedy,30109,False,6.0,8,1
+Greedy,30110,True,20.0,3,1
+Greedy,30111,True,26.0,2,1
+Greedy,30112,False,3.0,8,1
+Greedy,30113,True,22.0,8,1
+Greedy,30114,False,6.0,8,1
+Greedy,30115,False,6.0,8,1
+Greedy,30116,True,22.0,8,1
+Greedy,30117,False,9.0,8,1
+Greedy,30118,True,24.0,5,1
+Greedy,30119,False,3.0,8,1
+Greedy,30120,False,3.0,8,1
+Greedy,30121,True,20.0,8,1
+Greedy,30122,False,6.0,8,1
+Greedy,30123,False,9.0,8,1
+Greedy,30124,False,9.0,8,1
+Greedy,30125,True,20.0,6,1
+Greedy,30126,False,6.0,8,1
+Greedy,30127,False,6.0,8,1
+Greedy,30128,False,9.0,8,1
+Greedy,30129,False,3.0,8,1
+Greedy,30130,False,3.0,8,1
+Greedy,30131,False,6.0,8,1
+Greedy,30132,False,0.0,8,1
+Greedy,30133,True,20.0,4,1
+Greedy,30134,True,20.0,6,1
+Greedy,30135,True,20.0,3,1
+Greedy,30136,False,4.0,8,1
+Greedy,30137,False,6.0,8,1
+Greedy,30138,False,6.0,8,1
+Greedy,30139,False,6.0,8,1
+Greedy,30140,False,5.0,8,1
+Greedy,30141,False,6.0,8,1
+Greedy,30142,True,22.0,6,1
+Greedy,30143,False,6.0,8,1
+Greedy,30144,False,3.0,8,1
+Greedy,30145,False,3.0,8,1
+Greedy,30146,False,9.0,8,1
+Greedy,30147,False,9.0,8,1
+Greedy,30148,False,3.0,8,1
+Greedy,30149,False,9.0,8,1
+Greedy,30150,False,7.0,8,1
+Greedy,30151,True,22.0,8,1
+Greedy,30152,False,8.0,8,1
+Greedy,30153,False,4.0,8,1
+Greedy,30154,True,24.0,8,1
+Greedy,30155,False,6.0,8,1
+Greedy,30156,False,6.0,8,1
+Greedy,30157,False,7.0,8,1
+Greedy,30158,False,6.0,8,1
+Greedy,30159,False,7.0,8,1
+Greedy,30160,False,3.0,8,1
+Greedy,30161,True,28.0,5,1
+Greedy,30162,False,4.0,8,1
+Greedy,30163,False,0.0,8,1
+Greedy,30164,True,20.0,8,1
+Greedy,30165,False,9.0,8,1
+Greedy,30166,False,8.0,8,1
+Greedy,30167,False,6.0,8,1
+Greedy,30168,False,5.0,8,1
+Greedy,30169,False,3.0,8,1
+Greedy,30170,True,23.0,4,1
+Greedy,30171,False,6.0,8,1
+Greedy,30172,False,3.0,8,1
+Greedy,30173,True,20.0,3,1
+Greedy,30174,True,21.0,6,1
+Greedy,30175,False,9.0,8,1
+Greedy,30176,False,9.0,8,1
+Greedy,30177,False,6.0,8,1
+Greedy,30178,False,6.0,8,1
+Greedy,30179,True,23.0,8,1
+Greedy,30180,False,6.0,8,1
+Greedy,30181,True,20.0,8,1
+Greedy,30182,False,3.0,8,1
+Greedy,30183,False,0.0,8,1
+Greedy,30184,False,3.0,8,1
+Greedy,30185,False,9.0,8,1
+Greedy,30186,True,20.0,3,1
+Greedy,30187,False,3.0,8,1
+Greedy,30188,False,0.0,8,1
+Greedy,30189,True,34.0,5,1
+Greedy,30190,False,3.0,8,1
+Greedy,30191,True,20.0,8,1
+Greedy,30192,False,6.0,8,1
+Greedy,30193,True,20.0,7,1
+Greedy,30194,False,8.0,8,1
+Greedy,30195,False,3.0,8,1
+Greedy,30196,False,7.0,8,1
+Greedy,30197,False,6.0,8,1
+Greedy,30198,False,3.0,8,1
+Greedy,30199,False,9.0,8,1
+Greedy,30200,False,3.0,8,1
+Greedy,30201,True,20.0,6,1
+Greedy,30202,False,6.0,8,1
+Greedy,30203,True,22.0,7,1
+Greedy,30204,True,26.0,2,1
+Greedy,30205,False,9.0,8,1
+Greedy,30206,False,6.0,8,1
+Greedy,30207,True,26.0,7,1
+Greedy,30208,False,3.0,8,1
+Greedy,30209,False,7.0,8,1
+Greedy,30210,True,20.0,7,1
+Greedy,30211,False,7.0,8,1
+Greedy,30212,True,22.0,8,1
+Greedy,30213,True,22.0,7,1
+Greedy,30214,False,6.0,8,1
+Greedy,30215,False,9.0,8,1
+Greedy,30216,True,21.0,2,1
+Greedy,30217,True,22.0,8,1
+Greedy,30218,False,9.0,8,1
+Greedy,30219,False,9.0,8,1
+Greedy,30220,True,37.0,2,1
+Greedy,30221,True,22.0,6,1
+Greedy,30222,False,0.0,8,1
+Greedy,30223,True,23.0,7,1
+Greedy,30224,False,3.0,8,1
+Greedy,30225,False,9.0,8,1
+Greedy,30226,False,6.0,8,1
+Greedy,30227,True,25.0,1,1
+Greedy,30228,False,9.0,8,1
+Greedy,30229,False,9.0,8,1
+Greedy,30230,True,22.0,5,1
+Greedy,30231,False,6.0,8,1
+Greedy,30232,False,3.0,8,1
+Greedy,30233,False,3.0,8,1
+Greedy,30234,True,20.0,8,1
+Greedy,30235,True,27.0,1,1
+Greedy,30236,True,22.0,5,1
+Greedy,30237,True,20.0,5,1
+Greedy,30238,False,3.0,8,1
+Greedy,30239,False,6.0,8,1
+Greedy,30240,False,3.0,8,1
+Greedy,30241,True,22.0,7,1
+Greedy,30242,False,5.0,8,1
+Greedy,30243,False,9.0,8,1
+Greedy,30244,False,9.0,8,1
+Greedy,30245,False,3.0,8,1
+Greedy,30246,True,35.0,4,1
+Greedy,30247,False,6.0,8,1
+Greedy,30248,False,6.0,8,1
+Greedy,30249,True,26.0,2,1
+Greedy,30250,False,4.0,8,1
+Greedy,30251,False,5.0,8,1
+Greedy,30252,True,20.0,3,1
+Greedy,30253,False,9.0,8,1
+Greedy,30254,False,6.0,8,1
+Greedy,30255,False,9.0,8,1
+Greedy,30256,False,6.0,8,1
+Greedy,30257,True,22.0,6,1
+Greedy,30258,True,20.0,5,1
+Greedy,30259,False,6.0,8,1
+Greedy,30260,False,6.0,8,1
+Greedy,30261,False,9.0,8,1
+Greedy,30262,False,6.0,8,1
+Greedy,30263,True,25.0,8,1
+Greedy,30264,True,22.0,7,1
+Greedy,30265,False,5.0,8,1
+Greedy,30266,True,22.0,3,1
+Greedy,30267,False,6.0,8,1
+Greedy,30268,True,20.0,6,1
+Greedy,30269,False,6.0,8,1
+Greedy,30270,True,25.0,8,1
+Greedy,30271,False,5.0,8,1
+Greedy,30272,True,22.0,7,1
+Greedy,30273,False,8.0,8,1
+Greedy,30274,False,7.0,8,1
+Greedy,30275,False,3.0,8,1
+Greedy,30276,True,23.0,3,1
+Greedy,30277,True,21.0,8,1
+Greedy,30278,False,6.0,8,1
+Greedy,30279,False,9.0,8,1
+Greedy,30280,True,20.0,3,1
+Greedy,30281,False,3.0,8,1
+Greedy,30282,True,31.0,8,1
+Greedy,30283,False,9.0,8,1
+Greedy,30284,True,20.0,8,1
+Greedy,30285,False,6.0,8,1
+Greedy,30286,True,20.0,5,1
+Greedy,30287,False,6.0,8,1
+Greedy,30288,True,22.0,5,1
+Greedy,30289,False,6.0,8,1
+Greedy,30290,False,3.0,8,1
+Greedy,30291,False,7.0,8,1
+Greedy,30292,True,20.0,7,1
+Greedy,30293,False,5.0,8,1
+Greedy,30294,True,22.0,6,1
+Greedy,30295,False,9.0,8,1
+Greedy,30296,True,21.0,2,1
+Greedy,30297,False,3.0,8,1
+Greedy,30298,True,30.0,2,1
+Greedy,30299,False,1.0,8,1
+Greedy,30300,False,0.0,8,1
+Greedy,30301,False,3.0,8,1
+Greedy,30302,False,3.0,8,1
+Greedy,30303,False,7.0,8,1
+Greedy,30304,True,20.0,5,1
+Greedy,30305,False,7.0,8,1
+Greedy,30306,False,6.0,8,1
+Greedy,30307,True,22.0,8,1
+Greedy,30308,False,3.0,8,1
+Greedy,30309,True,29.0,3,1
+Greedy,30310,False,6.0,8,1
+Greedy,30311,True,22.0,5,1
+Greedy,30312,False,9.0,8,1
+Greedy,30313,True,22.0,7,1
+Greedy,30314,False,6.0,8,1
+Greedy,30315,False,5.0,8,1
+Greedy,30316,True,22.0,7,1
+Greedy,30317,False,6.0,8,1
+Greedy,30318,False,5.0,8,1
+Greedy,30319,False,0.0,8,1
+Greedy,30320,False,9.0,8,1
+Greedy,30321,False,6.0,8,1
+Greedy,30322,False,3.0,8,1
+Greedy,30323,False,9.0,8,1
+Greedy,30324,False,6.0,8,1
+Greedy,30325,False,4.0,8,1
+Greedy,30326,False,3.0,8,1
+Greedy,30327,True,22.0,8,1
+Greedy,30328,True,22.0,6,1
+Greedy,30329,False,9.0,8,1
+Greedy,30330,False,6.0,8,1
+Greedy,30331,True,28.0,2,1
+Greedy,30332,False,0.0,8,1
+Greedy,30333,True,22.0,6,1
+Greedy,30334,False,6.0,8,1
+Greedy,30335,False,7.0,8,1
+Greedy,30336,False,7.0,8,1
+Greedy,30337,False,9.0,8,1
+Greedy,30338,False,3.0,8,1
+Greedy,30339,True,21.0,8,1
+Greedy,30340,True,21.0,2,1
+Greedy,30341,False,9.0,8,1
+Greedy,30342,True,20.0,8,1
+Greedy,30343,True,22.0,8,1
+Greedy,30344,False,0.0,8,1
+Greedy,30345,False,9.0,8,1
+Greedy,30346,False,3.0,8,1
+Greedy,30347,False,6.0,8,1
+Greedy,30348,False,0.0,8,1
+Greedy,30349,True,22.0,5,1
+Greedy,30350,True,22.0,4,1
+Greedy,30351,False,3.0,8,1
+Greedy,30352,True,22.0,8,1
+Greedy,30353,False,9.0,8,1
+Greedy,30354,False,9.0,8,1
+Greedy,30355,True,22.0,8,1
+Greedy,30356,False,9.0,8,1
+Greedy,30357,False,4.0,8,1
+Greedy,30358,False,6.0,8,1
+Greedy,30359,False,8.0,8,1
+Greedy,30360,False,9.0,8,1
+Greedy,30361,False,6.0,8,1
+Greedy,30362,True,22.0,7,1
+Greedy,30363,True,23.0,1,1
+Greedy,30364,False,7.0,8,1
+Greedy,30365,True,22.0,5,1
+Greedy,30366,False,9.0,8,1
+Greedy,30367,False,9.0,8,1
+Greedy,30368,True,22.0,8,1
+Greedy,30369,False,9.0,8,1
+Greedy,30370,True,26.0,6,1
+Greedy,30371,False,9.0,8,1
+Greedy,30372,False,6.0,8,1
+Greedy,30373,False,3.0,8,1
+Greedy,30374,False,9.0,8,1
+Greedy,30375,False,6.0,8,1
+Greedy,30376,False,6.0,8,1
+Greedy,30377,False,9.0,8,1
+Greedy,30378,False,3.0,8,1
+Greedy,30379,False,6.0,8,1
+Greedy,30380,False,9.0,8,1
+Greedy,30381,False,9.0,8,1
+Greedy,30382,False,6.0,8,1
+Greedy,30383,False,8.0,8,1
+Greedy,30384,False,7.0,8,1
+Greedy,30385,False,6.0,8,1
+Greedy,30386,False,6.0,8,1
+Greedy,30387,True,20.0,8,1
+Greedy,30388,True,22.0,7,1
+Greedy,30389,False,6.0,8,1
+Greedy,30390,True,22.0,7,1
+Greedy,30391,False,6.0,8,1
+Greedy,30392,False,6.0,8,1
+Greedy,30393,True,22.0,7,1
+Greedy,30394,False,7.0,8,1
+Greedy,30395,True,25.0,8,1
+Greedy,30396,False,6.0,8,1
+Greedy,30397,True,21.0,3,1
+Greedy,30398,False,3.0,8,1
+Greedy,30399,False,3.0,8,1
+Greedy,30400,False,3.0,8,1
+Greedy,30401,False,3.0,8,1
+Greedy,30402,True,23.0,7,1
+Greedy,30403,False,4.0,8,1
+Greedy,30404,False,6.0,8,1
+Greedy,30405,True,22.0,6,1
+Greedy,30406,False,9.0,8,1
+Greedy,30407,True,21.0,7,1
+Greedy,30408,False,6.0,8,1
+Greedy,30409,False,6.0,8,1
+Greedy,30410,False,5.0,8,1
+Greedy,30411,False,9.0,8,1
+Greedy,30412,False,6.0,8,1
+Greedy,30413,False,3.0,8,1
+Greedy,30414,False,6.0,8,1
+Greedy,30415,False,9.0,8,1
+Greedy,30416,False,9.0,8,1
+Greedy,30417,False,6.0,8,1
+Greedy,30418,False,5.0,8,1
+Greedy,30419,True,22.0,1,1
+Greedy,30420,False,3.0,8,1
+Greedy,30421,True,21.0,8,1
+Greedy,30422,False,3.0,8,1
+Greedy,30423,False,7.0,8,1
+Greedy,30424,False,3.0,8,1
+Greedy,30425,False,0.0,8,1
+Greedy,30426,False,9.0,8,1
+Greedy,30427,True,21.0,6,1
+Greedy,30428,False,3.0,8,1
+Greedy,30429,False,8.0,8,1
+Greedy,30430,False,6.0,8,1
+Greedy,30431,False,3.0,8,1
+Greedy,30432,True,22.0,5,1
+Greedy,30433,False,3.0,8,1
+Greedy,30434,True,22.0,8,1
+Greedy,30435,False,9.0,8,1
+Greedy,30436,True,22.0,4,1
+Greedy,30437,True,22.0,6,1
+Greedy,30438,False,3.0,8,1
+Greedy,30439,False,6.0,8,1
+Greedy,30440,False,3.0,8,1
+Greedy,30441,False,9.0,8,1
+Greedy,30442,False,9.0,8,1
+Greedy,30443,True,22.0,4,1
+Greedy,30444,False,6.0,8,1
+Greedy,30445,False,6.0,8,1
+Greedy,30446,True,22.0,6,1
+Greedy,30447,False,8.0,8,1
+Greedy,30448,False,3.0,8,1
+Greedy,30449,False,3.0,8,1
+Greedy,30450,False,6.0,8,1
+Greedy,30451,True,22.0,5,1
+Greedy,30452,False,9.0,8,1
+Greedy,30453,False,6.0,8,1
+Greedy,30454,False,6.0,8,1
+Greedy,30455,True,22.0,4,1
+Greedy,30456,False,9.0,8,1
+Greedy,30457,False,3.0,8,1
+Greedy,30458,False,6.0,8,1
+Greedy,30459,False,3.0,8,1
+Greedy,30460,True,22.0,7,1
+Greedy,30461,True,22.0,4,1
+Greedy,30462,True,25.0,8,1
+Greedy,30463,True,25.0,6,1
+Greedy,30464,False,4.0,8,1
+Greedy,30465,False,9.0,8,1
+Greedy,30466,False,6.0,8,1
+Greedy,30467,True,21.0,3,1
+Greedy,30468,False,6.0,8,1
+Greedy,30469,False,6.0,8,1
+Greedy,30470,False,9.0,8,1
+Greedy,30471,False,9.0,8,1
+Greedy,30472,False,3.0,8,1
+Greedy,30473,False,9.0,8,1
+Greedy,30474,False,8.0,8,1
+Greedy,30475,False,6.0,8,1
+Greedy,30476,False,6.0,8,1
+Greedy,30477,False,6.0,8,1
+Greedy,30478,False,9.0,8,1
+Greedy,30479,False,8.0,8,1
+Greedy,30480,True,22.0,8,1
+Greedy,30481,False,6.0,8,1
+Greedy,30482,False,6.0,8,1
+Greedy,30483,False,3.0,8,1
+Greedy,30484,True,22.0,4,1
+Greedy,30485,False,4.0,8,1
+Greedy,30486,False,6.0,8,1
+Greedy,30487,False,9.0,8,1
+Greedy,30488,False,9.0,8,1
+Greedy,30489,False,9.0,8,1
+Greedy,30490,False,4.0,8,1
+Greedy,30491,False,9.0,8,1
+Greedy,30492,False,6.0,8,1
+Greedy,30493,False,3.0,8,1
+Greedy,30494,False,4.0,8,1
+Greedy,30495,True,21.0,3,1
+Greedy,30496,False,9.0,8,1
+Greedy,30497,False,6.0,8,1
+Greedy,30498,False,6.0,8,1
+Greedy,30499,False,6.0,8,1
+Objective-Aware,30000,True,21.0,2,1
+Objective-Aware,30001,False,8.0,8,1
+Objective-Aware,30002,False,6.0,8,1
+Objective-Aware,30003,True,22.0,8,1
+Objective-Aware,30004,False,6.0,8,1
+Objective-Aware,30005,False,9.0,8,1
+Objective-Aware,30006,True,22.0,4,1
+Objective-Aware,30007,True,20.0,6,1
+Objective-Aware,30008,True,21.0,4,1
+Objective-Aware,30009,True,22.0,7,1
+Objective-Aware,30010,True,22.0,5,1
+Objective-Aware,30011,True,22.0,7,1
+Objective-Aware,30012,False,9.0,8,1
+Objective-Aware,30013,False,9.0,8,1
+Objective-Aware,30014,True,22.0,6,1
+Objective-Aware,30015,False,9.0,8,1
+Objective-Aware,30016,True,22.0,7,1
+Objective-Aware,30017,True,22.0,5,1
+Objective-Aware,30018,True,21.0,7,1
+Objective-Aware,30019,False,9.0,8,1
+Objective-Aware,30020,True,21.0,3,1
+Objective-Aware,30021,True,22.0,4,1
+Objective-Aware,30022,False,9.0,8,1
+Objective-Aware,30023,False,9.0,8,1
+Objective-Aware,30024,True,25.0,5,1
+Objective-Aware,30025,False,9.0,8,1
+Objective-Aware,30026,True,22.0,4,1
+Objective-Aware,30027,True,21.0,4,1
+Objective-Aware,30028,False,9.0,8,1
+Objective-Aware,30029,True,20.0,8,1
+Objective-Aware,30030,True,21.0,3,1
+Objective-Aware,30031,False,9.0,8,1
+Objective-Aware,30032,False,9.0,8,1
+Objective-Aware,30033,False,9.0,8,1
+Objective-Aware,30034,False,6.0,8,1
+Objective-Aware,30035,False,9.0,8,1
+Objective-Aware,30036,True,22.0,7,1
+Objective-Aware,30037,False,3.0,8,1
+Objective-Aware,30038,False,9.0,8,1
+Objective-Aware,30039,True,22.0,6,1
+Objective-Aware,30040,True,22.0,3,1
+Objective-Aware,30041,False,9.0,8,1
+Objective-Aware,30042,True,22.0,4,1
+Objective-Aware,30043,True,26.0,5,1
+Objective-Aware,30044,False,9.0,8,1
+Objective-Aware,30045,False,9.0,8,1
+Objective-Aware,30046,False,9.0,8,1
+Objective-Aware,30047,True,22.0,5,1
+Objective-Aware,30048,False,6.0,8,1
+Objective-Aware,30049,False,3.0,8,1
+Objective-Aware,30050,True,20.0,7,1
+Objective-Aware,30051,True,22.0,8,1
+Objective-Aware,30052,True,21.0,3,1
+Objective-Aware,30053,False,9.0,8,1
+Objective-Aware,30054,True,23.0,3,1
+Objective-Aware,30055,True,22.0,4,1
+Objective-Aware,30056,False,9.0,8,1
+Objective-Aware,30057,False,7.0,8,1
+Objective-Aware,30058,False,6.0,8,1
+Objective-Aware,30059,True,22.0,5,1
+Objective-Aware,30060,True,22.0,7,1
+Objective-Aware,30061,True,20.0,2,1
+Objective-Aware,30062,True,26.0,2,1
+Objective-Aware,30063,True,20.0,4,1
+Objective-Aware,30064,True,22.0,3,1
+Objective-Aware,30065,True,22.0,3,1
+Objective-Aware,30066,True,24.0,7,1
+Objective-Aware,30067,True,22.0,4,1
+Objective-Aware,30068,True,22.0,8,1
+Objective-Aware,30069,True,22.0,4,1
+Objective-Aware,30070,False,6.0,8,1
+Objective-Aware,30071,True,21.0,3,1
+Objective-Aware,30072,True,21.0,5,1
+Objective-Aware,30073,False,6.0,8,1
+Objective-Aware,30074,True,22.0,4,1
+Objective-Aware,30075,False,9.0,8,1
+Objective-Aware,30076,True,22.0,6,1
+Objective-Aware,30077,True,21.0,3,1
+Objective-Aware,30078,True,22.0,5,1
+Objective-Aware,30079,True,22.0,4,1
+Objective-Aware,30080,True,20.0,5,1
+Objective-Aware,30081,True,20.0,3,1
+Objective-Aware,30082,True,22.0,7,1
+Objective-Aware,30083,True,22.0,5,1
+Objective-Aware,30084,True,22.0,4,1
+Objective-Aware,30085,False,0.0,8,1
+Objective-Aware,30086,True,20.0,2,1
+Objective-Aware,30087,True,22.0,5,1
+Objective-Aware,30088,False,9.0,8,1
+Objective-Aware,30089,True,22.0,4,1
+Objective-Aware,30090,True,22.0,8,1
+Objective-Aware,30091,False,7.0,8,1
+Objective-Aware,30092,False,9.0,8,1
+Objective-Aware,30093,False,9.0,8,1
+Objective-Aware,30094,False,9.0,8,1
+Objective-Aware,30095,True,22.0,6,1
+Objective-Aware,30096,True,22.0,7,1
+Objective-Aware,30097,False,9.0,8,1
+Objective-Aware,30098,True,22.0,6,1
+Objective-Aware,30099,False,9.0,8,1
+Objective-Aware,30100,True,20.0,3,1
+Objective-Aware,30101,False,3.0,8,1
+Objective-Aware,30102,False,9.0,8,1
+Objective-Aware,30103,True,22.0,2,1
+Objective-Aware,30104,False,3.0,8,1
+Objective-Aware,30105,True,22.0,4,1
+Objective-Aware,30106,True,22.0,7,1
+Objective-Aware,30107,False,9.0,8,1
+Objective-Aware,30108,False,7.0,8,1
+Objective-Aware,30109,True,22.0,5,1
+Objective-Aware,30110,True,26.0,2,1
+Objective-Aware,30111,True,20.0,2,1
+Objective-Aware,30112,True,22.0,5,1
+Objective-Aware,30113,False,9.0,8,1
+Objective-Aware,30114,True,22.0,3,1
+Objective-Aware,30115,False,6.0,8,1
+Objective-Aware,30116,True,22.0,4,1
+Objective-Aware,30117,True,21.0,8,1
+Objective-Aware,30118,True,24.0,1,1
+Objective-Aware,30119,True,20.0,6,1
+Objective-Aware,30120,False,9.0,8,1
+Objective-Aware,30121,False,9.0,8,1
+Objective-Aware,30122,False,6.0,8,1
+Objective-Aware,30123,True,21.0,5,1
+Objective-Aware,30124,True,22.0,4,1
+Objective-Aware,30125,True,22.0,4,1
+Objective-Aware,30126,False,9.0,8,1
+Objective-Aware,30127,False,9.0,8,1
+Objective-Aware,30128,True,22.0,5,1
+Objective-Aware,30129,False,3.0,8,1
+Objective-Aware,30130,False,6.0,8,1
+Objective-Aware,30131,True,22.0,5,1
+Objective-Aware,30132,False,4.0,8,1
+Objective-Aware,30133,True,21.0,4,1
+Objective-Aware,30134,True,20.0,3,1
+Objective-Aware,30135,True,22.0,4,1
+Objective-Aware,30136,True,29.0,5,1
+Objective-Aware,30137,True,22.0,7,1
+Objective-Aware,30138,False,6.0,8,1
+Objective-Aware,30139,False,9.0,8,1
+Objective-Aware,30140,False,5.0,8,1
+Objective-Aware,30141,True,22.0,6,1
+Objective-Aware,30142,True,22.0,5,1
+Objective-Aware,30143,True,23.0,7,1
+Objective-Aware,30144,False,6.0,8,1
+Objective-Aware,30145,True,27.0,7,1
+Objective-Aware,30146,False,9.0,8,1
+Objective-Aware,30147,False,6.0,8,1
+Objective-Aware,30148,False,3.0,8,1
+Objective-Aware,30149,True,22.0,5,1
+Objective-Aware,30150,True,20.0,2,1
+Objective-Aware,30151,True,22.0,5,1
+Objective-Aware,30152,False,9.0,8,1
+Objective-Aware,30153,True,20.0,6,1
+Objective-Aware,30154,True,22.0,8,1
+Objective-Aware,30155,True,20.0,5,1
+Objective-Aware,30156,True,20.0,8,1
+Objective-Aware,30157,True,20.0,4,1
+Objective-Aware,30158,False,6.0,8,1
+Objective-Aware,30159,False,9.0,8,1
+Objective-Aware,30160,False,6.0,8,1
+Objective-Aware,30161,True,20.0,2,1
+Objective-Aware,30162,False,4.0,8,1
+Objective-Aware,30163,False,3.0,8,1
+Objective-Aware,30164,True,22.0,4,1
+Objective-Aware,30165,True,21.0,5,1
+Objective-Aware,30166,True,21.0,1,1
+Objective-Aware,30167,True,20.0,6,1
+Objective-Aware,30168,False,8.0,8,1
+Objective-Aware,30169,False,6.0,8,1
+Objective-Aware,30170,True,22.0,4,1
+Objective-Aware,30171,True,22.0,7,1
+Objective-Aware,30172,False,9.0,8,1
+Objective-Aware,30173,True,20.0,3,1
+Objective-Aware,30174,False,9.0,8,1
+Objective-Aware,30175,True,29.0,5,1
+Objective-Aware,30176,True,22.0,6,1
+Objective-Aware,30177,True,22.0,7,1
+Objective-Aware,30178,False,9.0,8,1
+Objective-Aware,30179,True,23.0,8,1
+Objective-Aware,30180,False,6.0,8,1
+Objective-Aware,30181,True,22.0,3,1
+Objective-Aware,30182,False,6.0,8,1
+Objective-Aware,30183,False,6.0,8,1
+Objective-Aware,30184,False,3.0,8,1
+Objective-Aware,30185,True,22.0,3,1
+Objective-Aware,30186,True,22.0,5,1
+Objective-Aware,30187,False,6.0,8,1
+Objective-Aware,30188,False,0.0,8,1
+Objective-Aware,30189,True,22.0,5,1
+Objective-Aware,30190,False,9.0,8,1
+Objective-Aware,30191,True,24.0,4,1
+Objective-Aware,30192,False,6.0,8,1
+Objective-Aware,30193,True,22.0,8,1
+Objective-Aware,30194,False,3.0,8,1
+Objective-Aware,30195,False,6.0,8,1
+Objective-Aware,30196,True,21.0,6,1
+Objective-Aware,30197,True,22.0,7,1
+Objective-Aware,30198,True,20.0,8,1
+Objective-Aware,30199,True,22.0,5,1
+Objective-Aware,30200,False,6.0,8,1
+Objective-Aware,30201,True,23.0,4,1
+Objective-Aware,30202,True,23.0,1,1
+Objective-Aware,30203,False,6.0,8,1
+Objective-Aware,30204,True,27.0,5,1
+Objective-Aware,30205,False,9.0,8,1
+Objective-Aware,30206,True,22.0,8,1
+Objective-Aware,30207,True,22.0,5,1
+Objective-Aware,30208,False,9.0,8,1
+Objective-Aware,30209,False,9.0,8,1
+Objective-Aware,30210,True,20.0,4,1
+Objective-Aware,30211,False,3.0,8,1
+Objective-Aware,30212,True,22.0,7,1
+Objective-Aware,30213,True,22.0,7,1
+Objective-Aware,30214,False,9.0,8,1
+Objective-Aware,30215,False,9.0,8,1
+Objective-Aware,30216,True,22.0,5,1
+Objective-Aware,30217,True,23.0,7,1
+Objective-Aware,30218,False,6.0,8,1
+Objective-Aware,30219,False,9.0,8,1
+Objective-Aware,30220,True,37.0,2,1
+Objective-Aware,30221,False,6.0,8,1
+Objective-Aware,30222,False,3.0,8,1
+Objective-Aware,30223,True,22.0,6,1
+Objective-Aware,30224,True,22.0,4,1
+Objective-Aware,30225,False,9.0,8,1
+Objective-Aware,30226,True,22.0,7,1
+Objective-Aware,30227,True,25.0,1,1
+Objective-Aware,30228,True,22.0,8,1
+Objective-Aware,30229,False,9.0,8,1
+Objective-Aware,30230,True,22.0,6,1
+Objective-Aware,30231,False,9.0,8,1
+Objective-Aware,30232,True,22.0,7,1
+Objective-Aware,30233,True,22.0,1,1
+Objective-Aware,30234,False,6.0,8,1
+Objective-Aware,30235,True,27.0,1,1
+Objective-Aware,30236,True,25.0,1,1
+Objective-Aware,30237,False,9.0,8,1
+Objective-Aware,30238,True,24.0,1,1
+Objective-Aware,30239,False,9.0,8,1
+Objective-Aware,30240,False,3.0,8,1
+Objective-Aware,30241,True,22.0,4,1
+Objective-Aware,30242,False,9.0,8,1
+Objective-Aware,30243,False,6.0,8,1
+Objective-Aware,30244,False,9.0,8,1
+Objective-Aware,30245,False,3.0,8,1
+Objective-Aware,30246,True,35.0,4,1
+Objective-Aware,30247,False,9.0,8,1
+Objective-Aware,30248,False,6.0,8,1
+Objective-Aware,30249,True,22.0,6,1
+Objective-Aware,30250,False,9.0,8,1
+Objective-Aware,30251,False,9.0,8,1
+Objective-Aware,30252,True,29.0,2,1
+Objective-Aware,30253,True,22.0,4,1
+Objective-Aware,30254,False,9.0,8,1
+Objective-Aware,30255,False,9.0,8,1
+Objective-Aware,30256,False,9.0,8,1
+Objective-Aware,30257,False,9.0,8,1
+Objective-Aware,30258,True,20.0,3,1
+Objective-Aware,30259,False,9.0,8,1
+Objective-Aware,30260,False,6.0,8,1
+Objective-Aware,30261,True,22.0,6,1
+Objective-Aware,30262,True,32.0,6,1
+Objective-Aware,30263,True,22.0,4,1
+Objective-Aware,30264,True,22.0,6,1
+Objective-Aware,30265,True,20.0,8,1
+Objective-Aware,30266,True,22.0,3,1
+Objective-Aware,30267,False,9.0,8,1
+Objective-Aware,30268,False,9.0,8,1
+Objective-Aware,30269,False,6.0,8,1
+Objective-Aware,30270,False,9.0,8,1
+Objective-Aware,30271,False,5.0,8,1
+Objective-Aware,30272,True,22.0,4,1
+Objective-Aware,30273,True,20.0,6,1
+Objective-Aware,30274,True,22.0,5,1
+Objective-Aware,30275,True,22.0,7,1
+Objective-Aware,30276,True,23.0,4,1
+Objective-Aware,30277,False,9.0,8,1
+Objective-Aware,30278,True,22.0,8,1
+Objective-Aware,30279,True,22.0,3,1
+Objective-Aware,30280,True,20.0,7,1
+Objective-Aware,30281,True,22.0,5,1
+Objective-Aware,30282,False,9.0,8,1
+Objective-Aware,30283,True,21.0,6,1
+Objective-Aware,30284,True,22.0,7,1
+Objective-Aware,30285,False,6.0,8,1
+Objective-Aware,30286,True,22.0,8,1
+Objective-Aware,30287,False,6.0,8,1
+Objective-Aware,30288,True,20.0,5,1
+Objective-Aware,30289,False,6.0,8,1
+Objective-Aware,30290,False,6.0,8,1
+Objective-Aware,30291,True,20.0,6,1
+Objective-Aware,30292,True,20.0,4,1
+Objective-Aware,30293,False,5.0,8,1
+Objective-Aware,30294,True,22.0,5,1
+Objective-Aware,30295,True,29.0,2,1
+Objective-Aware,30296,True,22.0,4,1
+Objective-Aware,30297,False,6.0,8,1
+Objective-Aware,30298,True,20.0,3,1
+Objective-Aware,30299,False,1.0,8,1
+Objective-Aware,30300,False,9.0,8,1
+Objective-Aware,30301,False,3.0,8,1
+Objective-Aware,30302,True,21.0,5,1
+Objective-Aware,30303,True,22.0,6,1
+Objective-Aware,30304,True,22.0,4,1
+Objective-Aware,30305,True,20.0,3,1
+Objective-Aware,30306,False,6.0,8,1
+Objective-Aware,30307,True,24.0,6,1
+Objective-Aware,30308,True,21.0,4,1
+Objective-Aware,30309,True,22.0,4,1
+Objective-Aware,30310,True,22.0,6,1
+Objective-Aware,30311,True,22.0,3,1
+Objective-Aware,30312,True,22.0,4,1
+Objective-Aware,30313,True,22.0,4,1
+Objective-Aware,30314,True,24.0,1,1
+Objective-Aware,30315,False,6.0,8,1
+Objective-Aware,30316,True,26.0,6,1
+Objective-Aware,30317,True,22.0,4,1
+Objective-Aware,30318,False,7.0,8,1
+Objective-Aware,30319,False,6.0,8,1
+Objective-Aware,30320,True,22.0,5,1
+Objective-Aware,30321,True,22.0,4,1
+Objective-Aware,30322,False,9.0,8,1
+Objective-Aware,30323,False,9.0,8,1
+Objective-Aware,30324,False,7.0,8,1
+Objective-Aware,30325,False,6.0,8,1
+Objective-Aware,30326,True,22.0,7,1
+Objective-Aware,30327,True,22.0,4,1
+Objective-Aware,30328,True,22.0,6,1
+Objective-Aware,30329,True,22.0,6,1
+Objective-Aware,30330,False,9.0,8,1
+Objective-Aware,30331,True,28.0,4,1
+Objective-Aware,30332,False,9.0,8,1
+Objective-Aware,30333,True,23.0,3,1
+Objective-Aware,30334,True,22.0,4,1
+Objective-Aware,30335,False,6.0,8,1
+Objective-Aware,30336,False,7.0,8,1
+Objective-Aware,30337,True,22.0,8,1
+Objective-Aware,30338,False,6.0,8,1
+Objective-Aware,30339,True,22.0,8,1
+Objective-Aware,30340,True,20.0,3,1
+Objective-Aware,30341,True,22.0,7,1
+Objective-Aware,30342,True,22.0,5,1
+Objective-Aware,30343,False,9.0,8,1
+Objective-Aware,30344,False,9.0,8,1
+Objective-Aware,30345,False,5.0,8,1
+Objective-Aware,30346,False,9.0,8,1
+Objective-Aware,30347,False,6.0,8,1
+Objective-Aware,30348,False,6.0,8,1
+Objective-Aware,30349,True,22.0,4,1
+Objective-Aware,30350,True,22.0,6,1
+Objective-Aware,30351,False,9.0,8,1
+Objective-Aware,30352,True,25.0,3,1
+Objective-Aware,30353,True,22.0,3,1
+Objective-Aware,30354,False,9.0,8,1
+Objective-Aware,30355,True,25.0,8,1
+Objective-Aware,30356,True,20.0,4,1
+Objective-Aware,30357,False,9.0,8,1
+Objective-Aware,30358,False,9.0,8,1
+Objective-Aware,30359,True,22.0,8,1
+Objective-Aware,30360,True,26.0,4,1
+Objective-Aware,30361,False,6.0,8,1
+Objective-Aware,30362,True,22.0,5,1
+Objective-Aware,30363,True,23.0,1,1
+Objective-Aware,30364,True,22.0,8,1
+Objective-Aware,30365,True,22.0,4,1
+Objective-Aware,30366,True,22.0,4,1
+Objective-Aware,30367,False,9.0,8,1
+Objective-Aware,30368,True,22.0,2,1
+Objective-Aware,30369,False,9.0,8,1
+Objective-Aware,30370,False,6.0,8,1
+Objective-Aware,30371,True,22.0,5,1
+Objective-Aware,30372,True,22.0,8,1
+Objective-Aware,30373,True,23.0,2,1
+Objective-Aware,30374,True,22.0,4,1
+Objective-Aware,30375,True,22.0,6,1
+Objective-Aware,30376,False,6.0,8,1
+Objective-Aware,30377,True,22.0,6,1
+Objective-Aware,30378,False,3.0,8,1
+Objective-Aware,30379,True,20.0,8,1
+Objective-Aware,30380,True,22.0,5,1
+Objective-Aware,30381,False,9.0,8,1
+Objective-Aware,30382,True,22.0,5,1
+Objective-Aware,30383,True,22.0,7,1
+Objective-Aware,30384,True,22.0,4,1
+Objective-Aware,30385,False,6.0,8,1
+Objective-Aware,30386,False,9.0,8,1
+Objective-Aware,30387,False,7.0,8,1
+Objective-Aware,30388,True,24.0,8,1
+Objective-Aware,30389,False,9.0,8,1
+Objective-Aware,30390,True,22.0,4,1
+Objective-Aware,30391,False,9.0,8,1
+Objective-Aware,30392,True,22.0,4,1
+Objective-Aware,30393,True,22.0,7,1
+Objective-Aware,30394,False,9.0,8,1
+Objective-Aware,30395,True,22.0,6,1
+Objective-Aware,30396,False,6.0,8,1
+Objective-Aware,30397,True,22.0,3,1
+Objective-Aware,30398,False,5.0,8,1
+Objective-Aware,30399,True,22.0,6,1
+Objective-Aware,30400,True,22.0,8,1
+Objective-Aware,30401,False,3.0,8,1
+Objective-Aware,30402,True,23.0,7,1
+Objective-Aware,30403,True,22.0,8,1
+Objective-Aware,30404,False,6.0,8,1
+Objective-Aware,30405,True,22.0,3,1
+Objective-Aware,30406,True,22.0,4,1
+Objective-Aware,30407,True,22.0,4,1
+Objective-Aware,30408,False,9.0,8,1
+Objective-Aware,30409,False,9.0,8,1
+Objective-Aware,30410,False,6.0,8,1
+Objective-Aware,30411,True,22.0,4,1
+Objective-Aware,30412,False,8.0,8,1
+Objective-Aware,30413,False,3.0,8,1
+Objective-Aware,30414,True,20.0,5,1
+Objective-Aware,30415,True,22.0,3,1
+Objective-Aware,30416,True,22.0,6,1
+Objective-Aware,30417,True,22.0,5,1
+Objective-Aware,30418,False,6.0,8,1
+Objective-Aware,30419,True,27.0,1,1
+Objective-Aware,30420,False,3.0,8,1
+Objective-Aware,30421,True,22.0,8,1
+Objective-Aware,30422,False,3.0,8,1
+Objective-Aware,30423,False,9.0,8,1
+Objective-Aware,30424,True,23.0,1,1
+Objective-Aware,30425,False,0.0,8,1
+Objective-Aware,30426,True,23.0,4,1
+Objective-Aware,30427,True,24.0,7,1
+Objective-Aware,30428,True,20.0,7,1
+Objective-Aware,30429,False,9.0,8,1
+Objective-Aware,30430,False,6.0,8,1
+Objective-Aware,30431,True,21.0,5,1
+Objective-Aware,30432,True,22.0,5,1
+Objective-Aware,30433,True,28.0,5,1
+Objective-Aware,30434,True,22.0,6,1
+Objective-Aware,30435,False,9.0,8,1
+Objective-Aware,30436,True,22.0,3,1
+Objective-Aware,30437,False,9.0,8,1
+Objective-Aware,30438,False,9.0,8,1
+Objective-Aware,30439,False,6.0,8,1
+Objective-Aware,30440,False,6.0,8,1
+Objective-Aware,30441,False,9.0,8,1
+Objective-Aware,30442,True,20.0,5,1
+Objective-Aware,30443,True,21.0,3,1
+Objective-Aware,30444,False,9.0,8,1
+Objective-Aware,30445,False,6.0,8,1
+Objective-Aware,30446,True,22.0,7,1
+Objective-Aware,30447,False,8.0,8,1
+Objective-Aware,30448,False,3.0,8,1
+Objective-Aware,30449,False,6.0,8,1
+Objective-Aware,30450,False,6.0,8,1
+Objective-Aware,30451,True,23.0,4,1
+Objective-Aware,30452,True,22.0,7,1
+Objective-Aware,30453,False,6.0,8,1
+Objective-Aware,30454,True,25.0,6,1
+Objective-Aware,30455,True,35.0,3,1
+Objective-Aware,30456,True,22.0,7,1
+Objective-Aware,30457,False,9.0,8,1
+Objective-Aware,30458,True,22.0,5,1
+Objective-Aware,30459,False,6.0,8,1
+Objective-Aware,30460,True,22.0,7,1
+Objective-Aware,30461,True,22.0,6,1
+Objective-Aware,30462,True,22.0,4,1
+Objective-Aware,30463,True,25.0,6,1
+Objective-Aware,30464,True,22.0,7,1
+Objective-Aware,30465,True,22.0,5,1
+Objective-Aware,30466,True,20.0,4,1
+Objective-Aware,30467,True,22.0,7,1
+Objective-Aware,30468,False,6.0,8,1
+Objective-Aware,30469,True,21.0,5,1
+Objective-Aware,30470,True,22.0,7,1
+Objective-Aware,30471,True,22.0,6,1
+Objective-Aware,30472,True,24.0,3,1
+Objective-Aware,30473,False,9.0,8,1
+Objective-Aware,30474,False,6.0,8,1
+Objective-Aware,30475,True,22.0,7,1
+Objective-Aware,30476,False,9.0,8,1
+Objective-Aware,30477,True,22.0,4,1
+Objective-Aware,30478,False,3.0,8,1
+Objective-Aware,30479,True,22.0,7,1
+Objective-Aware,30480,True,22.0,4,1
+Objective-Aware,30481,False,6.0,8,1
+Objective-Aware,30482,True,21.0,8,1
+Objective-Aware,30483,False,6.0,8,1
+Objective-Aware,30484,True,22.0,5,1
+Objective-Aware,30485,False,3.0,8,1
+Objective-Aware,30486,True,22.0,6,1
+Objective-Aware,30487,True,22.0,6,1
+Objective-Aware,30488,False,6.0,8,1
+Objective-Aware,30489,True,22.0,3,1
+Objective-Aware,30490,True,21.0,6,1
+Objective-Aware,30491,True,21.0,5,1
+Objective-Aware,30492,True,22.0,6,1
+Objective-Aware,30493,False,9.0,8,1
+Objective-Aware,30494,False,9.0,8,1
+Objective-Aware,30495,True,33.0,2,1
+Objective-Aware,30496,False,9.0,8,1
+Objective-Aware,30497,False,6.0,8,1
+Objective-Aware,30498,True,21.0,8,1
+Objective-Aware,30499,False,6.0,8,1
+Supervised ML,30000,False,6.0,8,1
+Supervised ML,30001,False,4.0,8,1
+Supervised ML,30002,True,20.0,4,1
+Supervised ML,30003,False,9.0,8,1
+Supervised ML,30004,False,6.0,8,1
+Supervised ML,30005,False,6.0,8,1
+Supervised ML,30006,True,20.0,7,1
+Supervised ML,30007,False,9.0,8,1
+Supervised ML,30008,False,7.0,8,1
+Supervised ML,30009,False,6.0,8,1
+Supervised ML,30010,False,3.0,8,1
+Supervised ML,30011,False,3.0,8,1
+Supervised ML,30012,False,8.0,8,1
+Supervised ML,30013,False,7.0,8,1
+Supervised ML,30014,False,6.0,8,1
+Supervised ML,30015,False,9.0,8,1
+Supervised ML,30016,False,9.0,8,1
+Supervised ML,30017,False,6.0,8,1
+Supervised ML,30018,False,9.0,8,1
+Supervised ML,30019,True,22.0,8,1
+Supervised ML,30020,False,3.0,8,1
+Supervised ML,30021,False,9.0,8,1
+Supervised ML,30022,False,3.0,8,1
+Supervised ML,30023,False,6.0,8,1
+Supervised ML,30024,True,22.0,5,1
+Supervised ML,30025,False,3.0,8,1
+Supervised ML,30026,True,22.0,6,1
+Supervised ML,30027,True,21.0,8,1
+Supervised ML,30028,False,3.0,8,1
+Supervised ML,30029,False,9.0,8,1
+Supervised ML,30030,True,20.0,6,1
+Supervised ML,30031,True,22.0,8,1
+Supervised ML,30032,False,6.0,8,1
+Supervised ML,30033,False,6.0,8,1
+Supervised ML,30034,False,6.0,8,1
+Supervised ML,30035,True,22.0,6,1
+Supervised ML,30036,True,22.0,7,1
+Supervised ML,30037,False,3.0,8,1
+Supervised ML,30038,False,3.0,8,1
+Supervised ML,30039,True,22.0,6,1
+Supervised ML,30040,False,9.0,8,1
+Supervised ML,30041,False,3.0,8,1
+Supervised ML,30042,False,6.0,8,1
+Supervised ML,30043,False,6.0,8,1
+Supervised ML,30044,False,7.0,8,1
+Supervised ML,30045,False,3.0,8,1
+Supervised ML,30046,False,6.0,8,1
+Supervised ML,30047,False,6.0,8,1
+Supervised ML,30048,True,21.0,8,1
+Supervised ML,30049,False,0.0,8,1
+Supervised ML,30050,True,22.0,5,1
+Supervised ML,30051,False,6.0,8,1
+Supervised ML,30052,False,6.0,8,1
+Supervised ML,30053,False,3.0,8,1
+Supervised ML,30054,True,22.0,4,1
+Supervised ML,30055,False,3.0,8,1
+Supervised ML,30056,True,22.0,4,1
+Supervised ML,30057,False,9.0,8,1
+Supervised ML,30058,False,9.0,8,1
+Supervised ML,30059,True,22.0,7,1
+Supervised ML,30060,False,9.0,8,1
+Supervised ML,30061,False,3.0,8,1
+Supervised ML,30062,False,3.0,8,1
+Supervised ML,30063,False,3.0,8,1
+Supervised ML,30064,False,9.0,8,1
+Supervised ML,30065,False,9.0,8,1
+Supervised ML,30066,True,22.0,7,1
+Supervised ML,30067,False,9.0,8,1
+Supervised ML,30068,False,4.0,8,1
+Supervised ML,30069,False,9.0,8,1
+Supervised ML,30070,False,6.0,8,1
+Supervised ML,30071,True,22.0,7,1
+Supervised ML,30072,False,6.0,8,1
+Supervised ML,30073,False,9.0,8,1
+Supervised ML,30074,False,3.0,8,1
+Supervised ML,30075,False,9.0,8,1
+Supervised ML,30076,False,9.0,8,1
+Supervised ML,30077,True,22.0,8,1
+Supervised ML,30078,False,6.0,8,1
+Supervised ML,30079,False,6.0,8,1
+Supervised ML,30080,False,6.0,8,1
+Supervised ML,30081,True,20.0,4,1
+Supervised ML,30082,True,22.0,3,1
+Supervised ML,30083,False,9.0,8,1
+Supervised ML,30084,True,21.0,4,1
+Supervised ML,30085,False,0.0,8,1
+Supervised ML,30086,True,22.0,4,1
+Supervised ML,30087,False,9.0,8,1
+Supervised ML,30088,False,3.0,8,1
+Supervised ML,30089,True,23.0,2,1
+Supervised ML,30090,False,4.0,8,1
+Supervised ML,30091,False,3.0,8,1
+Supervised ML,30092,False,9.0,8,1
+Supervised ML,30093,True,29.0,8,1
+Supervised ML,30094,False,9.0,8,1
+Supervised ML,30095,True,22.0,6,1
+Supervised ML,30096,True,22.0,8,1
+Supervised ML,30097,False,6.0,8,1
+Supervised ML,30098,False,6.0,8,1
+Supervised ML,30099,False,6.0,8,1
+Supervised ML,30100,False,3.0,8,1
+Supervised ML,30101,False,3.0,8,1
+Supervised ML,30102,False,6.0,8,1
+Supervised ML,30103,False,9.0,8,1
+Supervised ML,30104,False,3.0,8,1
+Supervised ML,30105,False,3.0,8,1
+Supervised ML,30106,False,3.0,8,1
+Supervised ML,30107,False,6.0,8,1
+Supervised ML,30108,True,20.0,7,1
+Supervised ML,30109,False,6.0,8,1
+Supervised ML,30110,False,8.0,8,1
+Supervised ML,30111,True,22.0,7,1
+Supervised ML,30112,False,4.0,8,1
+Supervised ML,30113,False,9.0,8,1
+Supervised ML,30114,False,6.0,8,1
+Supervised ML,30115,False,9.0,8,1
+Supervised ML,30116,False,6.0,8,1
+Supervised ML,30117,False,7.0,8,1
+Supervised ML,30118,False,4.0,8,1
+Supervised ML,30119,False,3.0,8,1
+Supervised ML,30120,True,22.0,2,1
+Supervised ML,30121,False,8.0,8,1
+Supervised ML,30122,False,6.0,8,1
+Supervised ML,30123,True,22.0,8,1
+Supervised ML,30124,False,6.0,8,1
+Supervised ML,30125,False,9.0,8,1
+Supervised ML,30126,False,8.0,8,1
+Supervised ML,30127,True,20.0,8,1
+Supervised ML,30128,False,9.0,8,1
+Supervised ML,30129,False,3.0,8,1
+Supervised ML,30130,False,3.0,8,1
+Supervised ML,30131,False,6.0,8,1
+Supervised ML,30132,False,6.0,8,1
+Supervised ML,30133,False,9.0,8,1
+Supervised ML,30134,False,9.0,8,1
+Supervised ML,30135,True,22.0,6,1
+Supervised ML,30136,False,4.0,8,1
+Supervised ML,30137,False,7.0,8,1
+Supervised ML,30138,False,3.0,8,1
+Supervised ML,30139,True,22.0,8,1
+Supervised ML,30140,False,3.0,8,1
+Supervised ML,30141,False,7.0,8,1
+Supervised ML,30142,False,3.0,8,1
+Supervised ML,30143,False,9.0,8,1
+Supervised ML,30144,False,6.0,8,1
+Supervised ML,30145,False,0.0,8,1
+Supervised ML,30146,False,3.0,8,1
+Supervised ML,30147,False,3.0,8,1
+Supervised ML,30148,False,3.0,8,1
+Supervised ML,30149,False,3.0,8,1
+Supervised ML,30150,False,6.0,8,1
+Supervised ML,30151,False,6.0,8,1
+Supervised ML,30152,False,6.0,8,1
+Supervised ML,30153,False,6.0,8,1
+Supervised ML,30154,False,7.0,8,1
+Supervised ML,30155,False,6.0,8,1
+Supervised ML,30156,False,3.0,8,1
+Supervised ML,30157,False,6.0,8,1
+Supervised ML,30158,False,3.0,8,1
+Supervised ML,30159,True,22.0,6,1
+Supervised ML,30160,False,9.0,8,1
+Supervised ML,30161,False,3.0,8,1
+Supervised ML,30162,False,3.0,8,1
+Supervised ML,30163,False,1.0,8,1
+Supervised ML,30164,True,20.0,6,1
+Supervised ML,30165,True,22.0,8,1
+Supervised ML,30166,False,6.0,8,1
+Supervised ML,30167,False,3.0,8,1
+Supervised ML,30168,False,6.0,8,1
+Supervised ML,30169,False,7.0,8,1
+Supervised ML,30170,True,20.0,6,1
+Supervised ML,30171,False,9.0,8,1
+Supervised ML,30172,True,21.0,7,1
+Supervised ML,30173,False,6.0,8,1
+Supervised ML,30174,True,21.0,8,1
+Supervised ML,30175,False,6.0,8,1
+Supervised ML,30176,False,6.0,8,1
+Supervised ML,30177,False,3.0,8,1
+Supervised ML,30178,False,6.0,8,1
+Supervised ML,30179,True,22.0,6,1
+Supervised ML,30180,False,6.0,8,1
+Supervised ML,30181,False,9.0,8,1
+Supervised ML,30182,False,3.0,8,1
+Supervised ML,30183,False,6.0,8,1
+Supervised ML,30184,False,0.0,8,1
+Supervised ML,30185,True,22.0,8,1
+Supervised ML,30186,True,22.0,4,1
+Supervised ML,30187,False,3.0,8,1
+Supervised ML,30188,False,6.0,8,1
+Supervised ML,30189,True,22.0,7,1
+Supervised ML,30190,False,9.0,8,1
+Supervised ML,30191,False,9.0,8,1
+Supervised ML,30192,False,6.0,8,1
+Supervised ML,30193,False,0.0,8,1
+Supervised ML,30194,True,20.0,7,1
+Supervised ML,30195,False,3.0,8,1
+Supervised ML,30196,False,3.0,8,1
+Supervised ML,30197,False,6.0,8,1
+Supervised ML,30198,False,3.0,8,1
+Supervised ML,30199,False,6.0,8,1
+Supervised ML,30200,False,3.0,8,1
+Supervised ML,30201,False,6.0,8,1
+Supervised ML,30202,False,6.0,8,1
+Supervised ML,30203,False,3.0,8,1
+Supervised ML,30204,False,3.0,8,1
+Supervised ML,30205,True,22.0,5,1
+Supervised ML,30206,False,5.0,8,1
+Supervised ML,30207,False,9.0,8,1
+Supervised ML,30208,False,9.0,8,1
+Supervised ML,30209,False,3.0,8,1
+Supervised ML,30210,False,9.0,8,1
+Supervised ML,30211,False,3.0,8,1
+Supervised ML,30212,False,9.0,8,1
+Supervised ML,30213,False,6.0,8,1
+Supervised ML,30214,False,3.0,8,1
+Supervised ML,30215,False,6.0,8,1
+Supervised ML,30216,True,21.0,5,1
+Supervised ML,30217,False,6.0,8,1
+Supervised ML,30218,True,22.0,7,1
+Supervised ML,30219,False,6.0,8,1
+Supervised ML,30220,False,9.0,8,1
+Supervised ML,30221,False,3.0,8,1
+Supervised ML,30222,True,20.0,2,1
+Supervised ML,30223,True,20.0,5,1
+Supervised ML,30224,False,5.0,8,1
+Supervised ML,30225,False,9.0,8,1
+Supervised ML,30226,False,7.0,8,1
+Supervised ML,30227,True,25.0,1,1
+Supervised ML,30228,False,3.0,8,1
+Supervised ML,30229,False,6.0,8,1
+Supervised ML,30230,False,6.0,8,1
+Supervised ML,30231,True,22.0,8,1
+Supervised ML,30232,False,6.0,8,1
+Supervised ML,30233,False,7.0,8,1
+Supervised ML,30234,False,3.0,8,1
+Supervised ML,30235,False,9.0,8,1
+Supervised ML,30236,True,25.0,1,1
+Supervised ML,30237,False,6.0,8,1
+Supervised ML,30238,False,6.0,8,1
+Supervised ML,30239,False,9.0,8,1
+Supervised ML,30240,False,1.0,8,1
+Supervised ML,30241,True,22.0,5,1
+Supervised ML,30242,False,3.0,8,1
+Supervised ML,30243,True,23.0,3,1
+Supervised ML,30244,False,6.0,8,1
+Supervised ML,30245,False,3.0,8,1
+Supervised ML,30246,False,9.0,8,1
+Supervised ML,30247,False,7.0,8,1
+Supervised ML,30248,False,4.0,8,1
+Supervised ML,30249,True,22.0,7,1
+Supervised ML,30250,False,4.0,8,1
+Supervised ML,30251,False,3.0,8,1
+Supervised ML,30252,False,6.0,8,1
+Supervised ML,30253,False,8.0,8,1
+Supervised ML,30254,True,22.0,7,1
+Supervised ML,30255,False,6.0,8,1
+Supervised ML,30256,False,9.0,8,1
+Supervised ML,30257,False,3.0,8,1
+Supervised ML,30258,False,7.0,8,1
+Supervised ML,30259,True,22.0,8,1
+Supervised ML,30260,False,4.0,8,1
+Supervised ML,30261,False,9.0,8,1
+Supervised ML,30262,True,20.0,7,1
+Supervised ML,30263,False,6.0,8,1
+Supervised ML,30264,False,6.0,8,1
+Supervised ML,30265,False,7.0,8,1
+Supervised ML,30266,False,9.0,8,1
+Supervised ML,30267,False,3.0,8,1
+Supervised ML,30268,False,6.0,8,1
+Supervised ML,30269,False,6.0,8,1
+Supervised ML,30270,True,22.0,5,1
+Supervised ML,30271,False,8.0,8,1
+Supervised ML,30272,False,9.0,8,1
+Supervised ML,30273,False,6.0,8,1
+Supervised ML,30274,True,22.0,8,1
+Supervised ML,30275,False,3.0,8,1
+Supervised ML,30276,True,21.0,7,1
+Supervised ML,30277,False,6.0,8,1
+Supervised ML,30278,False,6.0,8,1
+Supervised ML,30279,True,22.0,7,1
+Supervised ML,30280,False,0.0,8,1
+Supervised ML,30281,False,9.0,8,1
+Supervised ML,30282,False,6.0,8,1
+Supervised ML,30283,True,23.0,6,1
+Supervised ML,30284,False,6.0,8,1
+Supervised ML,30285,False,3.0,8,1
+Supervised ML,30286,True,22.0,8,1
+Supervised ML,30287,False,7.0,8,1
+Supervised ML,30288,False,6.0,8,1
+Supervised ML,30289,False,9.0,8,1
+Supervised ML,30290,False,3.0,8,1
+Supervised ML,30291,False,6.0,8,1
+Supervised ML,30292,True,24.0,7,1
+Supervised ML,30293,False,0.0,8,1
+Supervised ML,30294,False,9.0,8,1
+Supervised ML,30295,False,9.0,8,1
+Supervised ML,30296,False,9.0,8,1
+Supervised ML,30297,False,3.0,8,1
+Supervised ML,30298,True,22.0,7,1
+Supervised ML,30299,False,3.0,8,1
+Supervised ML,30300,False,4.0,8,1
+Supervised ML,30301,False,0.0,8,1
+Supervised ML,30302,False,9.0,8,1
+Supervised ML,30303,False,9.0,8,1
+Supervised ML,30304,False,6.0,8,1
+Supervised ML,30305,False,6.0,8,1
+Supervised ML,30306,False,3.0,8,1
+Supervised ML,30307,True,30.0,2,1
+Supervised ML,30308,False,9.0,8,1
+Supervised ML,30309,True,21.0,7,1
+Supervised ML,30310,False,9.0,8,1
+Supervised ML,30311,False,0.0,8,1
+Supervised ML,30312,False,9.0,8,1
+Supervised ML,30313,False,9.0,8,1
+Supervised ML,30314,True,20.0,6,1
+Supervised ML,30315,False,3.0,8,1
+Supervised ML,30316,True,22.0,5,1
+Supervised ML,30317,False,6.0,8,1
+Supervised ML,30318,True,23.0,3,1
+Supervised ML,30319,False,3.0,8,1
+Supervised ML,30320,False,9.0,8,1
+Supervised ML,30321,False,6.0,8,1
+Supervised ML,30322,False,6.0,8,1
+Supervised ML,30323,False,9.0,8,1
+Supervised ML,30324,False,3.0,8,1
+Supervised ML,30325,False,3.0,8,1
+Supervised ML,30326,False,3.0,8,1
+Supervised ML,30327,False,9.0,8,1
+Supervised ML,30328,False,3.0,8,1
+Supervised ML,30329,False,6.0,8,1
+Supervised ML,30330,False,6.0,8,1
+Supervised ML,30331,False,6.0,8,1
+Supervised ML,30332,False,0.0,8,1
+Supervised ML,30333,True,20.0,4,1
+Supervised ML,30334,False,6.0,8,1
+Supervised ML,30335,False,6.0,8,1
+Supervised ML,30336,False,4.0,8,1
+Supervised ML,30337,False,6.0,8,1
+Supervised ML,30338,False,3.0,8,1
+Supervised ML,30339,False,9.0,8,1
+Supervised ML,30340,False,9.0,8,1
+Supervised ML,30341,False,9.0,8,1
+Supervised ML,30342,False,6.0,8,1
+Supervised ML,30343,False,6.0,8,1
+Supervised ML,30344,False,3.0,8,1
+Supervised ML,30345,True,20.0,8,1
+Supervised ML,30346,False,6.0,8,1
+Supervised ML,30347,False,6.0,8,1
+Supervised ML,30348,False,3.0,8,1
+Supervised ML,30349,False,9.0,8,1
+Supervised ML,30350,False,9.0,8,1
+Supervised ML,30351,False,3.0,8,1
+Supervised ML,30352,False,8.0,8,1
+Supervised ML,30353,False,6.0,8,1
+Supervised ML,30354,True,22.0,6,1
+Supervised ML,30355,False,9.0,8,1
+Supervised ML,30356,False,6.0,8,1
+Supervised ML,30357,False,0.0,8,1
+Supervised ML,30358,False,3.0,8,1
+Supervised ML,30359,False,3.0,8,1
+Supervised ML,30360,False,9.0,8,1
+Supervised ML,30361,False,9.0,8,1
+Supervised ML,30362,False,6.0,8,1
+Supervised ML,30363,False,6.0,8,1
+Supervised ML,30364,False,6.0,8,1
+Supervised ML,30365,True,21.0,1,1
+Supervised ML,30366,False,6.0,8,1
+Supervised ML,30367,False,0.0,8,1
+Supervised ML,30368,True,20.0,5,1
+Supervised ML,30369,False,3.0,8,1
+Supervised ML,30370,False,1.0,8,1
+Supervised ML,30371,False,9.0,8,1
+Supervised ML,30372,False,9.0,8,1
+Supervised ML,30373,False,3.0,8,1
+Supervised ML,30374,False,9.0,8,1
+Supervised ML,30375,True,22.0,4,1
+Supervised ML,30376,False,0.0,8,1
+Supervised ML,30377,False,6.0,8,1
+Supervised ML,30378,False,9.0,8,1
+Supervised ML,30379,False,0.0,8,1
+Supervised ML,30380,False,9.0,8,1
+Supervised ML,30381,False,6.0,8,1
+Supervised ML,30382,True,22.0,7,1
+Supervised ML,30383,False,6.0,8,1
+Supervised ML,30384,False,9.0,8,1
+Supervised ML,30385,False,6.0,8,1
+Supervised ML,30386,False,0.0,8,1
+Supervised ML,30387,False,3.0,8,1
+Supervised ML,30388,False,3.0,8,1
+Supervised ML,30389,False,9.0,8,1
+Supervised ML,30390,True,22.0,7,1
+Supervised ML,30391,False,6.0,8,1
+Supervised ML,30392,False,9.0,8,1
+Supervised ML,30393,False,9.0,8,1
+Supervised ML,30394,False,8.0,8,1
+Supervised ML,30395,True,22.0,7,1
+Supervised ML,30396,False,8.0,8,1
+Supervised ML,30397,True,22.0,7,1
+Supervised ML,30398,False,6.0,8,1
+Supervised ML,30399,False,0.0,8,1
+Supervised ML,30400,False,3.0,8,1
+Supervised ML,30401,False,1.0,8,1
+Supervised ML,30402,True,22.0,6,1
+Supervised ML,30403,False,7.0,8,1
+Supervised ML,30404,False,4.0,8,1
+Supervised ML,30405,True,22.0,5,1
+Supervised ML,30406,False,9.0,8,1
+Supervised ML,30407,False,7.0,8,1
+Supervised ML,30408,False,8.0,8,1
+Supervised ML,30409,False,6.0,8,1
+Supervised ML,30410,False,6.0,8,1
+Supervised ML,30411,False,6.0,8,1
+Supervised ML,30412,False,9.0,8,1
+Supervised ML,30413,False,3.0,8,1
+Supervised ML,30414,False,3.0,8,1
+Supervised ML,30415,True,22.0,5,1
+Supervised ML,30416,False,9.0,8,1
+Supervised ML,30417,False,9.0,8,1
+Supervised ML,30418,False,3.0,8,1
+Supervised ML,30419,True,21.0,5,1
+Supervised ML,30420,False,4.0,8,1
+Supervised ML,30421,False,3.0,8,1
+Supervised ML,30422,False,6.0,8,1
+Supervised ML,30423,False,3.0,8,1
+Supervised ML,30424,True,24.0,2,1
+Supervised ML,30425,False,3.0,8,1
+Supervised ML,30426,False,9.0,8,1
+Supervised ML,30427,True,22.0,5,1
+Supervised ML,30428,False,3.0,8,1
+Supervised ML,30429,False,7.0,8,1
+Supervised ML,30430,False,3.0,8,1
+Supervised ML,30431,False,6.0,8,1
+Supervised ML,30432,True,21.0,8,1
+Supervised ML,30433,False,8.0,8,1
+Supervised ML,30434,False,6.0,8,1
+Supervised ML,30435,False,9.0,8,1
+Supervised ML,30436,True,22.0,7,1
+Supervised ML,30437,False,9.0,8,1
+Supervised ML,30438,False,6.0,8,1
+Supervised ML,30439,False,3.0,8,1
+Supervised ML,30440,False,3.0,8,1
+Supervised ML,30441,False,6.0,8,1
+Supervised ML,30442,False,6.0,8,1
+Supervised ML,30443,False,9.0,8,1
+Supervised ML,30444,False,9.0,8,1
+Supervised ML,30445,False,3.0,8,1
+Supervised ML,30446,True,22.0,8,1
+Supervised ML,30447,False,6.0,8,1
+Supervised ML,30448,False,3.0,8,1
+Supervised ML,30449,False,3.0,8,1
+Supervised ML,30450,False,4.0,8,1
+Supervised ML,30451,True,21.0,4,1
+Supervised ML,30452,False,6.0,8,1
+Supervised ML,30453,False,9.0,8,1
+Supervised ML,30454,False,6.0,8,1
+Supervised ML,30455,False,6.0,8,1
+Supervised ML,30456,False,0.0,8,1
+Supervised ML,30457,False,6.0,8,1
+Supervised ML,30458,False,7.0,8,1
+Supervised ML,30459,False,3.0,8,1
+Supervised ML,30460,True,22.0,8,1
+Supervised ML,30461,True,22.0,7,1
+Supervised ML,30462,True,25.0,8,1
+Supervised ML,30463,False,3.0,8,1
+Supervised ML,30464,False,3.0,8,1
+Supervised ML,30465,False,3.0,8,1
+Supervised ML,30466,False,6.0,8,1
+Supervised ML,30467,False,6.0,8,1
+Supervised ML,30468,False,9.0,8,1
+Supervised ML,30469,False,3.0,8,1
+Supervised ML,30470,False,9.0,8,1
+Supervised ML,30471,False,7.0,8,1
+Supervised ML,30472,False,3.0,8,1
+Supervised ML,30473,False,6.0,8,1
+Supervised ML,30474,False,0.0,8,1
+Supervised ML,30475,False,6.0,8,1
+Supervised ML,30476,True,22.0,8,1
+Supervised ML,30477,True,20.0,7,1
+Supervised ML,30478,False,6.0,8,1
+Supervised ML,30479,False,9.0,8,1
+Supervised ML,30480,True,20.0,7,1
+Supervised ML,30481,False,3.0,8,1
+Supervised ML,30482,False,3.0,8,1
+Supervised ML,30483,False,6.0,8,1
+Supervised ML,30484,False,9.0,8,1
+Supervised ML,30485,False,5.0,8,1
+Supervised ML,30486,False,7.0,8,1
+Supervised ML,30487,False,9.0,8,1
+Supervised ML,30488,False,3.0,8,1
+Supervised ML,30489,False,3.0,8,1
+Supervised ML,30490,False,6.0,8,1
+Supervised ML,30491,False,3.0,8,1
+Supervised ML,30492,False,9.0,8,1
+Supervised ML,30493,False,9.0,8,1
+Supervised ML,30494,False,3.0,8,1
+Supervised ML,30495,True,23.0,6,1
+Supervised ML,30496,False,6.0,8,1
+Supervised ML,30497,False,9.0,8,1
+Supervised ML,30498,False,3.0,8,1
+Supervised ML,30499,True,22.0,7,1
+DQN - 50 Episodes,30000,False,7.0,8,1
+DQN - 50 Episodes,30001,True,21.0,7,1
+DQN - 50 Episodes,30002,False,8.0,8,1
+DQN - 50 Episodes,30003,False,9.0,8,1
+DQN - 50 Episodes,30004,False,8.0,8,1
+DQN - 50 Episodes,30005,False,9.0,8,1
+DQN - 50 Episodes,30006,True,20.0,8,1
+DQN - 50 Episodes,30007,False,3.0,8,1
+DQN - 50 Episodes,30008,False,7.0,8,1
+DQN - 50 Episodes,30009,False,6.0,8,1
+DQN - 50 Episodes,30010,False,3.0,8,1
+DQN - 50 Episodes,30011,False,3.0,8,1
+DQN - 50 Episodes,30012,True,21.0,5,1
+DQN - 50 Episodes,30013,False,3.0,8,1
+DQN - 50 Episodes,30014,False,7.0,8,1
+DQN - 50 Episodes,30015,True,20.0,8,1
+DQN - 50 Episodes,30016,True,20.0,5,1
+DQN - 50 Episodes,30017,True,20.0,8,1
+DQN - 50 Episodes,30018,False,7.0,8,1
+DQN - 50 Episodes,30019,True,22.0,8,1
+DQN - 50 Episodes,30020,True,22.0,6,1
+DQN - 50 Episodes,30021,True,20.0,8,1
+DQN - 50 Episodes,30022,False,3.0,8,1
+DQN - 50 Episodes,30023,False,3.0,8,1
+DQN - 50 Episodes,30024,True,20.0,4,1
+DQN - 50 Episodes,30025,True,21.0,8,1
+DQN - 50 Episodes,30026,False,6.0,8,1
+DQN - 50 Episodes,30027,False,6.0,8,1
+DQN - 50 Episodes,30028,False,4.0,8,1
+DQN - 50 Episodes,30029,False,6.0,8,1
+DQN - 50 Episodes,30030,True,22.0,7,1
+DQN - 50 Episodes,30031,False,8.0,8,1
+DQN - 50 Episodes,30032,False,6.0,8,1
+DQN - 50 Episodes,30033,False,6.0,8,1
+DQN - 50 Episodes,30034,False,9.0,8,1
+DQN - 50 Episodes,30035,False,6.0,8,1
+DQN - 50 Episodes,30036,False,6.0,8,1
+DQN - 50 Episodes,30037,False,0.0,8,1
+DQN - 50 Episodes,30038,False,9.0,8,1
+DQN - 50 Episodes,30039,False,8.0,8,1
+DQN - 50 Episodes,30040,True,22.0,4,1
+DQN - 50 Episodes,30041,False,6.0,8,1
+DQN - 50 Episodes,30042,False,9.0,8,1
+DQN - 50 Episodes,30043,False,6.0,8,1
+DQN - 50 Episodes,30044,False,3.0,8,1
+DQN - 50 Episodes,30045,False,7.0,8,1
+DQN - 50 Episodes,30046,False,9.0,8,1
+DQN - 50 Episodes,30047,False,6.0,8,1
+DQN - 50 Episodes,30048,False,9.0,8,1
+DQN - 50 Episodes,30049,False,6.0,8,1
+DQN - 50 Episodes,30050,True,20.0,4,1
+DQN - 50 Episodes,30051,True,22.0,5,1
+DQN - 50 Episodes,30052,False,3.0,8,1
+DQN - 50 Episodes,30053,False,6.0,8,1
+DQN - 50 Episodes,30054,True,20.0,8,1
+DQN - 50 Episodes,30055,True,21.0,4,1
+DQN - 50 Episodes,30056,True,22.0,4,1
+DQN - 50 Episodes,30057,False,6.0,8,1
+DQN - 50 Episodes,30058,True,22.0,7,1
+DQN - 50 Episodes,30059,True,22.0,4,1
+DQN - 50 Episodes,30060,False,6.0,8,1
+DQN - 50 Episodes,30061,False,6.0,8,1
+DQN - 50 Episodes,30062,False,6.0,8,1
+DQN - 50 Episodes,30063,False,6.0,8,1
+DQN - 50 Episodes,30064,True,22.0,8,1
+DQN - 50 Episodes,30065,False,9.0,8,1
+DQN - 50 Episodes,30066,False,9.0,8,1
+DQN - 50 Episodes,30067,True,22.0,7,1
+DQN - 50 Episodes,30068,False,6.0,8,1
+DQN - 50 Episodes,30069,False,9.0,8,1
+DQN - 50 Episodes,30070,False,8.0,8,1
+DQN - 50 Episodes,30071,True,20.0,8,1
+DQN - 50 Episodes,30072,False,8.0,8,1
+DQN - 50 Episodes,30073,False,3.0,8,1
+DQN - 50 Episodes,30074,False,9.0,8,1
+DQN - 50 Episodes,30075,False,3.0,8,1
+DQN - 50 Episodes,30076,False,6.0,8,1
+DQN - 50 Episodes,30077,True,20.0,8,1
+DQN - 50 Episodes,30078,False,7.0,8,1
+DQN - 50 Episodes,30079,True,22.0,7,1
+DQN - 50 Episodes,30080,False,9.0,8,1
+DQN - 50 Episodes,30081,False,7.0,8,1
+DQN - 50 Episodes,30082,False,9.0,8,1
+DQN - 50 Episodes,30083,True,22.0,8,1
+DQN - 50 Episodes,30084,True,21.0,4,1
+DQN - 50 Episodes,30085,False,6.0,8,1
+DQN - 50 Episodes,30086,True,22.0,1,1
+DQN - 50 Episodes,30087,True,20.0,5,1
+DQN - 50 Episodes,30088,False,7.0,8,1
+DQN - 50 Episodes,30089,True,23.0,4,1
+DQN - 50 Episodes,30090,False,9.0,8,1
+DQN - 50 Episodes,30091,False,2.0,8,1
+DQN - 50 Episodes,30092,False,9.0,8,1
+DQN - 50 Episodes,30093,True,23.0,8,1
+DQN - 50 Episodes,30094,False,6.0,8,1
+DQN - 50 Episodes,30095,True,22.0,5,1
+DQN - 50 Episodes,30096,True,22.0,5,1
+DQN - 50 Episodes,30097,False,3.0,8,1
+DQN - 50 Episodes,30098,True,22.0,7,1
+DQN - 50 Episodes,30099,False,3.0,8,1
+DQN - 50 Episodes,30100,True,22.0,6,1
+DQN - 50 Episodes,30101,False,3.0,8,1
+DQN - 50 Episodes,30102,True,20.0,6,1
+DQN - 50 Episodes,30103,False,9.0,8,1
+DQN - 50 Episodes,30104,False,3.0,8,1
+DQN - 50 Episodes,30105,False,7.0,8,1
+DQN - 50 Episodes,30106,False,3.0,8,1
+DQN - 50 Episodes,30107,False,3.0,8,1
+DQN - 50 Episodes,30108,False,3.0,8,1
+DQN - 50 Episodes,30109,False,6.0,8,1
+DQN - 50 Episodes,30110,True,22.0,8,1
+DQN - 50 Episodes,30111,True,24.0,6,1
+DQN - 50 Episodes,30112,True,22.0,8,1
+DQN - 50 Episodes,30113,True,22.0,3,1
+DQN - 50 Episodes,30114,True,20.0,8,1
+DQN - 50 Episodes,30115,True,20.0,8,1
+DQN - 50 Episodes,30116,False,9.0,8,1
+DQN - 50 Episodes,30117,True,21.0,6,1
+DQN - 50 Episodes,30118,False,9.0,8,1
+DQN - 50 Episodes,30119,False,0.0,8,1
+DQN - 50 Episodes,30120,False,6.0,8,1
+DQN - 50 Episodes,30121,True,22.0,7,1
+DQN - 50 Episodes,30122,False,3.0,8,1
+DQN - 50 Episodes,30123,True,20.0,3,1
+DQN - 50 Episodes,30124,False,9.0,8,1
+DQN - 50 Episodes,30125,True,21.0,8,1
+DQN - 50 Episodes,30126,False,7.0,8,1
+DQN - 50 Episodes,30127,True,20.0,7,1
+DQN - 50 Episodes,30128,True,22.0,7,1
+DQN - 50 Episodes,30129,False,3.0,8,1
+DQN - 50 Episodes,30130,False,3.0,8,1
+DQN - 50 Episodes,30131,False,6.0,8,1
+DQN - 50 Episodes,30132,False,6.0,8,1
+DQN - 50 Episodes,30133,True,20.0,5,1
+DQN - 50 Episodes,30134,True,22.0,7,1
+DQN - 50 Episodes,30135,False,7.0,8,1
+DQN - 50 Episodes,30136,False,9.0,8,1
+DQN - 50 Episodes,30137,False,6.0,8,1
+DQN - 50 Episodes,30138,False,8.0,8,1
+DQN - 50 Episodes,30139,False,9.0,8,1
+DQN - 50 Episodes,30140,False,3.0,8,1
+DQN - 50 Episodes,30141,False,3.0,8,1
+DQN - 50 Episodes,30142,False,3.0,8,1
+DQN - 50 Episodes,30143,False,2.0,8,1
+DQN - 50 Episodes,30144,True,22.0,8,1
+DQN - 50 Episodes,30145,False,5.0,8,1
+DQN - 50 Episodes,30146,False,3.0,8,1
+DQN - 50 Episodes,30147,False,8.0,8,1
+DQN - 50 Episodes,30148,False,0.0,8,1
+DQN - 50 Episodes,30149,False,9.0,8,1
+DQN - 50 Episodes,30150,True,20.0,5,1
+DQN - 50 Episodes,30151,False,5.0,8,1
+DQN - 50 Episodes,30152,False,7.0,8,1
+DQN - 50 Episodes,30153,False,7.0,8,1
+DQN - 50 Episodes,30154,True,20.0,5,1
+DQN - 50 Episodes,30155,False,6.0,8,1
+DQN - 50 Episodes,30156,False,0.0,8,1
+DQN - 50 Episodes,30157,False,7.0,8,1
+DQN - 50 Episodes,30158,False,8.0,8,1
+DQN - 50 Episodes,30159,False,5.0,8,1
+DQN - 50 Episodes,30160,False,6.0,8,1
+DQN - 50 Episodes,30161,False,6.0,8,1
+DQN - 50 Episodes,30162,False,8.0,8,1
+DQN - 50 Episodes,30163,False,0.0,8,1
+DQN - 50 Episodes,30164,False,9.0,8,1
+DQN - 50 Episodes,30165,False,9.0,8,1
+DQN - 50 Episodes,30166,False,6.0,8,1
+DQN - 50 Episodes,30167,False,9.0,8,1
+DQN - 50 Episodes,30168,False,3.0,8,1
+DQN - 50 Episodes,30169,False,6.0,8,1
+DQN - 50 Episodes,30170,True,20.0,3,1
+DQN - 50 Episodes,30171,True,22.0,7,1
+DQN - 50 Episodes,30172,False,7.0,8,1
+DQN - 50 Episodes,30173,False,6.0,8,1
+DQN - 50 Episodes,30174,True,20.0,5,1
+DQN - 50 Episodes,30175,False,5.0,8,1
+DQN - 50 Episodes,30176,False,9.0,8,1
+DQN - 50 Episodes,30177,False,3.0,8,1
+DQN - 50 Episodes,30178,False,9.0,8,1
+DQN - 50 Episodes,30179,False,6.0,8,1
+DQN - 50 Episodes,30180,False,6.0,8,1
+DQN - 50 Episodes,30181,False,9.0,8,1
+DQN - 50 Episodes,30182,False,9.0,8,1
+DQN - 50 Episodes,30183,False,0.0,8,1
+DQN - 50 Episodes,30184,False,3.0,8,1
+DQN - 50 Episodes,30185,True,22.0,6,1
+DQN - 50 Episodes,30186,True,20.0,4,1
+DQN - 50 Episodes,30187,False,6.0,8,1
+DQN - 50 Episodes,30188,False,7.0,8,1
+DQN - 50 Episodes,30189,True,22.0,5,1
+DQN - 50 Episodes,30190,False,6.0,8,1
+DQN - 50 Episodes,30191,False,9.0,8,1
+DQN - 50 Episodes,30192,False,6.0,8,1
+DQN - 50 Episodes,30193,True,22.0,8,1
+DQN - 50 Episodes,30194,False,6.0,8,1
+DQN - 50 Episodes,30195,False,3.0,8,1
+DQN - 50 Episodes,30196,False,3.0,8,1
+DQN - 50 Episodes,30197,False,9.0,8,1
+DQN - 50 Episodes,30198,False,6.0,8,1
+DQN - 50 Episodes,30199,False,9.0,8,1
+DQN - 50 Episodes,30200,False,8.0,8,1
+DQN - 50 Episodes,30201,True,22.0,3,1
+DQN - 50 Episodes,30202,False,6.0,8,1
+DQN - 50 Episodes,30203,False,9.0,8,1
+DQN - 50 Episodes,30204,False,6.0,8,1
+DQN - 50 Episodes,30205,True,22.0,7,1
+DQN - 50 Episodes,30206,False,2.0,8,1
+DQN - 50 Episodes,30207,False,9.0,8,1
+DQN - 50 Episodes,30208,False,9.0,8,1
+DQN - 50 Episodes,30209,False,7.0,8,1
+DQN - 50 Episodes,30210,True,21.0,6,1
+DQN - 50 Episodes,30211,False,7.0,8,1
+DQN - 50 Episodes,30212,True,20.0,5,1
+DQN - 50 Episodes,30213,True,22.0,6,1
+DQN - 50 Episodes,30214,True,22.0,7,1
+DQN - 50 Episodes,30215,False,9.0,8,1
+DQN - 50 Episodes,30216,False,6.0,8,1
+DQN - 50 Episodes,30217,False,9.0,8,1
+DQN - 50 Episodes,30218,True,22.0,6,1
+DQN - 50 Episodes,30219,False,3.0,8,1
+DQN - 50 Episodes,30220,True,34.0,4,1
+DQN - 50 Episodes,30221,False,6.0,8,1
+DQN - 50 Episodes,30222,False,8.0,8,1
+DQN - 50 Episodes,30223,False,9.0,8,1
+DQN - 50 Episodes,30224,False,6.0,8,1
+DQN - 50 Episodes,30225,True,20.0,6,1
+DQN - 50 Episodes,30226,True,20.0,5,1
+DQN - 50 Episodes,30227,True,22.0,8,1
+DQN - 50 Episodes,30228,False,3.0,8,1
+DQN - 50 Episodes,30229,False,3.0,8,1
+DQN - 50 Episodes,30230,False,6.0,8,1
+DQN - 50 Episodes,30231,True,25.0,8,1
+DQN - 50 Episodes,30232,False,6.0,8,1
+DQN - 50 Episodes,30233,True,22.0,2,1
+DQN - 50 Episodes,30234,True,22.0,7,1
+DQN - 50 Episodes,30235,True,20.0,6,1
+DQN - 50 Episodes,30236,True,24.0,8,1
+DQN - 50 Episodes,30237,True,22.0,8,1
+DQN - 50 Episodes,30238,True,20.0,8,1
+DQN - 50 Episodes,30239,True,22.0,6,1
+DQN - 50 Episodes,30240,False,9.0,8,1
+DQN - 50 Episodes,30241,True,22.0,3,1
+DQN - 50 Episodes,30242,False,3.0,8,1
+DQN - 50 Episodes,30243,False,7.0,8,1
+DQN - 50 Episodes,30244,False,9.0,8,1
+DQN - 50 Episodes,30245,False,7.0,8,1
+DQN - 50 Episodes,30246,True,22.0,5,1
+DQN - 50 Episodes,30247,False,7.0,8,1
+DQN - 50 Episodes,30248,False,5.0,8,1
+DQN - 50 Episodes,30249,True,22.0,4,1
+DQN - 50 Episodes,30250,False,3.0,8,1
+DQN - 50 Episodes,30251,False,6.0,8,1
+DQN - 50 Episodes,30252,True,20.0,4,1
+DQN - 50 Episodes,30253,True,21.0,6,1
+DQN - 50 Episodes,30254,False,4.0,8,1
+DQN - 50 Episodes,30255,True,25.0,7,1
+DQN - 50 Episodes,30256,True,22.0,6,1
+DQN - 50 Episodes,30257,False,3.0,8,1
+DQN - 50 Episodes,30258,True,22.0,7,1
+DQN - 50 Episodes,30259,False,6.0,8,1
+DQN - 50 Episodes,30260,False,9.0,8,1
+DQN - 50 Episodes,30261,False,6.0,8,1
+DQN - 50 Episodes,30262,True,20.0,5,1
+DQN - 50 Episodes,30263,True,28.0,7,1
+DQN - 50 Episodes,30264,False,3.0,8,1
+DQN - 50 Episodes,30265,False,6.0,8,1
+DQN - 50 Episodes,30266,False,9.0,8,1
+DQN - 50 Episodes,30267,False,4.0,8,1
+DQN - 50 Episodes,30268,False,6.0,8,1
+DQN - 50 Episodes,30269,False,6.0,8,1
+DQN - 50 Episodes,30270,True,23.0,7,1
+DQN - 50 Episodes,30271,False,0.0,8,1
+DQN - 50 Episodes,30272,True,22.0,7,1
+DQN - 50 Episodes,30273,True,21.0,7,1
+DQN - 50 Episodes,30274,True,22.0,3,1
+DQN - 50 Episodes,30275,False,6.0,8,1
+DQN - 50 Episodes,30276,True,23.0,3,1
+DQN - 50 Episodes,30277,True,22.0,7,1
+DQN - 50 Episodes,30278,False,8.0,8,1
+DQN - 50 Episodes,30279,False,6.0,8,1
+DQN - 50 Episodes,30280,False,6.0,8,1
+DQN - 50 Episodes,30281,False,3.0,8,1
+DQN - 50 Episodes,30282,True,22.0,8,1
+DQN - 50 Episodes,30283,False,7.0,8,1
+DQN - 50 Episodes,30284,False,6.0,8,1
+DQN - 50 Episodes,30285,False,6.0,8,1
+DQN - 50 Episodes,30286,False,6.0,8,1
+DQN - 50 Episodes,30287,False,9.0,8,1
+DQN - 50 Episodes,30288,False,3.0,8,1
+DQN - 50 Episodes,30289,False,9.0,8,1
+DQN - 50 Episodes,30290,False,9.0,8,1
+DQN - 50 Episodes,30291,True,20.0,8,1
+DQN - 50 Episodes,30292,True,22.0,7,1
+DQN - 50 Episodes,30293,False,3.0,8,1
+DQN - 50 Episodes,30294,True,22.0,8,1
+DQN - 50 Episodes,30295,False,6.0,8,1
+DQN - 50 Episodes,30296,True,25.0,7,1
+DQN - 50 Episodes,30297,False,6.0,8,1
+DQN - 50 Episodes,30298,True,22.0,6,1
+DQN - 50 Episodes,30299,False,6.0,8,1
+DQN - 50 Episodes,30300,False,0.0,8,1
+DQN - 50 Episodes,30301,False,6.0,8,1
+DQN - 50 Episodes,30302,True,21.0,6,1
+DQN - 50 Episodes,30303,False,6.0,8,1
+DQN - 50 Episodes,30304,False,6.0,8,1
+DQN - 50 Episodes,30305,False,2.0,8,1
+DQN - 50 Episodes,30306,False,7.0,8,1
+DQN - 50 Episodes,30307,False,9.0,8,1
+DQN - 50 Episodes,30308,True,22.0,8,1
+DQN - 50 Episodes,30309,False,9.0,8,1
+DQN - 50 Episodes,30310,False,8.0,8,1
+DQN - 50 Episodes,30311,False,6.0,8,1
+DQN - 50 Episodes,30312,True,21.0,4,1
+DQN - 50 Episodes,30313,True,22.0,4,1
+DQN - 50 Episodes,30314,False,6.0,8,1
+DQN - 50 Episodes,30315,False,6.0,8,1
+DQN - 50 Episodes,30316,True,21.0,8,1
+DQN - 50 Episodes,30317,True,22.0,6,1
+DQN - 50 Episodes,30318,False,6.0,8,1
+DQN - 50 Episodes,30319,False,3.0,8,1
+DQN - 50 Episodes,30320,False,9.0,8,1
+DQN - 50 Episodes,30321,False,8.0,8,1
+DQN - 50 Episodes,30322,False,9.0,8,1
+DQN - 50 Episodes,30323,False,6.0,8,1
+DQN - 50 Episodes,30324,False,7.0,8,1
+DQN - 50 Episodes,30325,False,7.0,8,1
+DQN - 50 Episodes,30326,False,9.0,8,1
+DQN - 50 Episodes,30327,True,22.0,6,1
+DQN - 50 Episodes,30328,False,9.0,8,1
+DQN - 50 Episodes,30329,False,6.0,8,1
+DQN - 50 Episodes,30330,False,6.0,8,1
+DQN - 50 Episodes,30331,False,9.0,8,1
+DQN - 50 Episodes,30332,False,6.0,8,1
+DQN - 50 Episodes,30333,True,21.0,5,1
+DQN - 50 Episodes,30334,False,9.0,8,1
+DQN - 50 Episodes,30335,False,3.0,8,1
+DQN - 50 Episodes,30336,True,22.0,2,1
+DQN - 50 Episodes,30337,False,6.0,8,1
+DQN - 50 Episodes,30338,True,21.0,7,1
+DQN - 50 Episodes,30339,False,9.0,8,1
+DQN - 50 Episodes,30340,True,22.0,4,1
+DQN - 50 Episodes,30341,True,22.0,4,1
+DQN - 50 Episodes,30342,False,9.0,8,1
+DQN - 50 Episodes,30343,False,9.0,8,1
+DQN - 50 Episodes,30344,False,6.0,8,1
+DQN - 50 Episodes,30345,False,9.0,8,1
+DQN - 50 Episodes,30346,False,9.0,8,1
+DQN - 50 Episodes,30347,True,22.0,7,1
+DQN - 50 Episodes,30348,False,6.0,8,1
+DQN - 50 Episodes,30349,False,9.0,8,1
+DQN - 50 Episodes,30350,False,5.0,8,1
+DQN - 50 Episodes,30351,False,6.0,8,1
+DQN - 50 Episodes,30352,False,8.0,8,1
+DQN - 50 Episodes,30353,True,25.0,8,1
+DQN - 50 Episodes,30354,False,6.0,8,1
+DQN - 50 Episodes,30355,False,6.0,8,1
+DQN - 50 Episodes,30356,False,6.0,8,1
+DQN - 50 Episodes,30357,False,7.0,8,1
+DQN - 50 Episodes,30358,False,9.0,8,1
+DQN - 50 Episodes,30359,False,0.0,8,1
+DQN - 50 Episodes,30360,True,20.0,1,1
+DQN - 50 Episodes,30361,False,3.0,8,1
+DQN - 50 Episodes,30362,False,3.0,8,1
+DQN - 50 Episodes,30363,True,25.0,5,1
+DQN - 50 Episodes,30364,False,6.0,8,1
+DQN - 50 Episodes,30365,True,27.0,2,1
+DQN - 50 Episodes,30366,False,8.0,8,1
+DQN - 50 Episodes,30367,False,7.0,8,1
+DQN - 50 Episodes,30368,True,20.0,5,1
+DQN - 50 Episodes,30369,False,6.0,8,1
+DQN - 50 Episodes,30370,False,6.0,8,1
+DQN - 50 Episodes,30371,False,9.0,8,1
+DQN - 50 Episodes,30372,False,9.0,8,1
+DQN - 50 Episodes,30373,False,3.0,8,1
+DQN - 50 Episodes,30374,True,22.0,7,1
+DQN - 50 Episodes,30375,False,6.0,8,1
+DQN - 50 Episodes,30376,False,6.0,8,1
+DQN - 50 Episodes,30377,True,21.0,8,1
+DQN - 50 Episodes,30378,False,6.0,8,1
+DQN - 50 Episodes,30379,False,3.0,8,1
+DQN - 50 Episodes,30380,False,7.0,8,1
+DQN - 50 Episodes,30381,False,0.0,8,1
+DQN - 50 Episodes,30382,True,27.0,2,1
+DQN - 50 Episodes,30383,False,9.0,8,1
+DQN - 50 Episodes,30384,True,23.0,4,1
+DQN - 50 Episodes,30385,False,6.0,8,1
+DQN - 50 Episodes,30386,False,3.0,8,1
+DQN - 50 Episodes,30387,False,6.0,8,1
+DQN - 50 Episodes,30388,False,3.0,8,1
+DQN - 50 Episodes,30389,False,9.0,8,1
+DQN - 50 Episodes,30390,False,6.0,8,1
+DQN - 50 Episodes,30391,True,20.0,6,1
+DQN - 50 Episodes,30392,False,9.0,8,1
+DQN - 50 Episodes,30393,True,22.0,8,1
+DQN - 50 Episodes,30394,True,25.0,7,1
+DQN - 50 Episodes,30395,True,23.0,2,1
+DQN - 50 Episodes,30396,False,6.0,8,1
+DQN - 50 Episodes,30397,True,22.0,5,1
+DQN - 50 Episodes,30398,False,6.0,8,1
+DQN - 50 Episodes,30399,False,3.0,8,1
+DQN - 50 Episodes,30400,False,3.0,8,1
+DQN - 50 Episodes,30401,False,4.0,8,1
+DQN - 50 Episodes,30402,True,22.0,7,1
+DQN - 50 Episodes,30403,False,3.0,8,1
+DQN - 50 Episodes,30404,True,22.0,7,1
+DQN - 50 Episodes,30405,False,6.0,8,1
+DQN - 50 Episodes,30406,False,9.0,8,1
+DQN - 50 Episodes,30407,True,22.0,6,1
+DQN - 50 Episodes,30408,False,7.0,8,1
+DQN - 50 Episodes,30409,False,3.0,8,1
+DQN - 50 Episodes,30410,False,8.0,8,1
+DQN - 50 Episodes,30411,False,9.0,8,1
+DQN - 50 Episodes,30412,True,22.0,3,1
+DQN - 50 Episodes,30413,False,6.0,8,1
+DQN - 50 Episodes,30414,False,8.0,8,1
+DQN - 50 Episodes,30415,True,20.0,4,1
+DQN - 50 Episodes,30416,True,22.0,8,1
+DQN - 50 Episodes,30417,False,9.0,8,1
+DQN - 50 Episodes,30418,False,6.0,8,1
+DQN - 50 Episodes,30419,False,6.0,8,1
+DQN - 50 Episodes,30420,False,3.0,8,1
+DQN - 50 Episodes,30421,True,21.0,4,1
+DQN - 50 Episodes,30422,False,3.0,8,1
+DQN - 50 Episodes,30423,True,22.0,7,1
+DQN - 50 Episodes,30424,False,7.0,8,1
+DQN - 50 Episodes,30425,False,3.0,8,1
+DQN - 50 Episodes,30426,True,25.0,8,1
+DQN - 50 Episodes,30427,False,9.0,8,1
+DQN - 50 Episodes,30428,False,9.0,8,1
+DQN - 50 Episodes,30429,False,7.0,8,1
+DQN - 50 Episodes,30430,False,6.0,8,1
+DQN - 50 Episodes,30431,False,6.0,8,1
+DQN - 50 Episodes,30432,False,7.0,8,1
+DQN - 50 Episodes,30433,True,23.0,8,1
+DQN - 50 Episodes,30434,True,22.0,6,1
+DQN - 50 Episodes,30435,True,20.0,8,1
+DQN - 50 Episodes,30436,False,6.0,8,1
+DQN - 50 Episodes,30437,False,6.0,8,1
+DQN - 50 Episodes,30438,False,3.0,8,1
+DQN - 50 Episodes,30439,False,6.0,8,1
+DQN - 50 Episodes,30440,False,9.0,8,1
+DQN - 50 Episodes,30441,False,9.0,8,1
+DQN - 50 Episodes,30442,False,6.0,8,1
+DQN - 50 Episodes,30443,True,28.0,5,1
+DQN - 50 Episodes,30444,False,6.0,8,1
+DQN - 50 Episodes,30445,False,9.0,8,1
+DQN - 50 Episodes,30446,False,3.0,8,1
+DQN - 50 Episodes,30447,False,9.0,8,1
+DQN - 50 Episodes,30448,False,7.0,8,1
+DQN - 50 Episodes,30449,False,6.0,8,1
+DQN - 50 Episodes,30450,False,7.0,8,1
+DQN - 50 Episodes,30451,False,3.0,8,1
+DQN - 50 Episodes,30452,False,9.0,8,1
+DQN - 50 Episodes,30453,False,9.0,8,1
+DQN - 50 Episodes,30454,False,9.0,8,1
+DQN - 50 Episodes,30455,True,22.0,5,1
+DQN - 50 Episodes,30456,True,20.0,6,1
+DQN - 50 Episodes,30457,False,3.0,8,1
+DQN - 50 Episodes,30458,False,9.0,8,1
+DQN - 50 Episodes,30459,True,24.0,8,1
+DQN - 50 Episodes,30460,True,21.0,5,1
+DQN - 50 Episodes,30461,True,22.0,8,1
+DQN - 50 Episodes,30462,False,9.0,8,1
+DQN - 50 Episodes,30463,False,0.0,8,1
+DQN - 50 Episodes,30464,False,3.0,8,1
+DQN - 50 Episodes,30465,False,6.0,8,1
+DQN - 50 Episodes,30466,False,6.0,8,1
+DQN - 50 Episodes,30467,False,9.0,8,1
+DQN - 50 Episodes,30468,True,20.0,7,1
+DQN - 50 Episodes,30469,True,21.0,7,1
+DQN - 50 Episodes,30470,False,9.0,8,1
+DQN - 50 Episodes,30471,True,21.0,3,1
+DQN - 50 Episodes,30472,False,9.0,8,1
+DQN - 50 Episodes,30473,False,6.0,8,1
+DQN - 50 Episodes,30474,False,0.0,8,1
+DQN - 50 Episodes,30475,False,6.0,8,1
+DQN - 50 Episodes,30476,False,6.0,8,1
+DQN - 50 Episodes,30477,True,22.0,7,1
+DQN - 50 Episodes,30478,False,3.0,8,1
+DQN - 50 Episodes,30479,False,9.0,8,1
+DQN - 50 Episodes,30480,True,27.0,6,1
+DQN - 50 Episodes,30481,False,6.0,8,1
+DQN - 50 Episodes,30482,True,20.0,6,1
+DQN - 50 Episodes,30483,True,25.0,8,1
+DQN - 50 Episodes,30484,True,20.0,6,1
+DQN - 50 Episodes,30485,False,6.0,8,1
+DQN - 50 Episodes,30486,False,3.0,8,1
+DQN - 50 Episodes,30487,True,22.0,6,1
+DQN - 50 Episodes,30488,False,9.0,8,1
+DQN - 50 Episodes,30489,True,22.0,8,1
+DQN - 50 Episodes,30490,False,6.0,8,1
+DQN - 50 Episodes,30491,False,6.0,8,1
+DQN - 50 Episodes,30492,False,6.0,8,1
+DQN - 50 Episodes,30493,False,3.0,8,1
+DQN - 50 Episodes,30494,False,3.0,8,1
+DQN - 50 Episodes,30495,True,27.0,6,1
+DQN - 50 Episodes,30496,False,0.0,8,1
+DQN - 50 Episodes,30497,False,6.0,8,1
+DQN - 50 Episodes,30498,False,3.0,8,1
+DQN - 50 Episodes,30499,False,9.0,8,1

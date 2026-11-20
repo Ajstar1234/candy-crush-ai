@@ -63,3 +63,25 @@ def encode_rl_state_move(board, move, game):
     ])
 
     return feature_vector
+
+def encode_normalized_rl_state_move(board, move, game):
+    features = encode_rl_state_move(
+        board, move, game
+    ).astype(np.float32)
+
+    move_start = board.rows * board.cols * (board.num_candy_types + 3)
+
+    # Normalize move coordinates
+    features[move_start] /= max(1, board.rows - 1)
+    features[move_start + 1] /= max(1, board.cols - 1)
+    features[move_start + 2] /= max(1, board.rows - 1)
+    features[move_start + 3] /= max(1, board.cols - 1)
+
+    # Normalize target candy type
+    features[move_start + 4] /= max(1, board.num_candy_types)
+
+    # Normalize remaining turns and targets
+    features[-2] /= max(1, game.max_turns)
+    features[-1] /= max(1, game.target_candy_count)
+
+    return features

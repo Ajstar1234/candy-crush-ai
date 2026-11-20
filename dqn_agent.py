@@ -2,7 +2,7 @@ import torch
 import random
 import numpy as np
 
-from ml_features import encode_rl_state_move
+from ml_features import encode_rl_state_move, encode_normalized_rl_state_move
 from ml_model import MoveEvaluationModel
 from collections import deque
 
@@ -15,13 +15,14 @@ class DQNAgent:
         gamma=0.99,
         epsilon=1.0,
         epsilon_decay=0.995,
-        epsilon_min=0.05
-
+        epsilon_min=0.05,
+        use_normalized_features=False
     ):
         self.gamma = gamma
         self.epsilon = epsilon
         self.epsilon_decay = epsilon_decay
         self.epsilon_min = epsilon_min
+        self.use_normalized_features = use_normalized_features
 
         self.policy_net = MoveEvaluationModel(input_size)
 
@@ -53,7 +54,10 @@ class DQNAgent:
                 best_value = float('-inf')
 
                 for move in valid_moves:
-                    features = encode_rl_state_move(board, move, game)
+                    if self.use_normalized_features:
+                        features = encode_normalized_rl_state_move(board, move, game)
+                    else:
+                        features = encode_rl_state_move(board, move, game)
                     features = torch.tensor(features, dtype=torch.float32).unsqueeze(0)
 
                     value = self.policy_net(features).item()
@@ -99,13 +103,21 @@ class DQNAgent:
                         dtype=torch.float32
                     )
 
-                    next_q_values = self.target_net(
+                    # Policy network selects the best next action
+                    policy_q_values = self.policy_net(
                         next_action_features_tensor
                     ).squeeze(-1)
 
-                    max_next_q = next_q_values.max().item()
+                    best_next_action = torch.argmax(policy_q_values).item()
 
-                    target_q += self.gamma * max_next_q
+                    # Target network evaluates that selected action
+                    target_q_values = self.target_net(
+                        next_action_features_tensor
+                    ).squeeze(-1)
+
+                    next_q = target_q_values[best_next_action].item()
+
+                    target_q += self.gamma * next_q
 
             state_action_batch.append(state_action_features)
             target_q_batch.append(target_q)

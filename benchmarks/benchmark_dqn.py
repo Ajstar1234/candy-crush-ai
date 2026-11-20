@@ -1,18 +1,20 @@
 import torch
 
 from dqn_agent import DQNAgent
-from rl_environment import RLEnvironment
+from benchmarks.evaluate_shared import evaluate_agent, summarize_results
 
 
 def evaluate_dqn(
-        num_games=20, 
-        seed_start=20000, 
-        epsilon=0.0,
-        checkpoint_path="models/dqn_25episodes.pth"
-        ):
-    env = RLEnvironment()
-
-    agent = DQNAgent(epsilon=epsilon)
+    num_games=20,
+    seed_start=20000,
+    epsilon=0.0,
+    checkpoint_path="models/dqn_25episodes.pth",
+    use_normalized_features=False
+):
+    agent = DQNAgent(
+        epsilon=epsilon,
+        use_normalized_features=use_normalized_features
+    )
 
     agent.policy_net.load_state_dict(
         torch.load(
@@ -24,46 +26,43 @@ def evaluate_dqn(
 
     agent.policy_net.eval()
 
-    total_wins = 0
-    total_reward = 0.0
+    results = evaluate_agent(
+        agent.choose_move,
+        num_games=num_games,
+        seed_start=seed_start
+    )
 
-    for game_index in range(num_games):
-        env.reset(seed=seed_start + game_index)
-
-        while not env.done and not env.game.is_game_over():
-            move = agent.choose_move(env.board, env.game)
-
-            if move is None:
-                raise RuntimeError("No legal moves in an active episode.")
-
-            _, reward, done, _ = env.step(move)
-            total_reward += reward
-
-        if env.game.is_won():
-            total_wins += 1
-
-    return total_wins, total_reward
+    return summarize_results(results)
 
 if __name__ == "__main__":
     num_games = 500
 
     models = [
-        ("DQN - Untrained", "models/dqn_seed42_ep0.pth", 0.0),
-        ("DQN - 50 Episodes", "models/dqn_seed42_ep50.pth", 0.0),
-        ("DQN - 100 Episodes", "models/dqn_seed42_ep100.pth", 0.0),
-        ("Random Agent", "models/dqn_seed42_ep0.pth", 1.0)
+        ("Double DQN - 100", "models/double_dqn_long_seed42_ep100.pth", 0.0, False),
+        ("Double DQN - 200", "models/double_dqn_long_seed42_ep200.pth", 0.0, False),
+        ("Double DQN - 300", "models/double_dqn_long_seed42_ep300.pth", 0.0, False),
+        ("Double DQN - 400", "models/double_dqn_long_seed42_ep400.pth", 0.0, False),
+        ("Double DQN - 500", "models/double_dqn_long_seed42_ep500.pth", 0.0, False),
+
+        ("Random", "models/dqn_seed42_ep0.pth", 1.0, False)
     ]
 
-    for model_name, checkpoint_path, epsilon in models:
-        total_wins, total_reward = evaluate_dqn(
+    for model_name, checkpoint_path, epsilon, normalized in models:
+        summary = evaluate_dqn(
             num_games=num_games,
-            seed_start=30000,
+            seed_start=70000,
             epsilon=epsilon,
-            checkpoint_path=checkpoint_path
+            checkpoint_path=checkpoint_path,
+            use_normalized_features=normalized
         )
 
         print(f"\n{model_name}")
-        print(f"Games evaluated: {num_games}")
-        print(f"Total wins: {total_wins}")
-        print(f"Win rate: {total_wins / num_games * 100:.2f}%")
-        print(f"Average reward: {total_reward / num_games:.2f}")
+        print(f"Games evaluated: {summary['games']}")
+        print(f"Total wins: {summary['wins']}")
+        print(f"Win rate: {summary['win_rate'] * 100:.2f}%")
+        print(f"Average reward: {summary['average_reward']:.2f}")
+        print(
+            f"95% Confidence Interval: "
+            f"{summary['ci_low'] * 100:.2f}% - "
+            f"{summary['ci_high'] * 100:.2f}%"
+        )

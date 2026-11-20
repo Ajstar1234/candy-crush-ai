@@ -1,0 +1,109 @@
+# Experiment Results and Findings
+
+This document records completed Candy Crush AI experiments, including the evaluation conditions needed to interpret their results. All figures below are taken from recorded local experiment output. The reported training runs use limited seeds, so treat conclusions about hyperparameter effectiveness as preliminary.
+
+## Evaluation setup
+
+The recent reinforcement-learning evaluations use a 9×9 board with six candy colors, eight moves, and a target of collecting ten candies of the objective type. Model checkpoints are evaluated with epsilon set to zero unless a row is explicitly the random baseline. Each checkpoint in a comparison is tested on the same set of initial environment seeds.
+
+The RL environment's shaped reward is **+1 per target candy collected** plus **+10 for a win**. This reward differs from the ordinary game score.
+
+## 100-episode Double DQN: original versus normalized input
+
+- Learning rate: 0.00005
+- Games: 500 per model/checkpoint
+- Evaluation seeds: 60000–60499
+- Training seed: 42
+
+| Episode | Original features | Normalized features |
+|---:|---:|---:|
+| 25 | 31.2% | 31.4% |
+| 50 | 29.2% | 30.0% |
+| 75 | 29.8% | 29.8% |
+| 100 | 30.8% | 29.0% |
+| **Random baseline** | **26.6%** | — |
+
+**Interpretation:** feature normalization produced no consistent win-rate advantage over the original representation across the tested checkpoints. This comparison alone is not sufficient to establish equivalence across other training seeds or configurations.
+
+## 500-episode Double DQN: checkpoint stability
+
+- Learning rate: 0.00005
+- Input: original (unnormalized) feature representation
+- Training episodes: 500
+- Training seed: 42
+- Games: 500 per checkpoint
+- Evaluation seeds: 70000–70499
+
+| Training checkpoint | Wins / 500 | Win rate | Average reward |
+|---:|---:|---:|---:|
+| 100 | 143 | 28.6% | 10.69 |
+| 200 | 66 | 13.2% | 7.55 |
+| 300 | 186 | **37.2%** | **11.79** |
+| 400 | 173 | 34.6% | 11.51 |
+| 500 | 169 | 33.8% | 11.42 |
+| Random baseline | 137 | 27.4% | 10.01 |
+
+**Interpretation:** the 300-episode checkpoint was best on this evaluation set. Additional training did not improve results monotonically. Selecting a checkpoint on this set means it is important to assess that selection using a different seed range.
+
+## Selected checkpoint versus objective-aware heuristic
+
+- Double DQN checkpoint: `models/double_dqn_long_seed42_ep300.pth`
+- Fresh evaluation seeds: 80000–80499
+- Games: 500 for each agent, starting from matched seeds
+
+| Agent | Wins / 500 | Win rate | Average reward |
+|---|---:|---:|---:|
+| Double DQN (episode 300) | 180 | 36.0% | 11.89 |
+| Objective-aware heuristic | 307 | **61.4%** | **16.36** |
+
+Paired win outcomes:
+
+| Outcome | Number of games |
+|---|---:|
+| Both won | 138 |
+| Only DQN won | 42 |
+| Only heuristic won | 169 |
+| Neither won | 151 |
+
+**Interpretation:** the heuristic outperformed the trained agent on the same starting seeds by 25.4 percentage points. The DQN sometimes won when the heuristic did not (42 games), but that does not erase the substantial overall gap.
+
+## Initial move-ranking diagnostic
+
+- Model: Double DQN episode-300 checkpoint
+- Boards: 100 independently seeded **opening** boards
+- Seeds: 90000–90099
+- Reference: objective-aware heuristic score for every legal opening move
+
+| Metric | DQN | Uniform random choice | Best immediate heuristic move |
+|---|---:|---:|---:|
+| Heuristic-optimal move accuracy | 14.00% | 13.97% (expected) | 100% |
+| Mean immediate heuristic score | 4.23 | 4.49 (expected) | 10.89 |
+| Mean gap to best score | 6.66 | 6.40 (expected) | 0 |
+
+**Interpretation:** on this set of opening boards, DQN choices aligned with the heuristic's top-ranked moves approximately as often as random choice. This does **not** establish that the DQN learned no long-term strategy: the heuristic scores immediate move quality, whereas Q-values estimate discounted future rewards. The 100-board sample is also insufficient for strong claims about small differences.
+
+## Earlier supervised learning experiments
+
+The original project also evaluated heuristic, supervised ML, and target-mask feature representations on 5×5 and 9×9 settings. These experiments were performed under different board configurations and should **not** be presented as direct comparisons to the 9×9 DQN results above.
+
+On 100 held-out move-ranking board states in an earlier supervised experiment:
+
+| Metric | Original supervised ML | Target-mask supervised ML | Random |
+|---|---:|---:|---:|
+| Optimal-move accuracy | 11.00% | 18.00% | 15.61% |
+| Average heuristic score gap | 7.53 | 6.46 | 6.85 |
+
+The target-mask representation improved results relative to that original supervised model in this experiment, although training conditions were not completely matched following a heuristic correction. Attribution to the target mask alone is not justified.
+
+## Conclusions
+
+1. The project implements a complete progression from rule-based heuristics to supervised move ranking and reinforcement learning.
+2. The objective-aware heuristic is a demanding, interpretable baseline and outperformed the selected Double DQN on the fresh 500-game comparison.
+3. More RL training and input normalization did not guarantee better gameplay. Saved intermediate checkpoints and holdout evaluations were necessary to discover instability.
+4. The next research questions would concern action representations, Q-value reliability, training across multiple random seeds, and direct reward-versus-prediction analyses—but none is required to demonstrate the completed system.
+
+## Reproduction notes
+
+To reproduce a checkpoint evaluation, retain the correct model weights under `models/`, use the matching feature encoder, set epsilon to zero for policy evaluation, and reuse the evaluation seed range above. The project currently saves PyTorch model weights in `.pth` files rather than fully resumable optimizer/replay-buffer snapshots.
+
+This document reports historical experiment results; rerunning training with different settings, seeds, library versions, or implementation revisions may produce different numbers.
